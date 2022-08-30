@@ -1,5 +1,11 @@
 Archive member included to satisfy reference by file (symbol)
 
+d:/drivere/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(floatsisf.o)
+                              main.o (__floatsisf)
+d:/drivere/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(gesf2.o)
+                              main.o (__gesf2)
+d:/drivere/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(fp_cmp.o)
+                              d:/drivere/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(gesf2.o) (__fp_cmp)
 d:/drivere/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
                               D:/DRIVERE/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega328p/avr5/crtatmega328p.o (exit)
 d:/drivere/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_clear_bss.o)
@@ -12,6 +18,15 @@ Discarded input sections
  .text          0x00000000        0x0 main.o
  .data          0x00000000        0x0 main.o
  .bss           0x00000000        0x0 main.o
+ .text          0x00000000        0x0 d:/drivere/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(floatsisf.o)
+ .data          0x00000000        0x0 d:/drivere/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(floatsisf.o)
+ .bss           0x00000000        0x0 d:/drivere/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(floatsisf.o)
+ .text          0x00000000        0x0 d:/drivere/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(gesf2.o)
+ .data          0x00000000        0x0 d:/drivere/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(gesf2.o)
+ .bss           0x00000000        0x0 d:/drivere/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(gesf2.o)
+ .text          0x00000000        0x0 d:/drivere/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(fp_cmp.o)
+ .data          0x00000000        0x0 d:/drivere/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(fp_cmp.o)
+ .bss           0x00000000        0x0 d:/drivere/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(fp_cmp.o)
  .text          0x00000000        0x0 d:/drivere/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
  .data          0x00000000        0x0 d:/drivere/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
  .bss           0x00000000        0x0 d:/drivere/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
@@ -171,7 +186,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0x240
+.text           0x00000000      0x34e
  *(.vectors)
  .vectors       0x00000000       0x68 D:/DRIVERE/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega328p/avr5/crtatmega328p.o
                 0x00000000                __vector_default
@@ -258,22 +273,35 @@ END GROUP
  .text.pinReset
                 0x000000a8       0x1a main.o
                 0x000000a8                pinReset
- .text.main     0x000000c2       0xdc main.o
-                0x000000c2                main
+ .text.ledOn    0x000000c2       0x80 main.o
+                0x000000c2                ledOn
+ .text.main     0x00000142       0x4e main.o
+                0x00000142                main
  .text.__vector_14
-                0x0000019e       0x52 main.o
-                0x0000019e                __vector_14
+                0x00000190       0x92 main.o
+                0x00000190                __vector_14
  .text.__vector_1
-                0x000001f0       0x2c main.o
-                0x000001f0                __vector_1
+                0x00000222       0x3c main.o
+                0x00000222                __vector_1
  .text.__vector_2
-                0x0000021c       0x20 main.o
-                0x0000021c                __vector_2
-                0x0000023c                . = ALIGN (0x2)
+                0x0000025e       0x20 main.o
+                0x0000025e                __vector_2
+ .text.avr-libc.fplib
+                0x0000027e       0x7a d:/drivere/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(floatsisf.o)
+                0x0000027e                __floatunsisf
+                0x00000282                __floatsisf
+ .text.avr-libc.fplib
+                0x000002f8        0xa d:/drivere/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(gesf2.o)
+                0x000002f8                __gesf2
+                0x000002f8                __gtsf2
+ .text.avr-libc.fplib
+                0x00000302       0x48 d:/drivere/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(fp_cmp.o)
+                0x00000302                __fp_cmp
+                0x0000034a                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x0000023c        0x0 d:/drivere/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
-                0x0000023c                _exit
-                0x0000023c                exit
+ .fini9         0x0000034a        0x0 d:/drivere/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+                0x0000034a                _exit
+                0x0000034a                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -292,11 +320,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x0000023c        0x4 d:/drivere/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+ .fini0         0x0000034a        0x4 d:/drivere/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x00000240                _etext = .
+                0x0000034e                _etext = .
 
-.data           0x00800100        0x0 load address 0x00000240
+.data           0x00800100        0x0 load address 0x0000034e
                 [!provide]                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -314,18 +342,18 @@ END GROUP
  *(.bss*)
  .bss.secunde   0x00800100        0x2 main.o
                 0x00800100                secunde
- .bss.contorAprins
+ .bss.contor_on
                 0x00800102        0x2 main.o
-                0x00800102                contorAprins
- .bss.contor    0x00800104        0x2 main.o
-                0x00800104                contor
- .bss.flag_aprindere
-                0x00800106        0x2 main.o
-                0x00800106                flag_aprindere
+                0x00800102                contor_on
+ .bss.contor_secunde
+                0x00800104        0x2 main.o
+                0x00800104                contor_secunde
+ .bss.flag_on   0x00800106        0x2 main.o
+                0x00800106                flag_on
  *(COMMON)
                 0x00800108                PROVIDE (__bss_end, .)
-                0x00000240                __data_load_start = LOADADDR (.data)
-                0x00000240                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x0000034e                __data_load_start = LOADADDR (.data)
+                0x0000034e                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x00800108        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
@@ -396,42 +424,42 @@ END GROUP
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x00000000       0x48
+.debug_aranges  0x00000000       0x50
  *(.debug_aranges)
  .debug_aranges
-                0x00000000       0x48 main.o
+                0x00000000       0x50 main.o
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000      0x876
+.debug_info     0x00000000      0x899
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x5f4 D:/DRIVERE/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega328p/avr5/crtatmega328p.o
- .debug_info    0x000005f4      0x282 main.o
+ .debug_info    0x000005f4      0x2a5 main.o
 
-.debug_abbrev   0x00000000      0x68f
+.debug_abbrev   0x00000000      0x6ca
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0x5a2 D:/DRIVERE/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega328p/avr5/crtatmega328p.o
- .debug_abbrev  0x000005a2       0xed main.o
+ .debug_abbrev  0x000005a2      0x128 main.o
 
-.debug_line     0x00000000      0x313
+.debug_line     0x00000000      0x328
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x134 D:/DRIVERE/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega328p/avr5/crtatmega328p.o
- .debug_line    0x00000134      0x1df main.o
+ .debug_line    0x00000134      0x1f4 main.o
 
-.debug_frame    0x00000000       0xa8
+.debug_frame    0x00000000       0xec
  *(.debug_frame)
- .debug_frame   0x00000000       0xa8 main.o
+ .debug_frame   0x00000000       0xec main.o
 
-.debug_str      0x00000000      0x3ab
+.debug_str      0x00000000      0x3a7
  *(.debug_str)
  .debug_str     0x00000000      0x208 D:/DRIVERE/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega328p/avr5/crtatmega328p.o
- .debug_str     0x00000208      0x1a3 main.o
-                                0x1d7 (size before relaxing)
+ .debug_str     0x00000208      0x19f main.o
+                                0x1db (size before relaxing)
 
-.debug_loc      0x00000000       0xc1
+.debug_loc      0x00000000      0x143
  *(.debug_loc)
- .debug_loc     0x00000000       0xc1 main.o
+ .debug_loc     0x00000000      0x143 main.o
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -451,9 +479,9 @@ END GROUP
 .debug_pubtypes
  *(.debug_pubtypes)
 
-.debug_ranges   0x00000000       0x38
+.debug_ranges   0x00000000       0x40
  *(.debug_ranges)
- .debug_ranges  0x00000000       0x38 main.o
+ .debug_ranges  0x00000000       0x40 main.o
 
 .debug_macro
  *(.debug_macro)

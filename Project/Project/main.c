@@ -6,27 +6,34 @@
  */ 
 
 #define F_CPU 16000000UL
+#define TIMP_APRINDERE 5			//durata de timp in secunde cat LED-urile sunt aprinse
+#define GENERARE_INTRERUPERE 0.004  //generarea unei intreruperi la fiecare x secunde
+#define VALOARE_TOP_TIMER 256		//valoarea de top a registrului TCNT0 (pt ca folosesc timer pe 8 biti)
 
-#define TIMP_APRINDERE 5 //durata de timp in secunde cat LED-urile sunt aprinse
+//prescalari
+#define TIMER_NO_PRESCALAR      (0 << CS02) | (0 << CS01) | (1 << CS00)        // 001
+#define TIMER_PRESCALAR_8       (0 << CS02) | (1 << CS01) | (0 << CS00)        // 010
+#define TIMER_PRESCALAR_64      (0 << CS02) | (1 << CS01) | (1 << CS00)        // 011
+#define TIMER_PRESCALAR_256     (1 << CS02) | (0 << CS01) | (0 << CS00)        // 100
+#define TIMER_PRESCALAR_1024    (1 << CS02) | (0 << CS01) | (1 << CS00)        // 101
 
 #include <avr/io.h>
 #include <avr/interrupt.h>
-#include <avr/timer.h>
 
 #include <util/delay.h>
 
 void pinSet(volatile uint8_t *port, uint8_t pin);
 void pinReset(volatile uint8_t *port, uint8_t pin);
-void buton_apasat(volatile uint8_t pin_buton);
+void ledOn();
+void determinareFrecventa();
 
-int flag_aprindere = 0; //initial, led-urile sunt stinse
-int contor = 0;
-int contorAprins = 0;
-int secunde = 0;
+int flag_on = 0;			//initial, led-urile sunt stinse
+int contor_secunde = 0;		//contor pentru generarea secundelor
+int contor_on = 0;			//contor pentru masurarea duratei de timp in care LED-urile sunt aprinse
+int secunde = 0;			
 
 int main(void)
 {
-	//output for LEDs
 	DDRB = 0x0F;   //00001111
 	PORTB = 0x00;
 	DDRD |= (1 << PIND2) | (1 << PIND3);  //INT0 & INT1
@@ -34,43 +41,27 @@ int main(void)
 	
 	cli();
 	
-	//MCUCR |= (1 << IVSEL)|(1 << IVCE);
 	EICRA |= (1 << ISC11) | (1 << ISC10) | (1 << ISC01) | (1 << ISC00);
 	EIMSK |= (1 << INT1) | (1 << INT0);
 	EIFR |= (0 << INTF1) | (0 << INTF0);
 	PCICR |= (0 << PCIE2) | (0 << PCIE1) | (0 << PCIE0);
 	
-	TCCR0A = (1 << WGM01)|(0 << WGM00); //setare mod de functionare CTC
-	TCCR0B |= (1 << CS02)|(0 << CS01)|(0 << CS00); //prescalar
-	OCR0A = 0xF9; //val de top
+	
+	//momentan time-ul executa o intrerupere la fiecare 4ms
+				
+	TCCR0B = (1 << CS02) | (0 << CS01) | (0 << CS00); //valoare prescalar
+	OCR0A = 0xF9;					      
+	TCCR0A = (1 << WGM01) | (0 << WGM00);  //CTC
+	//determinareFrecventa();
 	TIMSK0 |= (1 << OCIE0A); 
 	
 	sei();
-	//SREG |= (1 << SREG_I);
 	
-	while (1)
+	do
 	{
-		
-		if(flag_aprindere == 1){
-			
-			contorAprins = secunde;
-			
-			pinSet(&PORTB, PINB0);
-			pinSet(&PORTB, PINB1);
-			pinSet(&PORTB, PINB2);
-			pinSet(&PORTB, PINB3);
-		}
-		
-		if((flag_aprindere == 0) || ((secunde - contorAprins) >= TIMP_APRINDERE)){
-			
-			//contorAprins = 0;
-			
-			pinReset(&PORTB, PINB0);
-			pinReset(&PORTB, PINB1);
-			pinReset(&PORTB, PINB2);
-			pinReset(&PORTB, PINB3);
-		}
-	}
+		ledOn();	
+
+	}while (1);
 }
 
 void pinSet(volatile uint8_t *port, uint8_t pin){
@@ -83,38 +74,79 @@ void pinReset(volatile uint8_t *port, uint8_t pin){
 	*port &=  ~(1 << pin);
 }
 
-ISR(TIMER0_COMPA_vect) {
+void ledOn(){
+	
+	if(flag_on == 1){
+		pinSet(&PORTB, PINB0);
+		pinSet(&PORTB, PINB1);
+		pinSet(&PORTB, PINB2);
+		pinSet(&PORTB, PINB3);
+	}else{
+		pinReset(&PORTB, PINB0);
+		pinReset(&PORTB, PINB1);
+		pinReset(&PORTB, PINB2);
+		pinReset(&PORTB, PINB3);
+	}
+	
+	if((secunde - contor_on) >= TIMP_APRINDERE){
+		flag_on = 0;
+	}
+}
+
+//void determinareFrecventa(){
+	//
+	//int frecventa_dorita = 1/GENERARE_INTRERUPERE;
+	////int frecventa_realizata_general = 16000000/VALOARE_TOP_TIMER; //frecventa_realizata_general > frecventa_dorita 
+	//int frecventa_realizata, valoare_aproximata;
+	//
+	//int valoare_prescalar[5] = {0, 8, 64, 256, 1024};
+	//int timer_prescalar[5] = {TIMER_NO_PRESCALAR, TIMER_PRESCALAR_8, TIMER_PRESCALAR_64, TIMER_PRESCALAR_256, TIMER_PRESCALAR_1024};
+	//
+	//for(int i = 1; i <= 5; i++){
+	//
+		//frecventa_realizata = 16000000/(256*valoare_prescalar[i]);
+		//
+		//if(frecventa_realizata > frecventa_dorita){
+			//
+			//valoare_aproximata = 16000000/(valoare_prescalar[i-1]*frecventa_dorita); //n
+			//TCCR0B |= timer_prescalar[i-1];
+			//break;
+		//}
+	//}
+	//
+	//OCR0A = valoare_aproximata - 1; 
+//}
+
+ISR(TIMER0_COMPA_vect) {  //pt caz general
 	
 	cli();
 	
-	contor++;
+	contor_secunde++;
 	
-	if(contor >= 250){ 
+	if(contor_secunde >= (1/GENERARE_INTRERUPERE)){ 
+		
 		secunde++;
-		contor = 0;
+		contor_secunde = 0;
 	}
 	
 	sei();
 }
 
-ISR(INT0_vect) {
+ISR(INT0_vect) { //pt butonul de on
 	
 	cli();
-	//SREG &= ~(1 << SREG_I);
 	
-	flag_aprindere = 1; //aprindere LED-uri
+	flag_on = 1;		 //LED-uri on
+	contor_on = secunde; //determinarea timpului la care a fost apasat butonul  
 	
 	sei();
-	//SREG |= (1 << SREG_I);
 }
 
-ISR(INT1_vect) {
+ISR(INT1_vect) { //pt butonul de off
 	
 	cli();
-	//SREG &= ~(1 << SREG_I);
 	
-	flag_aprindere = 0;	//stingere LED-uri
+	flag_on = 0; //LED-uri off
 	
 	sei();
-	//SREG |= (1 << SREG_I);
 }
