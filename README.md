@@ -1,2 +1,3 @@
 # Embedded-project
-Embedded Systems Project
+
+- [Rezolvare](./Project/Project/main.c)
