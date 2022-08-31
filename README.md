@@ -2,7 +2,7 @@
 
 ### Descriere:
 
-- [1_timer0_general](./Project/Project)
+- [1_timer0_general](./1_timer0_general/Project)
   
   - implementare rutină de întrerupere pt 2 butoane
   - implementare timer0
@@ -10,4 +10,4 @@
   - realizare funcție care calculează automat valoarea pentru registrul OCR0A
   - s-a încercat alegerea automata a prescalarului în registrul TCCR0B
 
-- [2_timer0_start_stop](./Project/Project)
+- [2_timer0_start_stop](./2_timer0_start_stop/Project)
