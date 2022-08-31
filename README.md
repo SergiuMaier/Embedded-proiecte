@@ -1,4 +1,4 @@
-## Embedded-project
+## Embedded - projects
 
 ### Descriere:
 
