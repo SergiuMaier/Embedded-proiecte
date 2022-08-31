@@ -352,23 +352,23 @@ END GROUP
  .text.ledOn    0x000000d8       0x92 main_func.o
                 0x000000d8                ledOn
  .text.calcul_valoare_registru_ocr0a
-                0x0000016a       0xbe main_func.o
+                0x0000016a       0xb8 main_func.o
                 0x0000016a                calcul_valoare_registru_ocr0a
  .text.__vector_14
-                0x00000228       0x92 main_func.o
-                0x00000228                __vector_14
+                0x00000222       0x92 main_func.o
+                0x00000222                __vector_14
  .text.__vector_1
-                0x000002ba       0x3c main_func.o
-                0x000002ba                __vector_1
+                0x000002b4       0x3c main_func.o
+                0x000002b4                __vector_1
  .text.__vector_2
-                0x000002f6       0x20 main_func.o
-                0x000002f6                __vector_2
+                0x000002f0       0x20 main_func.o
+                0x000002f0                __vector_2
  .text.port_init
-                0x00000316       0x14 main_mcu_init.o
-                0x00000316                port_init
+                0x00000310       0x14 main_mcu_init.o
+                0x00000310                port_init
  .text.timer0_init
-                0x0000032a       0x16 main_mcu_init.o
-                0x0000032a                timer0_init
+                0x00000324       0x1c main_mcu_init.o
+                0x00000324                timer0_init
  .text.interrupt_init
                 0x00000340       0x1e main_mcu_init.o
                 0x00000340                interrupt_init
@@ -556,8 +556,8 @@ END GROUP
 .debug_line     0x00000000      0x4c3
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x134 D:/DRIVERE/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega328p/avr5/crtatmega328p.o
- .debug_line    0x00000134      0x1fa main_func.o
- .debug_line    0x0000032e      0x12a main_mcu_init.o
+ .debug_line    0x00000134      0x1f4 main_func.o
+ .debug_line    0x00000328      0x130 main_mcu_init.o
  .debug_line    0x00000458       0x6b main.o
 
 .debug_frame    0x00000000      0x190
@@ -566,15 +566,15 @@ END GROUP
  .debug_frame   0x00000118       0x54 main_mcu_init.o
  .debug_frame   0x0000016c       0x24 main.o
 
-.debug_str      0x00000000      0x47e
+.debug_str      0x00000000      0x487
  *(.debug_str)
  .debug_str     0x00000000      0x208 D:/DRIVERE/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega328p/avr5/crtatmega328p.o
- .debug_str     0x00000208      0x21e main_func.o
-                                0x25f (size before relaxing)
- .debug_str     0x00000426       0x47 main_mcu_init.o
-                                0x1ce (size before relaxing)
- .debug_str     0x0000046d       0x11 main.o
-                                0x180 (size before relaxing)
+ .debug_str     0x00000208      0x227 main_func.o
+                                0x268 (size before relaxing)
+ .debug_str     0x0000042f       0x47 main_mcu_init.o
+                                0x1d7 (size before relaxing)
+ .debug_str     0x00000476       0x11 main.o
+                                0x189 (size before relaxing)
 
 .debug_loc      0x00000000      0x203
  *(.debug_loc)

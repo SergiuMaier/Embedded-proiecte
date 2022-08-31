@@ -10,10 +10,12 @@
 
 #define F_CPU 16000000UL
 #define TIMP_ON 4					//durata de timp in secunde cat LED-urile sunt aprinse
+
+//se putea crea un alt fisier strict cu defines pt timer0
 #define GENERARE_INTRERUPERE 0.004  //generarea unei intreruperi la fiecare x secunde
 #define VALOARE_TOP_REGISTRU 256    //valoarea de top a registrului TCNT0 (pt ca folosesc timer pe 8 biti)
 
-//prescalari
+//definire prescalari timer0
 #define TIMER_NO_PRESCALAR     (0 << CS02) | (0 << CS01) | (1 << CS00)        // 001
 #define TIMER_PRESCALAR_8      (0 << CS02) | (1 << CS01) | (0 << CS00)        // 010
 #define TIMER_PRESCALAR_64     (0 << CS02) | (1 << CS01) | (1 << CS00)        // 011

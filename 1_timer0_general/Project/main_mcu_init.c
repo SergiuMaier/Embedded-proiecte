@@ -13,7 +13,7 @@
 
 void port_init(void){
 	
-	DDRB = 0x0F;   //00001111
+	DDRB = 0x0F;	//00001111
 	PORTB = 0x00;
 	DDRD |= (1 << PIND2) | (1 << PIND3);  //INT0 & INT1
 	PORTD |= (1 << PIND2) | (1 << PIND3);
@@ -21,13 +21,11 @@ void port_init(void){
 
 void timer0_init(void){
 	
-	//momentan time-ul executa o intrerupere la fiecare 1ms
 	TCCR0A |= (1 << WGM01) | (0 << WGM00);  //modul CTC
 	
 	calcul_valoare_registru_ocr0a();		//OCR0A
 	
-	//TCCR0B |= TIMER_PRESCALAR_256;
-
+	TCCR0B |= TIMER_PRESCALAR_256;			//prescalar ales pt valoarea 0.004s (vezi main_defines.h)
 	TIMSK0 |= (1 << OCIE0A);
 }
 
