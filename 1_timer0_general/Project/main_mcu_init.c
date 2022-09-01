@@ -23,9 +23,9 @@ void timer0_init(void){
 	
 	TCCR0A |= (1 << WGM01) | (0 << WGM00);  //modul CTC
 	
-	calcul_valoare_registru_ocr0a();		//OCR0A
+	calcul_valoare_registru_ocr0a();	//OCR0A
 	
-	TCCR0B |= TIMER_PRESCALAR_256;			//prescalar ales pt valoarea 0.004s (vezi main_defines.h)
+	TCCR0B |= TIMER_PRESCALAR_256;		//prescalar ales pt valoarea 0.004s (vezi main_defines.h)
 	TIMSK0 |= (1 << OCIE0A);
 }
 
