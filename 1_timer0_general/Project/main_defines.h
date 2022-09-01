@@ -9,7 +9,7 @@
 #define MAIN_DEFINES_H_
 
 #define F_CPU 16000000UL
-#define TIMP_ON 4					//durata de timp in secunde cat LED-urile sunt aprinse
+#define TIMP_ON 4		//durata de timp in secunde cat LED-urile sunt aprinse
 
 //se putea crea un alt fisier strict cu defines pt timer0
 #define GENERARE_INTRERUPERE 0.004  //generarea unei intreruperi la fiecare x secunde
