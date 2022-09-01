@@ -18,9 +18,7 @@ void pinSet(volatile uint8_t *port, uint8_t pin);
 
 void pinReset(volatile uint8_t *port, uint8_t pin);
 
-void ledOn();
-
-void calcul_valoare_registru_ocr0a();
+void led_on();
 
 ISR(TIMER0_COMPA_vect);
 

@@ -7,6 +7,7 @@
 
 #include "main_mcu_init.h"
 #include "main_defines.h"
+#include "timer0_func_def.h"
 #include "main_func.h"
 
 #include <stdio.h>
@@ -17,18 +18,6 @@ void port_init(void){
 	PORTB = 0x00;
 	DDRD |= (1 << PIND2) | (1 << PIND3);  //INT0 & INT1
 	PORTD |= (1 << PIND2) | (1 << PIND3);
-}
-
-void timer0_init(void){
-	
-	//momentan time-ul executa o intrerupere la fiecare 1ms
-	TCCR0A |= (1 << WGM01) | (0 << WGM00);  //modul CTC
-	
-	calcul_valoare_registru_ocr0a();		//OCR0A
-	
-	//TCCR0B |= TIMER_PRESCALAR_256;
-
-	TIMSK0 |= (1 << OCIE0A);
 }
 
 void interrupt_init(void){

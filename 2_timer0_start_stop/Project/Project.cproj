@@ -138,6 +138,12 @@
     <Compile Include="main_mcu_init.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="timer0_func_def.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="timer0_func.c">
+      <SubType>compile</SubType>
+    </Compile>
   </ItemGroup>
   <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />
 </Project>
