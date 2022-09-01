@@ -13,4 +13,5 @@
 - [2_timer0_start_stop](./2_timer0_start_stop/Project)
     
    - creare fisiere separate pt timer0;
-   - adaugare metode de start si stop pt timer
+   - realizare functii pt start si stop timer;
+   - timer-ul functioneaza doar atunci cand este nevoie sa se contorizeze secuntele;
