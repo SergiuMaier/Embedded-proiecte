@@ -15,3 +15,5 @@
    - creare fisiere separate pt timer0;
    - realizare functii pt start si stop timer;
    - timer-ul functioneaza doar atunci cand este nevoie sa se contorizeze secuntele;
+
+- [3_software_timers](./3_software_timers/Project)
