@@ -10,9 +10,18 @@
 #include "timer0_func_def.h"
 
 int flag_on = 0;		//initial, led-urile sunt stinse
-int contor_secunde = 0;	//contor pentru generarea secundelor
+int sys_tick = 0;		//contor pentru generarea secundelor
 int contor_on = 0;		//contor pentru masurarea duratei de timp in care LED-urile sunt aprinse
-int secunde = 0;
+int counter = 0;		//contor pt sys_ticks
+
+struct timer{
+	
+	enum StareTimer{ pornit = 0, oprit = 1, expirat = 2 }; // eg. timer.StareTimer = pornit;
+	int autoreseteaza; //1 sau 0
+	int counter_initializare;
+	int counter_curent; //posibil in legatura cu sys_tick
+	 
+};
 
 void pinSet(volatile uint8_t *port, uint8_t pin){
 	
@@ -32,10 +41,10 @@ void led_on(){
 		pinSet(&PORTB, PINB2);
 		pinSet(&PORTB, PINB3);
 		
-		if(secunde % 2 == 0)			//test timer
-			pinReset(&PORTB, PINB0);
-		else
-			pinSet(&PORTB, PINB0);
+		//if(secunde % 2 == 0)			//test timer
+			//pinReset(&PORTB, PINB0);
+		//else
+			//pinSet(&PORTB, PINB0);
 	}
 	else
 	{
@@ -44,22 +53,22 @@ void led_on(){
 		pinReset(&PORTB, PINB3);
 	}
 	
-	if((secunde - contor_on) >= TIMP_LEDS_ON){
-		pinReset(&PORTB, PINB0);  //LED vf timer
-		secunde = 0;
-		flag_on = 0;
-	}
+	//if((secunde - contor_on) >= TIMP_LEDS_ON){
+		//pinReset(&PORTB, PINB0);  //LED vf timer
+		//secunde = 0;
+		//flag_on = 0;
+	//}
 }
 
 ISR(TIMER0_COMPA_vect){  //pt caz general
 	
 	cli();
 	
-	contor_secunde++;
+	sys_tick++;
 	
-	if(contor_secunde >= (1/GENERARE_INTRERUPERE)){
-		secunde++;
-		contor_secunde = 0;
+	if(sys_tick >= (1/GENERARE_INTRERUPERE)){ // 1 sec
+		counter++; //1 sec
+		sys_tick = 0;
 	}
 	
 	sei();
@@ -70,7 +79,7 @@ ISR(INT0_vect){ //pt butonul de on
 	cli();
 	
 	flag_on = 1;		 //LED-uri on
-	contor_on = secunde; //determinarea timpului la care a fost apasat butonul
+	//contor_on = secunde; //determinarea timpului la care a fost apasat butonul
 	
 	sei();
 }
