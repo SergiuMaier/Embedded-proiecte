@@ -20,7 +20,6 @@ int main(void){
 					      
 	do
 	{
-		led_on();	
 
 	}while(1);
 }
