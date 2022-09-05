@@ -16,6 +16,10 @@
 
 void set_pin(volatile uint8_t *port, uint8_t pin);
 
+void aprinde_led(volatile uint8_t *port, uint8_t pin, void(*fct_callback)(uint8_t, uint8_t));
+
+//restul functiilor trebuie adaugate
+
 ISR(TIMER0_COMPA_vect);
 
 #endif /* MAIN_FUNC_H_ */

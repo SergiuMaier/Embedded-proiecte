@@ -17,7 +17,8 @@
 int main(void){
 	
 	init_devices();	//porturi, timer, intreruperi
-					      
+	start_timer0();
+			      
 	do
 	{
 
