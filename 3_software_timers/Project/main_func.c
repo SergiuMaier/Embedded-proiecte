@@ -15,18 +15,22 @@ int counter = 0;		//contor pt sys_ticks
 
 struct timer{
 	
-	enum StareTimer{ pornit = 0, oprit = 1, expirat = 2 }; // eg. timer.StareTimer = pornit;
+	enum stare_timer{ pornit = 0, oprit = 1, expirat = 2 }; // eg. t1.stare_timer = pornit;
 	int autoreseteaza; //1 sau 0
 	int counter_initial;
 	int counter_curent; //posibil in legatura cu sys_tick
 	 
-}; //+nume[max];
+}timere[MAX_NR_TIMERE];
 
-void pinSet(volatile uint8_t *port, uint8_t pin){
+void set_pin(volatile uint8_t *port, uint8_t pin){  //modifica in toggle dupa test
 	
 	*port |=  1 << pin;
 }
 
+void aprinde_led(volatile uint8_t *port, uint8_t pin, void(*fct_callback)(void)){  //netestata, dar sintaxa e ok
+	
+	return fct_callback(*port, pin);
+}
 
 ISR(TIMER0_COMPA_vect){  //pt caz general
 	

@@ -10,5 +10,8 @@
 
 #define F_CPU 16000000UL
 #define TIMP_LEDS_ON 6				   //durata de timp in secunde cat LED-urile sunt aprinse
+#define TRUE 1
+#define FALSE 0
+#define MAX_NR_TIMERE 5
 
 #endif /* MAIN_DEFINES_H_ */

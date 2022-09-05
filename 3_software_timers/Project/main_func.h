@@ -14,16 +14,8 @@
 #include <avr/interrupt.h>
 #include <util/delay.h>
 
-void pinSet(volatile uint8_t *port, uint8_t pin);
-
-void pinReset(volatile uint8_t *port, uint8_t pin);
-
-void led_on();
+void set_pin(volatile uint8_t *port, uint8_t pin);
 
 ISR(TIMER0_COMPA_vect);
-
-ISR(INT0_vect);
-
-ISR(INT1_vect);
 
 #endif /* MAIN_FUNC_H_ */
