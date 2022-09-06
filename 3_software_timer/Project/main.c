@@ -14,8 +14,6 @@
 #include <avr/interrupt.h>
 #include <util/delay.h>
 
-int flag = 0;
-
 int main(void){
 	
 	init_devices();	//porturi, timer, intreruperi

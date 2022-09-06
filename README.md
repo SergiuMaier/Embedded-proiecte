@@ -16,4 +16,4 @@
    - realizare functii pt start si stop timer;
    - timer-ul functioneaza doar atunci cand este nevoie sa se contorizeze secuntele;
 
-- [3_software_timers](./3_software_timers/Project)
+- [3_software_timer](./3_software_timers/Project)

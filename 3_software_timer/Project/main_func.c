@@ -11,6 +11,7 @@
 
 int sys_tick = 0;		//contor pentru generarea secundelor
 int counter = 0;		//contor pt sys_ticks
+int flag = 0;			//broken
 
 typedef struct timer{
 	
