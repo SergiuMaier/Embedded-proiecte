@@ -14,11 +14,15 @@
 #include <avr/interrupt.h>
 #include <util/delay.h>
 
-void set_pin(volatile uint8_t *port, uint8_t pin);
+void pin_toggle_led0();
 
-void aprinde_led(volatile uint8_t *port, uint8_t pin, void(*fct_callback)(uint8_t, uint8_t));
+void aprinde_led(void (*callback_fct)());
 
-//restul functiilor trebuie adaugate
+struct timer creeaza_timer(uint8_t var_stare,  uint8_t var_autoreset, uint8_t contor_initial, uint8_t perioada, void *pfct);
+
+void evalueaza_timer();
+
+//restul prot fct trebuie adaugate
 
 ISR(TIMER0_COMPA_vect);
 

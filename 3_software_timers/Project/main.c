@@ -14,14 +14,23 @@
 #include <avr/interrupt.h>
 #include <util/delay.h>
 
+int flag = 0;
+
 int main(void){
 	
 	init_devices();	//porturi, timer, intreruperi
-	start_timer0();
+	start_timer0(); //aici sau in creeaza_timer
+	//exemplu struct timer t1 = creeaza_timer(PORNIT, TRUE, 0, 1000,  *f1);
 			      
 	do
 	{
-
+		if(flag == 1)
+		{
+			flag = 0;
+			evalueaza_timer();
+		}
+		
+		
 	}while(1);
 }
 
