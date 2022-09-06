@@ -8,7 +8,8 @@ d:/drivere/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\l
 Allocating common symbols
 Common symbol       size              file
 
-timere              0x2d              main_func.o
+id_timer            0x2               main_func.o
+timere              0x37              main_func.o
 
 Discarded input sections
 
@@ -20,16 +21,15 @@ Discarded input sections
  .text.aprinde_led
                 0x00000000        0x6 main_func.o
  .text.creeaza_timer
-                0x00000000       0x22 main_func.o
+                0x00000000       0x84 main_func.o
  .text.reseteaza_timer
-                0x00000000       0x12 main_func.o
+                0x00000000       0x26 main_func.o
  .text.update_timer
-                0x00000000       0x1e main_func.o
+                0x00000000       0x2e main_func.o
  .bss.counter   0x00000000        0x2 main_func.o
  .text          0x00000000        0x0 main_mcu_init.o
  .data          0x00000000        0x0 main_mcu_init.o
  .bss           0x00000000        0x0 main_mcu_init.o
- .bss.flag      0x00000000        0x2 main_mcu_init.o
  .text          0x00000000        0x0 main.o
  .data          0x00000000        0x0 main.o
  .bss           0x00000000        0x0 main.o
@@ -200,7 +200,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0x198
+.text           0x00000000      0x1ea
  *(.vectors)
  .vectors       0x00000000       0x68 D:/DRIVERE/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega328p/avr5/crtatmega328p.o
                 0x00000000                __vector_default
@@ -288,33 +288,35 @@ END GROUP
                 0x00000090        0xa main_func.o
                 0x00000090                pin_toggle_led0
  .text.evalueaza_timer
-                0x0000009a       0x38 main_func.o
+                0x0000009a       0x84 main_func.o
                 0x0000009a                evalueaza_timer
+ .text.startup  0x0000011e       0x1a main_func.o
+                0x0000011e                startup
  .text.__vector_14
-                0x000000d2       0x3e main_func.o
-                0x000000d2                __vector_14
+                0x00000138       0x3e main_func.o
+                0x00000138                __vector_14
  .text.port_init
-                0x00000110       0x14 main_mcu_init.o
-                0x00000110                port_init
+                0x00000176       0x14 main_mcu_init.o
+                0x00000176                port_init
  .text.interrupt_init
-                0x00000124       0x1e main_mcu_init.o
-                0x00000124                interrupt_init
+                0x0000018a       0x1e main_mcu_init.o
+                0x0000018a                interrupt_init
  .text.init_devices
-                0x00000142       0x12 main_mcu_init.o
-                0x00000142                init_devices
- .text.main     0x00000154       0x22 main.o
-                0x00000154                main
+                0x000001a8       0x12 main_mcu_init.o
+                0x000001a8                init_devices
+ .text.main     0x000001ba        0xe main.o
+                0x000001ba                main
  .text.timer0_init
-                0x00000176       0x16 timer0_func.o
-                0x00000176                timer0_init
+                0x000001c8       0x16 timer0_func.o
+                0x000001c8                timer0_init
  .text.start_timer0
-                0x0000018c        0x8 timer0_func.o
-                0x0000018c                start_timer0
-                0x00000194                . = ALIGN (0x2)
+                0x000001de        0x8 timer0_func.o
+                0x000001de                start_timer0
+                0x000001e6                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00000194        0x0 d:/drivere/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
-                0x00000194                _exit
-                0x00000194                exit
+ .fini9         0x000001e6        0x0 d:/drivere/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+                0x000001e6                _exit
+                0x000001e6                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -333,11 +335,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00000194        0x4 d:/drivere/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+ .fini0         0x000001e6        0x4 d:/drivere/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x00000198                _etext = .
+                0x000001ea                _etext = .
 
-.data           0x00800100        0x0 load address 0x00000198
+.data           0x00800100        0x0 load address 0x000001ea
                 [!provide]                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -349,27 +351,27 @@ END GROUP
                 0x00800100                _edata = .
                 [!provide]                PROVIDE (__data_end, .)
 
-.bss            0x00800100       0x33
+.bss            0x00800100       0x3d
                 0x00800100                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
- .bss.sys_tick  0x00800100        0x2 main_func.o
-                0x00800100                sys_tick
- .bss.flag      0x00800102        0x2 main_func.o
-                0x00800102                flag
- .bss.flag      0x00800104        0x2 main.o
+ .bss.flag      0x00800100        0x2 main_func.o
+                0x00800100                flag
+ .bss.sys_tick  0x00800102        0x2 main_func.o
+                0x00800102                sys_tick
  *(COMMON)
- COMMON         0x00800106       0x2d main_func.o
+ COMMON         0x00800104       0x39 main_func.o
+                0x00800104                id_timer
                 0x00800106                timere
-                0x00800133                PROVIDE (__bss_end, .)
-                0x00000198                __data_load_start = LOADADDR (.data)
-                0x00000198                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x0080013d                PROVIDE (__bss_end, .)
+                0x000001ea                __data_load_start = LOADADDR (.data)
+                0x000001ea                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x00800133        0x0
+.noinit         0x0080013d        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
  *(.noinit*)
                 [!provide]                PROVIDE (__noinit_end, .)
-                0x00800133                _end = .
+                0x0080013d                _end = .
                 [!provide]                PROVIDE (__heap_start, .)
 
 .eeprom         0x00810000        0x0
@@ -437,66 +439,66 @@ END GROUP
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x00000000       0xd0
+.debug_aranges  0x00000000       0xd8
  *(.debug_aranges)
  .debug_aranges
-                0x00000000       0x50 main_func.o
+                0x00000000       0x58 main_func.o
  .debug_aranges
-                0x00000050       0x30 main_mcu_init.o
+                0x00000058       0x30 main_mcu_init.o
  .debug_aranges
-                0x00000080       0x20 main.o
+                0x00000088       0x20 main.o
  .debug_aranges
-                0x000000a0       0x30 timer0_func.o
+                0x000000a8       0x30 timer0_func.o
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000      0xb30
+.debug_info     0x00000000      0xb42
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x5f4 D:/DRIVERE/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega328p/avr5/crtatmega328p.o
- .debug_info    0x000005f4      0x2c4 main_func.o
- .debug_info    0x000008b8       0xf5 main_mcu_init.o
- .debug_info    0x000009ad       0xd6 main.o
- .debug_info    0x00000a83       0xad timer0_func.o
+ .debug_info    0x000005f4      0x2fa main_func.o
+ .debug_info    0x000008ee       0xe3 main_mcu_init.o
+ .debug_info    0x000009d1       0xc4 main.o
+ .debug_info    0x00000a95       0xad timer0_func.o
 
-.debug_abbrev   0x00000000      0x8e5
+.debug_abbrev   0x00000000      0x8c3
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0x5a2 D:/DRIVERE/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega328p/avr5/crtatmega328p.o
  .debug_abbrev  0x000005a2      0x1ca main_func.o
- .debug_abbrev  0x0000076c       0x99 main_mcu_init.o
- .debug_abbrev  0x00000805       0x79 main.o
- .debug_abbrev  0x0000087e       0x67 timer0_func.o
+ .debug_abbrev  0x0000076c       0x88 main_mcu_init.o
+ .debug_abbrev  0x000007f4       0x68 main.o
+ .debug_abbrev  0x0000085c       0x67 timer0_func.o
 
-.debug_line     0x00000000      0x535
+.debug_line     0x00000000      0x55c
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x134 D:/DRIVERE/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega328p/avr5/crtatmega328p.o
- .debug_line    0x00000134      0x193 main_func.o
- .debug_line    0x000002c7      0x11b main_mcu_init.o
- .debug_line    0x000003e2       0x8e main.o
- .debug_line    0x00000470       0xc5 timer0_func.o
+ .debug_line    0x00000134      0x1d1 main_func.o
+ .debug_line    0x00000305      0x10c main_mcu_init.o
+ .debug_line    0x00000411       0x86 main.o
+ .debug_line    0x00000497       0xc5 timer0_func.o
 
-.debug_frame    0x00000000      0x150
+.debug_frame    0x00000000      0x168
  *(.debug_frame)
- .debug_frame   0x00000000       0xa4 main_func.o
- .debug_frame   0x000000a4       0x44 main_mcu_init.o
- .debug_frame   0x000000e8       0x24 main.o
- .debug_frame   0x0000010c       0x44 timer0_func.o
+ .debug_frame   0x00000000       0xbc main_func.o
+ .debug_frame   0x000000bc       0x44 main_mcu_init.o
+ .debug_frame   0x00000100       0x24 main.o
+ .debug_frame   0x00000124       0x44 timer0_func.o
 
-.debug_str      0x00000000      0x4e2
+.debug_str      0x00000000      0x54b
  *(.debug_str)
  .debug_str     0x00000000      0x208 D:/DRIVERE/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega328p/avr5/crtatmega328p.o
- .debug_str     0x00000208      0x256 main_func.o
-                                0x2a0 (size before relaxing)
- .debug_str     0x0000045e       0x47 main_mcu_init.o
-                                0x1bf (size before relaxing)
- .debug_str     0x000004a5       0x1e main.o
-                                0x1a6 (size before relaxing)
- .debug_str     0x000004c3       0x1f timer0_func.o
+ .debug_str     0x00000208      0x26b main_func.o
+                                0x2b5 (size before relaxing)
+ .debug_str     0x00000473       0x47 main_mcu_init.o
+                                0x1b9 (size before relaxing)
+ .debug_str     0x000004ba       0x1e main.o
+                                0x198 (size before relaxing)
+ .debug_str     0x000004d8       0x73 timer0_func.o
                                 0x1a6 (size before relaxing)
 
-.debug_loc      0x00000000      0x10a
+.debug_loc      0x00000000      0x166
  *(.debug_loc)
- .debug_loc     0x00000000      0x10a main_func.o
+ .debug_loc     0x00000000      0x166 main_func.o
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -516,12 +518,12 @@ END GROUP
 .debug_pubtypes
  *(.debug_pubtypes)
 
-.debug_ranges   0x00000000       0x90
+.debug_ranges   0x00000000       0x98
  *(.debug_ranges)
- .debug_ranges  0x00000000       0x40 main_func.o
- .debug_ranges  0x00000040       0x20 main_mcu_init.o
- .debug_ranges  0x00000060       0x10 main.o
- .debug_ranges  0x00000070       0x20 timer0_func.o
+ .debug_ranges  0x00000000       0x48 main_func.o
+ .debug_ranges  0x00000048       0x20 main_mcu_init.o
+ .debug_ranges  0x00000068       0x10 main.o
+ .debug_ranges  0x00000078       0x20 timer0_func.o
 
 .debug_macro
  *(.debug_macro)

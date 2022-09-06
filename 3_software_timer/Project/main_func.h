@@ -18,10 +18,13 @@ void pin_toggle_led0();
 
 void aprinde_led(void (*callback_fct)());
 
-struct timer creeaza_timer(uint8_t var_stare,  uint8_t var_autoreset, uint8_t contor_initial, uint8_t perioada, void *pfct);
+int numar_timere_create();
+
+struct timer creeaza_timer(uint8_t id, uint8_t var_stare,  uint8_t var_autoreset, uint8_t contor_initial, uint8_t perioada, void *pfct);
 
 void evalueaza_timer();
 
+void startup();
 //restul prot fct trebuie adaugate
 
 ISR(TIMER0_COMPA_vect);

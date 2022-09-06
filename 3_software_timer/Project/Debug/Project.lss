@@ -3,31 +3,31 @@ Project.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .data         00000000  00800100  00800100  000001a6  2**0
+  0 .data         00000000  00800100  00800100  0000025e  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  1 .text         00000132  00000000  00000000  00000074  2**1
+  1 .text         000001ea  00000000  00000000  00000074  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .bss          00000002  00800100  00800100  000001a6  2**0
+  2 .bss          0000003d  00800100  00800100  0000025e  2**0
                   ALLOC
-  3 .comment      00000030  00000000  00000000  000001a6  2**0
+  3 .comment      00000030  00000000  00000000  0000025e  2**0
                   CONTENTS, READONLY
-  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  000001d8  2**2
+  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00000290  2**2
                   CONTENTS, READONLY
-  5 .debug_aranges 000000d0  00000000  00000000  00000218  2**0
+  5 .debug_aranges 000000d8  00000000  00000000  000002d0  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   00000b78  00000000  00000000  000002e8  2**0
+  6 .debug_info   00000b42  00000000  00000000  000003a8  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 000008b1  00000000  00000000  00000e60  2**0
+  7 .debug_abbrev 000008c3  00000000  00000000  00000eea  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   000004b0  00000000  00000000  00001711  2**0
+  8 .debug_line   0000055c  00000000  00000000  000017ad  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  00000160  00000000  00000000  00001bc4  2**2
+  9 .debug_frame  00000168  00000000  00000000  00001d0c  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    000004e7  00000000  00000000  00001d24  2**0
+ 10 .debug_str    0000054b  00000000  00000000  00001e74  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    0000014d  00000000  00000000  0000220b  2**0
+ 11 .debug_loc    00000166  00000000  00000000  000023bf  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000090  00000000  00000000  00002358  2**0
+ 12 .debug_ranges 00000098  00000000  00000000  00002525  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -47,7 +47,7 @@ Disassembly of section .text:
   2c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
   30:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
   34:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
-  38:	0c 94 48 00 	jmp	0x90	; 0x90 <__vector_14>
+  38:	0c 94 9c 00 	jmp	0x138	; 0x138 <__vector_14>
   3c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
   40:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
   44:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
@@ -78,165 +78,250 @@ Disassembly of section .text:
   7c:	1d 92       	st	X+, r1
 
 0000007e <.do_clear_bss_start>:
-  7e:	a2 30       	cpi	r26, 0x02	; 2
+  7e:	ad 33       	cpi	r26, 0x3D	; 61
   80:	b2 07       	cpc	r27, r18
   82:	e1 f7       	brne	.-8      	; 0x7c <.do_clear_bss_loop>
-  84:	0e 94 83 00 	call	0x106	; 0x106 <main>
-  88:	0c 94 97 00 	jmp	0x12e	; 0x12e <_exit>
+  84:	0e 94 dd 00 	call	0x1ba	; 0x1ba <main>
+  88:	0c 94 f3 00 	jmp	0x1e6	; 0x1e6 <_exit>
 
 0000008c <__bad_interrupt>:
   8c:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
 
-00000090 <__vector_14>:
-	t.autoreset = var_autoreset;
+00000090 <pin_toggle_led0>:
 	
-	return t;
+	timere[id_timer].stare = var_stare;
+	timere[id_timer].autoreset = var_autoreset;
+	
+	return timere[id_timer]; //de id timer
+}
+  90:	95 b1       	in	r25, 0x05	; 5
+  92:	81 e0       	ldi	r24, 0x01	; 1
+  94:	89 27       	eor	r24, r25
+  96:	85 b9       	out	0x05, r24	; 5
+  98:	08 95       	ret
+
+0000009a <evalueaza_timer>:
+  9a:	88 e4       	ldi	r24, 0x48	; 72
+  9c:	90 e0       	ldi	r25, 0x00	; 0
+  9e:	0e 94 48 00 	call	0x90	; 0x90 <pin_toggle_led0>
+  a2:	10 92 05 01 	sts	0x0105, r1	; 0x800105 <id_timer+0x1>
+  a6:	10 92 04 01 	sts	0x0104, r1	; 0x800104 <id_timer>
+  aa:	05 c0       	rjmp	.+10     	; 0xb6 <evalueaza_timer+0x1c>
+  ac:	01 96       	adiw	r24, 0x01	; 1
+  ae:	90 93 05 01 	sts	0x0105, r25	; 0x800105 <id_timer+0x1>
+  b2:	80 93 04 01 	sts	0x0104, r24	; 0x800104 <id_timer>
+  b6:	80 91 04 01 	lds	r24, 0x0104	; 0x800104 <id_timer>
+  ba:	90 91 05 01 	lds	r25, 0x0105	; 0x800105 <id_timer+0x1>
+  be:	85 30       	cpi	r24, 0x05	; 5
+  c0:	91 05       	cpc	r25, r1
+  c2:	a4 f3       	brlt	.-24     	; 0xac <evalueaza_timer+0x12>
+  c4:	2b e0       	ldi	r18, 0x0B	; 11
+  c6:	28 9f       	mul	r18, r24
+  c8:	f0 01       	movw	r30, r0
+  ca:	29 9f       	mul	r18, r25
+  cc:	f0 0d       	add	r31, r0
+  ce:	11 24       	eor	r1, r1
+  d0:	ea 5f       	subi	r30, 0xFA	; 250
+  d2:	fe 4f       	sbci	r31, 0xFE	; 254
+  d4:	22 81       	ldd	r18, Z+2	; 0x02
+  d6:	22 30       	cpi	r18, 0x02	; 2
+  d8:	09 f5       	brne	.+66     	; 0x11c <evalueaza_timer+0x82>
+  da:	2b e0       	ldi	r18, 0x0B	; 11
+  dc:	28 9f       	mul	r18, r24
+  de:	f0 01       	movw	r30, r0
+  e0:	29 9f       	mul	r18, r25
+  e2:	f0 0d       	add	r31, r0
+  e4:	11 24       	eor	r1, r1
+  e6:	ea 5f       	subi	r30, 0xFA	; 250
+  e8:	fe 4f       	sbci	r31, 0xFE	; 254
+  ea:	23 81       	ldd	r18, Z+3	; 0x03
+  ec:	34 81       	ldd	r19, Z+4	; 0x04
+  ee:	21 30       	cpi	r18, 0x01	; 1
+  f0:	31 05       	cpc	r19, r1
+  f2:	59 f4       	brne	.+22     	; 0x10a <evalueaza_timer+0x70>
+  f4:	2b e0       	ldi	r18, 0x0B	; 11
+  f6:	28 9f       	mul	r18, r24
+  f8:	f0 01       	movw	r30, r0
+  fa:	29 9f       	mul	r18, r25
+  fc:	f0 0d       	add	r31, r0
+  fe:	11 24       	eor	r1, r1
+ 100:	ea 5f       	subi	r30, 0xFA	; 250
+ 102:	fe 4f       	sbci	r31, 0xFE	; 254
+ 104:	81 e0       	ldi	r24, 0x01	; 1
+ 106:	82 83       	std	Z+2, r24	; 0x02
+ 108:	08 95       	ret
+ 10a:	2b e0       	ldi	r18, 0x0B	; 11
+ 10c:	28 9f       	mul	r18, r24
+ 10e:	f0 01       	movw	r30, r0
+ 110:	29 9f       	mul	r18, r25
+ 112:	f0 0d       	add	r31, r0
+ 114:	11 24       	eor	r1, r1
+ 116:	ea 5f       	subi	r30, 0xFA	; 250
+ 118:	fe 4f       	sbci	r31, 0xFE	; 254
+ 11a:	12 82       	std	Z+2, r1	; 0x02
+ 11c:	08 95       	ret
+
+0000011e <startup>:
+
+void startup(){		//redemimeste pls
+	
+	if(flag == 1)
+ 11e:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <__DATA_REGION_ORIGIN__>
+ 122:	90 91 01 01 	lds	r25, 0x0101	; 0x800101 <__DATA_REGION_ORIGIN__+0x1>
+ 126:	01 97       	sbiw	r24, 0x01	; 1
+ 128:	31 f4       	brne	.+12     	; 0x136 <startup+0x18>
+	{
+		flag = 0;
+ 12a:	10 92 01 01 	sts	0x0101, r1	; 0x800101 <__DATA_REGION_ORIGIN__+0x1>
+ 12e:	10 92 00 01 	sts	0x0100, r1	; 0x800100 <__DATA_REGION_ORIGIN__>
+		evalueaza_timer();
+ 132:	0e 94 4d 00 	call	0x9a	; 0x9a <evalueaza_timer>
+ 136:	08 95       	ret
+
+00000138 <__vector_14>:
+	}
 }
 
-ISR(TIMER0_COMPA_vect){  //pt caz general
-  90:	1f 92       	push	r1
-  92:	0f 92       	push	r0
-  94:	0f b6       	in	r0, 0x3f	; 63
-  96:	0f 92       	push	r0
-  98:	11 24       	eor	r1, r1
-  9a:	8f 93       	push	r24
-  9c:	9f 93       	push	r25
+ISR(TIMER0_COMPA_vect){ 
+ 138:	1f 92       	push	r1
+ 13a:	0f 92       	push	r0
+ 13c:	0f b6       	in	r0, 0x3f	; 63
+ 13e:	0f 92       	push	r0
+ 140:	11 24       	eor	r1, r1
+ 142:	8f 93       	push	r24
+ 144:	9f 93       	push	r25
 	
 	cli();
-  9e:	f8 94       	cli
+ 146:	f8 94       	cli
 	
-	sys_tick++;	//pt a-l folosi in main
-  a0:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <__DATA_REGION_ORIGIN__>
-  a4:	90 91 01 01 	lds	r25, 0x0101	; 0x800101 <__DATA_REGION_ORIGIN__+0x1>
-  a8:	01 96       	adiw	r24, 0x01	; 1
-  aa:	90 93 01 01 	sts	0x0101, r25	; 0x800101 <__DATA_REGION_ORIGIN__+0x1>
-  ae:	80 93 00 01 	sts	0x0100, r24	; 0x800100 <__DATA_REGION_ORIGIN__>
-	
-	//if(sys_tick >= (1/GENERARE_INTRERUPERE)){ // 1 sec
-		//counter++; //1 sec
-	//}
+	sys_tick++;	
+ 148:	80 91 02 01 	lds	r24, 0x0102	; 0x800102 <sys_tick>
+ 14c:	90 91 03 01 	lds	r25, 0x0103	; 0x800103 <sys_tick+0x1>
+ 150:	01 96       	adiw	r24, 0x01	; 1
+ 152:	90 93 03 01 	sts	0x0103, r25	; 0x800103 <sys_tick+0x1>
+ 156:	80 93 02 01 	sts	0x0102, r24	; 0x800102 <sys_tick>
+	flag = 1;
+ 15a:	81 e0       	ldi	r24, 0x01	; 1
+ 15c:	90 e0       	ldi	r25, 0x00	; 0
+ 15e:	90 93 01 01 	sts	0x0101, r25	; 0x800101 <__DATA_REGION_ORIGIN__+0x1>
+ 162:	80 93 00 01 	sts	0x0100, r24	; 0x800100 <__DATA_REGION_ORIGIN__>
+	//counter++;	//???
 	
 	sei();
-  b2:	78 94       	sei
+ 166:	78 94       	sei
 }
-  b4:	9f 91       	pop	r25
-  b6:	8f 91       	pop	r24
-  b8:	0f 90       	pop	r0
-  ba:	0f be       	out	0x3f, r0	; 63
-  bc:	0f 90       	pop	r0
-  be:	1f 90       	pop	r1
-  c0:	18 95       	reti
+ 168:	9f 91       	pop	r25
+ 16a:	8f 91       	pop	r24
+ 16c:	0f 90       	pop	r0
+ 16e:	0f be       	out	0x3f, r0	; 63
+ 170:	0f 90       	pop	r0
+ 172:	1f 90       	pop	r1
+ 174:	18 95       	reti
 
-000000c2 <port_init>:
+00000176 <port_init>:
 
 #include <stdio.h>
 
 void port_init(void){
 	
 	DDRB = 0x0F;   //00001111
-  c2:	8f e0       	ldi	r24, 0x0F	; 15
-  c4:	84 b9       	out	0x04, r24	; 4
+ 176:	8f e0       	ldi	r24, 0x0F	; 15
+ 178:	84 b9       	out	0x04, r24	; 4
 	PORTB = 0x00;
-  c6:	15 b8       	out	0x05, r1	; 5
+ 17a:	15 b8       	out	0x05, r1	; 5
 	DDRD |= (1 << PIND2) | (1 << PIND3);  //INT0 & INT1
-  c8:	8a b1       	in	r24, 0x0a	; 10
-  ca:	8c 60       	ori	r24, 0x0C	; 12
-  cc:	8a b9       	out	0x0a, r24	; 10
+ 17c:	8a b1       	in	r24, 0x0a	; 10
+ 17e:	8c 60       	ori	r24, 0x0C	; 12
+ 180:	8a b9       	out	0x0a, r24	; 10
 	PORTD |= (1 << PIND2) | (1 << PIND3);
-  ce:	8b b1       	in	r24, 0x0b	; 11
-  d0:	8c 60       	ori	r24, 0x0C	; 12
-  d2:	8b b9       	out	0x0b, r24	; 11
-  d4:	08 95       	ret
+ 182:	8b b1       	in	r24, 0x0b	; 11
+ 184:	8c 60       	ori	r24, 0x0C	; 12
+ 186:	8b b9       	out	0x0b, r24	; 11
+ 188:	08 95       	ret
 
-000000d6 <interrupt_init>:
+0000018a <interrupt_init>:
 }
 
 void interrupt_init(void){
 	
 	EICRA |= (1 << ISC11) | (1 << ISC10) | (1 << ISC01) | (1 << ISC00);
-  d6:	e9 e6       	ldi	r30, 0x69	; 105
-  d8:	f0 e0       	ldi	r31, 0x00	; 0
-  da:	80 81       	ld	r24, Z
-  dc:	8f 60       	ori	r24, 0x0F	; 15
-  de:	80 83       	st	Z, r24
+ 18a:	e9 e6       	ldi	r30, 0x69	; 105
+ 18c:	f0 e0       	ldi	r31, 0x00	; 0
+ 18e:	80 81       	ld	r24, Z
+ 190:	8f 60       	ori	r24, 0x0F	; 15
+ 192:	80 83       	st	Z, r24
 	EIMSK |= (1 << INT1) | (1 << INT0);
-  e0:	8d b3       	in	r24, 0x1d	; 29
-  e2:	83 60       	ori	r24, 0x03	; 3
-  e4:	8d bb       	out	0x1d, r24	; 29
+ 194:	8d b3       	in	r24, 0x1d	; 29
+ 196:	83 60       	ori	r24, 0x03	; 3
+ 198:	8d bb       	out	0x1d, r24	; 29
 	EIFR |= (0 << INTF1) | (0 << INTF0);
-  e6:	8c b3       	in	r24, 0x1c	; 28
-  e8:	8c bb       	out	0x1c, r24	; 28
+ 19a:	8c b3       	in	r24, 0x1c	; 28
+ 19c:	8c bb       	out	0x1c, r24	; 28
 	PCICR |= (0 << PCIE2) | (0 << PCIE1) | (0 << PCIE0);
-  ea:	e8 e6       	ldi	r30, 0x68	; 104
-  ec:	f0 e0       	ldi	r31, 0x00	; 0
-  ee:	80 81       	ld	r24, Z
-  f0:	80 83       	st	Z, r24
-  f2:	08 95       	ret
+ 19e:	e8 e6       	ldi	r30, 0x68	; 104
+ 1a0:	f0 e0       	ldi	r31, 0x00	; 0
+ 1a2:	80 81       	ld	r24, Z
+ 1a4:	80 83       	st	Z, r24
+ 1a6:	08 95       	ret
 
-000000f4 <init_devices>:
+000001a8 <init_devices>:
 }
 
 void init_devices(void){
 	
 	cli();
-  f4:	f8 94       	cli
+ 1a8:	f8 94       	cli
 	
 	port_init();
-  f6:	0e 94 61 00 	call	0xc2	; 0xc2 <port_init>
+ 1aa:	0e 94 bb 00 	call	0x176	; 0x176 <port_init>
 	interrupt_init();
-  fa:	0e 94 6b 00 	call	0xd6	; 0xd6 <interrupt_init>
+ 1ae:	0e 94 c5 00 	call	0x18a	; 0x18a <interrupt_init>
 	timer0_init();
-  fe:	0e 94 88 00 	call	0x110	; 0x110 <timer0_init>
+ 1b2:	0e 94 e4 00 	call	0x1c8	; 0x1c8 <timer0_init>
 	
 	sei();
- 102:	78 94       	sei
- 104:	08 95       	ret
+ 1b6:	78 94       	sei
+ 1b8:	08 95       	ret
 
-00000106 <main>:
+000001ba <main>:
 #include <avr/interrupt.h>
 #include <util/delay.h>
 
 int main(void){
 	
 	init_devices();	//porturi, timer, intreruperi
- 106:	0e 94 7a 00 	call	0xf4	; 0xf4 <init_devices>
+ 1ba:	0e 94 d4 00 	call	0x1a8	; 0x1a8 <init_devices>
 	start_timer0(); //aici sau in creeaza_timer
- 10a:	0e 94 93 00 	call	0x126	; 0x126 <start_timer0>
- 10e:	ff cf       	rjmp	.-2      	; 0x10e <main+0x8>
+ 1be:	0e 94 ef 00 	call	0x1de	; 0x1de <start_timer0>
+	//exemplu struct timer t1 = creeaza_timer(PORNIT, TRUE, 0, 1000,  *f1);
+			      
+	do
+	{
+		startup();
+ 1c2:	0e 94 8f 00 	call	0x11e	; 0x11e <startup>
+ 1c6:	fd cf       	rjmp	.-6      	; 0x1c2 <main+0x8>
 
-00000110 <timer0_init>:
- */ 
-#include "timer0_func_def.h"
+000001c8 <timer0_init>:
+ 1c8:	84 b5       	in	r24, 0x24	; 36
+ 1ca:	82 60       	ori	r24, 0x02	; 2
+ 1cc:	84 bd       	out	0x24, r24	; 36
+ 1ce:	89 ef       	ldi	r24, 0xF9	; 249
+ 1d0:	87 bd       	out	0x27, r24	; 39
+ 1d2:	ee e6       	ldi	r30, 0x6E	; 110
+ 1d4:	f0 e0       	ldi	r31, 0x00	; 0
+ 1d6:	80 81       	ld	r24, Z
+ 1d8:	82 60       	ori	r24, 0x02	; 2
+ 1da:	80 83       	st	Z, r24
+ 1dc:	08 95       	ret
 
-void timer0_init(void){
-	
-	TCCR0A |= (1 << WGM01) | (0 << WGM00);  //modul CTC
- 110:	84 b5       	in	r24, 0x24	; 36
- 112:	82 60       	ori	r24, 0x02	; 2
- 114:	84 bd       	out	0x24, r24	; 36
-	OCR0A = 0xF9;
- 116:	89 ef       	ldi	r24, 0xF9	; 249
- 118:	87 bd       	out	0x27, r24	; 39
-	TIMSK0 |= (1 << OCIE0A);
- 11a:	ee e6       	ldi	r30, 0x6E	; 110
- 11c:	f0 e0       	ldi	r31, 0x00	; 0
- 11e:	80 81       	ld	r24, Z
- 120:	82 60       	ori	r24, 0x02	; 2
- 122:	80 83       	st	Z, r24
- 124:	08 95       	ret
+000001de <start_timer0>:
+ 1de:	85 b5       	in	r24, 0x25	; 37
+ 1e0:	83 60       	ori	r24, 0x03	; 3
+ 1e2:	85 bd       	out	0x25, r24	; 37
+ 1e4:	08 95       	ret
 
-00000126 <start_timer0>:
-}
+000001e6 <_exit>:
+ 1e6:	f8 94       	cli
 
-void start_timer0(){
-	TCCR0B |= START_TIMER0;
- 126:	85 b5       	in	r24, 0x25	; 37
- 128:	83 60       	ori	r24, 0x03	; 3
- 12a:	85 bd       	out	0x25, r24	; 37
- 12c:	08 95       	ret
-
-0000012e <_exit>:
- 12e:	f8 94       	cli
-
-00000130 <__stop_program>:
- 130:	ff cf       	rjmp	.-2      	; 0x130 <__stop_program>
+000001e8 <__stop_program>:
+ 1e8:	ff cf       	rjmp	.-2      	; 0x1e8 <__stop_program>

@@ -18,15 +18,14 @@ int main(void){
 	
 	init_devices();	//porturi, timer, intreruperi
 	start_timer0(); //aici sau in creeaza_timer
-	//exemplu struct timer t1 = creeaza_timer(PORNIT, TRUE, 0, 1000,  *f1);
-			      
+	//struct timer t1 = creeaza_timer(id, PORNIT, TRUE, 0, 1000,  *f1);
+
+	numar_timere_create();	//determinare numar timere
+	      
 	do
 	{
-		if(flag == 1)
-		{
-			flag = 0;
-			evalueaza_timer();
-		}
+		if(counter_timere_create == 5) //broken, trebuie o legatura intre struct/ variabilele globale si main
+			startup();
 		
 		
 	}while(1);
