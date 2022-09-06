@@ -90,7 +90,7 @@ struct timer reseteaza_timer(){
 	//resetare valori la 0
 	return timere[1]; //de id timer
 }
-d
+
 struct timer update_timer(uint8_t var_stare, uint8_t var_autoreset){
 	
 	//param - cei doriti pt update din struct nu timer t 
