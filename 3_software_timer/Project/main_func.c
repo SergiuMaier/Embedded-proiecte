@@ -9,117 +9,42 @@
 #include "main_defines.h"
 #include "timer0_func_def.h"
 
+#include <util/delay.h>
+
 int sys_tick = 0;		//contor pentru generarea secundelor
-int counter = 0;		//contor pt sys_ticks
-int flag = 0;			//broken
-int id_timer;		    //id-ul variabilei din timere[]
-  
-
-typedef struct timer{
-	
-	uint8_t id;															                                           
-	enum stare_timer{ OPRIT = 0, PORNIT = 1, EXPIRAT = 2 }stare;	//ex. timere[1].stare_timer = PORNIT;							
-	uint8_t autoreset;				                                 //TRUE sau FALSE = one_shot;
-	uint8_t counter_initial;	                                     //timpul la care porneste timer-ul = 0s
-	uint8_t counter_curent;		                                     //sys_tick
-	
-	void *callback_fct;			
-	 
-}stimer;  
-
-stimer timere[MAX_NR_TIMERE];
+int counter = 0;		//contor pt sys_ticks	
+int id_timer;		    //id-ul variabilei pt evaluare
+int flag = 0;
+int counter_curent = 0;
+int counter_timp = 0;
 
 void pin_toggle_led0(){  
 	
 	PORTB ^=  1 << PINB0;	
+	_delay_ms(1000);
+	PORTB ^=  1 << PINB0;
 }
 
-void aprinde_led(void(*callback_fct)()){  
+void pin_toggle_led1(){
 	
-	(*callback_fct)();
+	PORTB ^=  1 << PINB1;
+	_delay_ms(1000);
+	PORTB ^=  1 << PINB1;
 }
 
-int numar_timere_create(){
+void pin_toggle_led2(){
 	
-	int counter_timere_create = 0; //numar timere create
-	stimer *t = timere;
-	
-	for(int i = 0; i < MAX_NR_TIMERE; i++)
-	{	
-		if(t->id != 0)
-			counter_timere_create++;
-		
-		t++;
-	}
-	
-	return counter_timere_create;
+	PORTB ^=  1 << PINB2;
+	_delay_ms(1000);
+	PORTB ^=  1 << PINB2;
 }
 
-struct timer creeaza_timer(uint8_t id_timer, uint8_t var_stare,  uint8_t var_autoreset, uint8_t val_initiala, uint8_t perioada, void *pfct){
+void aprinde_led(void(*fptr)()){  
 	
-	timere[id_timer].callback_fct = pfct;
-	
-	timere[id_timer].id = id_timer;                           //trebuie tinuta evidenta la nr timerelor
-	timere[id_timer].stare = var_stare;
-	timere[id_timer].autoreset = var_autoreset;
-	timere[id_timer].counter_initial = val_initiala;    //initial 0 dar creste odata cu sys_tick
-	timere[id_timer].counter_curent = sys_tick;			
-		
-	val_initiala++;
-	
-	if (timere[id_timer].counter_initial == perioada)
-		timere[id_timer].stare = EXPIRAT;               //expirat => callback
-	
-	return timere[id_timer];  //de id
+	(*fptr)();
 }
 
-void evalueaza_timer(){
-	
-	void(*callback_fct)() = &pin_toggle_led0;
-	pin_toggle_led0(callback_fct);
-	
-	//if perioada == 0 
-	
-	//id timer
-	
-	//variabila pt timer utilizat
-	// => stare = expirat => apelare callback
-	//vf autoreset => schimbare stare
-	
-	for( id_timer = 0; id_timer < MAX_NR_TIMERE; id_timer++){
-		
-		//contor++ pt cele utilizate si pornite
-		//vf timp = perioada
-	} 
-	if(	timere[id_timer].stare == EXPIRAT ){ //nu de i
-		//t.callback_fct(); 
-		
-		if( timere[id_timer].autoreset == TRUE)
-			timere[id_timer].stare = PORNIT;
-			//reset ceva
-		else
-			timere[id_timer].stare = OPRIT;
-	}
-}
-
-struct timer reseteaza_timer(){
-	
-	//resetare valori la 0
-	return timere[id_timer]; //de id timer
-}
-
-struct timer update_timer(uint8_t var_stare, uint8_t var_autoreset){
-	
-	//param - cei doriti pt update din struct nu timer t 
-	//modificare perioada, autoreset din creeare_timer
-	
-	timere[id_timer].stare = var_stare;
-	timere[id_timer].autoreset = var_autoreset;
-	
-	return timere[id_timer]; //de id timer
-}
-
-void startup(){		//redemimeste pls
+void start_evaluare(){		//redenumeste pls
 	
 	if(flag == 1)
 	{
@@ -128,13 +53,82 @@ void startup(){		//redemimeste pls
 	}
 }
 
+struct timer creeaza_timer(uint8_t id, uint8_t var_stare,  uint8_t var_autoreset, uint8_t val_initiala, uint32_t perioada, void *pfct){
+	
+	struct timer t;
+	
+	t.id = id;			               //trebuie tinuta evidenta la nr timerelor
+	t.stare = var_stare;
+	t.autoreset = var_autoreset;
+	t.counter_initial = val_initiala;  //initial 0 si creste odata cu sys_tick
+	t.perioada = perioada;			
+	
+	t.callback_fct = pfct;
+
+	counter_curent = sys_tick;
+		
+	return t;	
+}
+
+void evalueaza_timer(){
+	
+	int counter_timere_utilizate = 0;
+	
+	for(id_timer = 0; id_timer < MAX_NR_TIMERE; id_timer++) //functioneaza corect 
+	{
+		if((timere[id_timer].id != 0) && (timere[id_timer].stare == PORNIT)) //timere utilizate si pornite
+			counter_timere_utilizate++;
+	}
+	
+	if(counter_timere_utilizate != 0) 
+	{	
+		for(id_timer = 0; id_timer < counter_timere_utilizate; id_timer++)
+		{	
+			if(timere[id_timer].perioada == sys_tick){
+				
+				aprinde_led(timere[id_timer].callback_fct);
+				timere[id_timer].stare = EXPIRAT;
+				
+				if( (timere[id_timer].stare == EXPIRAT) && (timere[id_timer].autoreset == TRUE) )
+				{
+					timere[id_timer].stare = PORNIT;
+					//counter_timp = 0;
+				}
+				else
+					timere[id_timer].stare = OPRIT;
+					//counter_timp = 0;
+			}
+		}
+	} 
+}
+
+struct timer reseteaza_timer(){
+	
+	struct timer t;
+	
+	t.counter_initial = 0;
+	
+	return t;
+}
+
+struct timer update_timer(uint8_t var_stare, uint8_t var_autoreset){
+	
+	struct timer t;
+	
+	t.stare = var_stare;
+	t.autoreset = var_autoreset;
+	
+	return t; 
+}
+
+
 ISR(TIMER0_COMPA_vect){ 
 	
 	cli();
 	
 	sys_tick++;	
 	flag = 1;
-	//counter++;	//???
+	counter_timp++;
 	
 	sei();
 }
