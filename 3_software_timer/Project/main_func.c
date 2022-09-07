@@ -79,18 +79,14 @@ void evalueaza_timer(){
 		if((timere[id_timer].id != 0) && (timere[id_timer].stare == PORNIT)) //timere utilizate si pornite
 			counter_timere_utilizate++;
 	}
-
-	if(counter_timp == 1){
-		timere[0].counter_initial++;
-		timere[1].counter_initial++;
-		timere[2].counter_initial++;
-	}
 	
-	if(counter_timere_utilizate != 0) 
+	if((counter_timere_utilizate != 0) && (counter_timp == 1))
 	{	
 		for(id_timer = 0; id_timer < counter_timere_utilizate; id_timer++)
 		{			
-			if(timere[id_timer].counter_initial == timere[id_timer].perioada)//sys_tick)
+			timere[id_timer].counter_initial++;
+			
+			if(timere[id_timer].counter_initial == timere[id_timer].perioada)
 			{	
 				aprinde_led(timere[id_timer].callback_fct);
 				timere[id_timer].stare = EXPIRAT;
@@ -129,13 +125,9 @@ struct timer update_timer(uint8_t var_stare, uint8_t var_autoreset, uint32_t per
 ISR(TIMER0_COMPA_vect){ 
 	
 	cli();
-	
-	//sys_tick++;	
+		
 	flag = 1;
 	counter_timp = 1;
-	
-	//timere[MAX_NR_TIMERE].counter_initial++;
-	
 	
 	sei();
 }
