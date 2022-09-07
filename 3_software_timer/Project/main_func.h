@@ -19,7 +19,7 @@ typedef struct timer{
 	uint8_t id;
 	enum stare_timer{ OPRIT = 0, PORNIT = 1, EXPIRAT = 2 }stare;	//ex. timere[1].stare_timer = PORNIT;
 	uint8_t autoreset;				                                 //TRUE sau FALSE = one_shot;
-	uint8_t counter_initial;	                                     //timpul la care porneste timer-ul = 0s
+	uint32_t counter_initial;	                                     //timpul la care porneste timer-ul = 0s
 	uint32_t perioada;		                                     //sys_tick
 
 	void *callback_fct;
@@ -36,11 +36,15 @@ void pin_toggle_led2();
 
 void aprinde_led(void (*callback_fct)());
 
-struct timer creeaza_timer(uint8_t id, uint8_t var_stare,  uint8_t var_autoreset, uint8_t contor_initial, uint32_t perioada, void *pfct);
+struct timer creeaza_timer(uint8_t id, uint8_t var_stare,  uint8_t var_autoreset, uint32_t val_initiala, uint32_t perioada, void *pfct);
 
 void evalueaza_timer();
 
 void start_evaluare();
+
+struct timer reseteaza_timer();
+
+struct timer update_timer(uint8_t var_stare, uint8_t var_autoreset, uint32_t perioada);
 
 //restul prot fct trebuie adaugate
 
