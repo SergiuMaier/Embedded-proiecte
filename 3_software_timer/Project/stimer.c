@@ -13,28 +13,20 @@
 void pin_toggle_led0(){  
 	
 	PORTB ^=  1 << PINB0;	
-	_delay_ms(200);	
-	PORTB ^=  1 << PINB0;
 }
 
 void pin_toggle_led1(){
 	
-	PORTB ^=  1 << PINB1;
-	_delay_ms(200);
 	PORTB ^=  1 << PINB1;
 }
 
 void pin_toggle_led2(){
 	
 	PORTB ^=  1 << PINB2;
-	_delay_ms(200);
-	PORTB ^=  1 << PINB2;
 }
 
 void pin_toggle_led3(){
 	
-	PORTB ^=  1 << PINB3;
-	_delay_ms(200);	
 	PORTB ^=  1 << PINB3;
 }
 
@@ -57,18 +49,10 @@ struct timer creeaza_timer(uint8_t id, uint8_t var_stare,  uint8_t var_autoreset
 	return t;	
 }
 
-struct timer update_timer(uint32_t var_update, uint8_t var_stare, uint8_t var_autoreset, uint32_t val_initiala, uint32_t perioada){
+struct timer update_timer(struct timer x, uint8_t var_autoreset, uint32_t perioada){
 	
-	struct timer t;
+	struct timer t = { .autoreset = var_autoreset, .perioada = perioada};
 
-	if(sys_tick > var_update)
-	{
-		t.stare = var_stare;
-		t.autoreset = var_autoreset;
-		t.counter_initial = val_initiala;  
-		t.perioada = perioada;
-	}
-	
 	return t;
 }
 
@@ -88,8 +72,8 @@ void evalueaza_timer(){
 		{			
 			timere[id_timer].counter_initial++;              //incrementare contor initial (= sys_tick)
 			
-			if((timere[id_timer].counter_initial == timere[id_timer].perioada) && (timere[id_timer].stare == PORNIT))  //verificare daca a trecut perioada & timerul creat este pornit
-			{	
+			if((timere[id_timer].counter_initial == timere[id_timer].perioada) && (timere[id_timer].stare == PORNIT))  
+			{                                                //verificare daca a trecut perioada & timerul creat este pornit
 				aprinde_led(timere[id_timer].callback_fct);  //apelare functie dupa expirarea perioadei
 				timere[id_timer].stare = EXPIRAT;            //timerul trece din pornit -> expirat dupa ce a expirat perioada
 				
@@ -104,13 +88,11 @@ void evalueaza_timer(){
 	} 
 }
 
-struct timer reseteaza_timer(){
+void reset_timer(int i, uint32_t perioada){
 	
-	struct timer t;
+	if(sys_tick == perioada)
+		timere[i].counter_initial = 0;
 	
-	t.counter_initial = 0;
-	
-	return t;
 }
 
 ISR(TIMER0_COMPA_vect){ 

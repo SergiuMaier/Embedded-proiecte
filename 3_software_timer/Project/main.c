@@ -29,12 +29,10 @@ int main(void){
 		if(flag == 1)
 		{
 			flag = 0;
-			evalueaza_timer();
-			
-			//timere[1] = update_timer(15000, PORNIT, TRUE, 0, 3000);
-
+			evalueaza_timer();	
 		}
-		
+			reset_timer(3, 22000);
+
 	}while(1);
 }
 

@@ -57,12 +57,15 @@ struct timer creeaza_timer(uint8_t id, uint8_t var_stare,  uint8_t var_autoreset
 void evalueaza_timer();
 
 //functie pentru resetarea unui element la valorile initiale
-struct timer reseteaza_timer();
+void reset_timer(int i, uint32_t perioada);
 
 //functie pentru actualizarea valorilor unui element deja creat
-struct timer update_timer(uint32_t var_update, uint8_t var_stare, uint8_t var_autoreset, uint32_t val_initiala, uint32_t perioada);
+//add
 
-//restul prot fct trebuie adaugate
+//functie pentru stergerea unui timer creat
+//add
+
+
 
 ISR(TIMER0_COMPA_vect);
 
