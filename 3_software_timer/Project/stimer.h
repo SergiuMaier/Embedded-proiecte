@@ -33,6 +33,11 @@ typedef struct timer{
 
 stimer timere[MAX_NR_TIMERE];     //array de timere
 
+volatile uint32_t sys_tick;
+int id_timer;		//id-ul elementrului creat
+int flag;           //variabila pentru verificare intrerupere
+int counter_timp;   //--//--
+
 //functii pentru toggle diferiti pini
 void pin_toggle_led0();
 
@@ -51,14 +56,11 @@ struct timer creeaza_timer(uint8_t id, uint8_t var_stare,  uint8_t var_autoreset
 //functie pentru evaluarea starii timerului la fiecare moment de timp
 void evalueaza_timer();
 
-//apeleaza functia evaluare_timer() daca are loc intreruperea
-void start_evaluare();
-
 //functie pentru resetarea unui element la valorile initiale
 struct timer reseteaza_timer();
 
 //functie pentru actualizarea valorilor unui element deja creat
-struct timer update_timer(uint8_t var_stare, uint8_t var_autoreset, uint32_t perioada);
+struct timer update_timer(uint32_t var_update, uint8_t var_stare, uint8_t var_autoreset, uint32_t val_initiala, uint32_t perioada);
 
 //restul prot fct trebuie adaugate
 

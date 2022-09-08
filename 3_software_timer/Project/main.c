@@ -5,10 +5,10 @@
  * Author : Sergiu Maier
  */ 
 
+#include "main_mcu_init.h"
 #include "main_defines.h"
 #include "timer0_def.h"
 #include "stimer.h"
-#include "main_mcu_init.h"
 
 #include <avr/io.h>
 #include <avr/interrupt.h>
@@ -26,8 +26,15 @@ int main(void){
 
 	do
 	{	
-		start_evaluare();
-	
+		if(flag == 1)
+		{
+			flag = 0;
+			evalueaza_timer();
+			
+			//timere[1] = update_timer(15000, PORNIT, TRUE, 0, 3000);
+
+		}
+		
 	}while(1);
 }
 

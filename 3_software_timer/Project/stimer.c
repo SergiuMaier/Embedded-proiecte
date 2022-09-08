@@ -9,51 +9,38 @@
 #include "stimer.h"
 
 #include <util/delay.h>
-	
-int id_timer;		    //id-ul elementrului creat
-int flag = 0;           //variabila pentru verificare intrerupere	
-int counter_timp = 0;   //--//--
 
 void pin_toggle_led0(){  
 	
 	PORTB ^=  1 << PINB0;	
-	_delay_ms(500);	
+	_delay_ms(200);	
 	PORTB ^=  1 << PINB0;
 }
 
 void pin_toggle_led1(){
 	
 	PORTB ^=  1 << PINB1;
-	_delay_ms(500);
+	_delay_ms(200);
 	PORTB ^=  1 << PINB1;
 }
 
 void pin_toggle_led2(){
 	
 	PORTB ^=  1 << PINB2;
-	_delay_ms(500);
+	_delay_ms(200);
 	PORTB ^=  1 << PINB2;
 }
 
 void pin_toggle_led3(){
 	
 	PORTB ^=  1 << PINB3;
-	_delay_ms(500);	
+	_delay_ms(200);	
 	PORTB ^=  1 << PINB3;
 }
 
 void aprinde_led(void(*fptr)()){ 
 	
 	(*fptr)();
-}
-
-void start_evaluare(){	
-	
-	if(flag == 1)
-	{
-		flag = 0;
-		evalueaza_timer();
-	}
 }
 
 struct timer creeaza_timer(uint8_t id, uint8_t var_stare,  uint8_t var_autoreset, uint32_t val_initiala, uint32_t perioada, void *pfct){
@@ -68,6 +55,21 @@ struct timer creeaza_timer(uint8_t id, uint8_t var_stare,  uint8_t var_autoreset
 	t.callback_fct = pfct;                //functia care este apelata dupa expirarea timerului
 		
 	return t;	
+}
+
+struct timer update_timer(uint32_t var_update, uint8_t var_stare, uint8_t var_autoreset, uint32_t val_initiala, uint32_t perioada){
+	
+	struct timer t;
+
+	if(sys_tick > var_update)
+	{
+		t.stare = var_stare;
+		t.autoreset = var_autoreset;
+		t.counter_initial = val_initiala;  
+		t.perioada = perioada;
+	}
+	
+	return t;
 }
 
 void evalueaza_timer(){
@@ -111,21 +113,11 @@ struct timer reseteaza_timer(){
 	return t;
 }
 
-struct timer update_timer(uint8_t var_stare, uint8_t var_autoreset, uint32_t perioada){
-	
-	struct timer t;
-	
-	t.stare = var_stare;
-	t.autoreset = var_autoreset;
-	t.perioada = perioada;	
-	
-	return t; 
-}
-
 ISR(TIMER0_COMPA_vect){ 
 	
 	cli();
-		
+	
+	sys_tick++;
 	flag = 1;     
 	counter_timp = 1;
 	
