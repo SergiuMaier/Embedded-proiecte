@@ -39,6 +39,13 @@ void pin_toggle_led2(){
 	PORTB ^=  1 << PINB2;
 }
 
+void pin_toggle_led3(){
+	
+	PORTB ^=  1 << PINB3;
+	_delay_ms(500);	//sau calculat in fct de sys_tick
+	PORTB ^=  1 << PINB3;
+}
+
 void aprinde_led(void(*fptr)()){  
 	
 	(*fptr)();
@@ -76,17 +83,17 @@ void evalueaza_timer(){
 	
 	for(id_timer = 0; id_timer < MAX_NR_TIMERE; id_timer++) //functioneaza corect 
 	{
-		if((timere[id_timer].id != 0) && (timere[id_timer].stare == PORNIT)) //timere utilizate si pornite
+		if(timere[id_timer].id != 0) //timere utilizate si pornite
 			counter_timere_utilizate++;
 	}
 	
 	if((counter_timere_utilizate != 0) && (counter_timp == 1))
 	{	
-		for(id_timer = 0; id_timer < counter_timere_utilizate; id_timer++)
+		for(id_timer = 0; id_timer <= counter_timere_utilizate; id_timer++)
 		{			
 			timere[id_timer].counter_initial++;
 			
-			if(timere[id_timer].counter_initial == timere[id_timer].perioada)
+			if((timere[id_timer].counter_initial == timere[id_timer].perioada) && (timere[id_timer].stare == PORNIT))
 			{	
 				aprinde_led(timere[id_timer].callback_fct);
 				timere[id_timer].stare = EXPIRAT;

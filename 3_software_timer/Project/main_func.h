@@ -34,6 +34,8 @@ void pin_toggle_led1();
 
 void pin_toggle_led2();
 
+void pin_toggle_led3();
+
 void aprinde_led(void (*callback_fct)());
 
 struct timer creeaza_timer(uint8_t id, uint8_t var_stare,  uint8_t var_autoreset, uint32_t val_initiala, uint32_t perioada, void *pfct);
