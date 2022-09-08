@@ -6,8 +6,8 @@
  */ 
 
 #include "main_defines.h"
-#include "timer0_func_def.h"
-#include "main_func.h"
+#include "timer0_def.h"
+#include "stimer.h"
 #include "main_mcu_init.h"
 
 #include <avr/io.h>

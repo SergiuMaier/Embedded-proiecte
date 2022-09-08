@@ -4,7 +4,7 @@
  * Created: 9/1/2022 12:35:25 PM
  *  Author: sergi
  */ 
-#include "timer0_func_def.h"
+#include "timer0_def.h"
 
 void timer0_init(void){
 	

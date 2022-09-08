@@ -123,10 +123,10 @@
     <Compile Include="main_defines.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="main_func.c">
+    <Compile Include="stimer.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="main_func.h">
+    <Compile Include="stimer.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="main_mcu_init.c">
@@ -138,10 +138,10 @@
     <Compile Include="main_mcu_init.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="timer0_func_def.h">
+    <Compile Include="timer0_def.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="timer0_func.c">
+    <Compile Include="timer0.c">
       <SubType>compile</SubType>
     </Compile>
   </ItemGroup>

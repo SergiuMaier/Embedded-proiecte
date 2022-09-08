@@ -15,19 +15,19 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY
   5 .debug_aranges 000000f0  00000000  00000000  00000574  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   00000fc6  00000000  00000000  00000664  2**0
+  6 .debug_info   00000f02  00000000  00000000  00000664  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 00000a20  00000000  00000000  0000162a  2**0
+  7 .debug_abbrev 000009af  00000000  00000000  00001566  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   0000070a  00000000  00000000  0000204a  2**0
+  8 .debug_line   000006e8  00000000  00000000  00001f15  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  000001f0  00000000  00000000  00002754  2**2
+  9 .debug_frame  000001f0  00000000  00000000  00002600  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    00000584  00000000  00000000  00002944  2**0
+ 10 .debug_str    0000057c  00000000  00000000  000027f0  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    000003c4  00000000  00000000  00002ec8  2**0
+ 11 .debug_loc    000003c4  00000000  00000000  00002d6c  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 000000b0  00000000  00000000  0000328c  2**0
+ 12 .debug_ranges 000000b0  00000000  00000000  00003130  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -248,8 +248,8 @@ Disassembly of section .text:
  1b2:	20 97       	sbiw	r28, 0x00	; 0
  1b4:	09 f4       	brne	.+2      	; 0x1b8 <evalueaza_timer+0x48>
  1b6:	81 c0       	rjmp	.+258    	; 0x2ba <evalueaza_timer+0x14a>
- 1b8:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <__DATA_REGION_ORIGIN__>
- 1bc:	90 91 01 01 	lds	r25, 0x0101	; 0x800101 <__DATA_REGION_ORIGIN__+0x1>
+ 1b8:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <_edata>
+ 1bc:	90 91 01 01 	lds	r25, 0x0101	; 0x800101 <_edata+0x1>
  1c0:	01 97       	sbiw	r24, 0x01	; 1
  1c2:	09 f0       	breq	.+2      	; 0x1c6 <evalueaza_timer+0x56>
  1c4:	7a c0       	rjmp	.+244    	; 0x2ba <evalueaza_timer+0x14a>
@@ -399,8 +399,8 @@ ISR(TIMER0_COMPA_vect){
  2f0:	90 93 03 01 	sts	0x0103, r25	; 0x800103 <flag+0x1>
  2f4:	80 93 02 01 	sts	0x0102, r24	; 0x800102 <flag>
 	counter_timp = 1;
- 2f8:	90 93 01 01 	sts	0x0101, r25	; 0x800101 <__DATA_REGION_ORIGIN__+0x1>
- 2fc:	80 93 00 01 	sts	0x0100, r24	; 0x800100 <__DATA_REGION_ORIGIN__>
+ 2f8:	90 93 01 01 	sts	0x0101, r25	; 0x800101 <_edata+0x1>
+ 2fc:	80 93 00 01 	sts	0x0100, r24	; 0x800100 <_edata>
 	
 	sei();
  300:	78 94       	sei
@@ -633,7 +633,7 @@ int main(void){
 
 0000046c <timer0_init>:
  */ 
-#include "timer0_func_def.h"
+#include "timer0_def.h"
 
 void timer0_init(void){
 	

@@ -10,13 +10,4 @@
 
 #define F_CPU 16000000UL
 
-#define TRUE 1
-#define FALSE 0
-
-#define MAX_NR_TIMERE 5
-
-//#define OPRIT 0
-//#define PORNIT 1
-//#define EXPIRAT 2
-
 #endif /* MAIN_DEFINES_H_ */

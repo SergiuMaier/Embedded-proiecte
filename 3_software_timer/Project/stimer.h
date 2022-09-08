@@ -8,6 +8,11 @@
 #ifndef MAIN_FUNC_H_
 	#define MAIN_FUNC_H_
 
+#define TRUE 1    //autoreset
+#define FALSE 0   //one-shot
+
+#define MAX_NR_TIMERE 5   //definire numar elemente
+
 #include "main_defines.h"
 
 #include <avr/io.h>
@@ -16,7 +21,7 @@
 
 typedef struct timer{
 	
-	uint8_t id;	                                                    //variabila pentru a tine evidenta timerelor utilizate 
+	uint8_t id;                                                     //variabila pentru a tine evidenta timerelor utilizate 
 	enum stare_timer{ OPRIT = 0, PORNIT = 1, EXPIRAT = 2 }stare;    //stabilirea starii timerului
 	uint8_t autoreset;                                              //stabilire daca timerul este one-shot (FALSE) sau cu autoreset (TRUE)
 	uint32_t counter_initial;                                       //valoarea initiala de la care porneste cronometrarea
