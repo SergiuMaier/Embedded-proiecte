@@ -16,18 +16,19 @@
 
 typedef struct timer{
 	
-	uint8_t id;
-	enum stare_timer{ OPRIT = 0, PORNIT = 1, EXPIRAT = 2 }stare;	//ex. timere[1].stare_timer = PORNIT;
-	uint8_t autoreset;				                                 //TRUE sau FALSE = one_shot;
-	uint32_t counter_initial;	                                     //timpul la care porneste timer-ul = 0s
-	uint32_t perioada;		                                     //sys_tick
+	uint8_t id;	                                                    //variabila pentru a tine evidenta timerelor utilizate 
+	enum stare_timer{ OPRIT = 0, PORNIT = 1, EXPIRAT = 2 }stare;    //stabilirea starii timerului
+	uint8_t autoreset;                                              //stabilire daca timerul este one-shot (FALSE) sau cu autoreset (TRUE)
+	uint32_t counter_initial;                                       //valoarea initiala de la care porneste cronometrarea
+	uint32_t perioada;                                              //valoarea la care timerul expira
 
-	void *callback_fct;
+	void *callback_fct;                                             //functia care este apelata dupa expirarea timerului
 	
 }stimer;
 
-stimer timere[MAX_NR_TIMERE];
+stimer timere[MAX_NR_TIMERE];     //array de timere
 
+//functii pentru toggle diferiti pini
 void pin_toggle_led0();
 
 void pin_toggle_led1();
@@ -36,16 +37,22 @@ void pin_toggle_led2();
 
 void pin_toggle_led3();
 
-void aprinde_led(void (*callback_fct)());
+//callback function apelata dupa expirarea perioadei
+void aprinde_led(void (*callback_fct)());  
 
+//functie pentru crearea unui element din structura
 struct timer creeaza_timer(uint8_t id, uint8_t var_stare,  uint8_t var_autoreset, uint32_t val_initiala, uint32_t perioada, void *pfct);
 
+//functie pentru evaluarea starii timerului la fiecare moment de timp
 void evalueaza_timer();
 
+//apeleaza functia evaluare_timer() daca are loc intreruperea
 void start_evaluare();
 
+//functie pentru resetarea unui element la valorile initiale
 struct timer reseteaza_timer();
 
+//functie pentru actualizarea valorilor unui element deja creat
 struct timer update_timer(uint8_t var_stare, uint8_t var_autoreset, uint32_t perioada);
 
 //restul prot fct trebuie adaugate

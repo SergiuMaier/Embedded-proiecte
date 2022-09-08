@@ -10,18 +10,15 @@
 #include "timer0_func_def.h"
 
 #include <util/delay.h>
-
-int sys_tick = 0;		//contor pentru generarea secundelor
-int counter = 0;		//contor pt sys_ticks	
-int id_timer;		    //id-ul variabilei pt evaluare
-int flag = 0;
-int counter_curent = 0;
-int counter_timp = 0;
+	
+int id_timer;		    //id-ul elementrului creat
+int flag = 0;			//variabila pentru verificare intrerupere	
+int counter_timp = 0;   //--//--
 
 void pin_toggle_led0(){  
 	
 	PORTB ^=  1 << PINB0;	
-	_delay_ms(500);	//sau calculat in fct de sys_tick 
+	_delay_ms(500);	
 	PORTB ^=  1 << PINB0;
 }
 
@@ -42,16 +39,16 @@ void pin_toggle_led2(){
 void pin_toggle_led3(){
 	
 	PORTB ^=  1 << PINB3;
-	_delay_ms(500);	//sau calculat in fct de sys_tick
+	_delay_ms(500);	
 	PORTB ^=  1 << PINB3;
 }
 
-void aprinde_led(void(*fptr)()){  
+void aprinde_led(void(*fptr)()){ 
 	
 	(*fptr)();
 }
 
-void start_evaluare(){		//redenumeste pls
+void start_evaluare(){	
 	
 	if(flag == 1)
 	{
@@ -64,46 +61,43 @@ struct timer creeaza_timer(uint8_t id, uint8_t var_stare,  uint8_t var_autoreset
 	
 	struct timer t;
 	
-	t.id = id;			               //trebuie tinuta evidenta la nr timerelor
-	t.stare = var_stare;
-	t.autoreset = var_autoreset;
-	t.counter_initial = val_initiala;     //initial 0 si creste odata cu sys_tick
-	t.perioada = perioada;			
-	
-	t.callback_fct = pfct;
-
-	counter_curent = sys_tick;
+	t.id = id;                            //variabila pentru a tine evidenta timerelor utilizate 
+	t.stare = var_stare;                  //stabilirea starii timerului (OPRIT, PORNIT, EXPIRAT)
+	t.autoreset = var_autoreset;          //stabilire daca timerul este one-shot (FALSE) sau cu autoreset (TRUE)
+	t.counter_initial = val_initiala;     //variabila pentru valoarea initiala de la care porneste cronometrarea 
+	t.perioada = perioada;			      //valoarea la care timerul expira
+	t.callback_fct = pfct;				  //functia care este apelata dupa expirarea timerului
 		
 	return t;	
 }
 
 void evalueaza_timer(){
 	
-	int counter_timere_utilizate = 0;
+	int counter_timere_utilizate = 0;                        //contor pentru numararea timerelor create
 	
-	for(id_timer = 0; id_timer < MAX_NR_TIMERE; id_timer++) //functioneaza corect 
+	for(id_timer = 0; id_timer < MAX_NR_TIMERE; id_timer++) 
 	{
-		if(timere[id_timer].id != 0) //timere utilizate si pornite
-			counter_timere_utilizate++;
+		if(timere[id_timer].id != 0)                         //verificare timere utilizate in functie de id
+			counter_timere_utilizate++;                      //determinare numar timere create
 	}
 	
-	if((counter_timere_utilizate != 0) && (counter_timp == 1))
+	if((counter_timere_utilizate != 0) && (counter_timp == 1))                //conditie pentru a verifica daca exista timere create si are loc intreruperea
 	{	
-		for(id_timer = 0; id_timer <= counter_timere_utilizate; id_timer++)
+		for(id_timer = 0; id_timer <= counter_timere_utilizate; id_timer++)   
 		{			
-			timere[id_timer].counter_initial++;
+			timere[id_timer].counter_initial++;                               //incrementare contor initial (= sys_tick)
 			
-			if((timere[id_timer].counter_initial == timere[id_timer].perioada) && (timere[id_timer].stare == PORNIT))
+			if((timere[id_timer].counter_initial == timere[id_timer].perioada) && (timere[id_timer].stare == PORNIT))  //verificare daca a trecut perioada & timerul creat este pornit
 			{	
-				aprinde_led(timere[id_timer].callback_fct);
-				timere[id_timer].stare = EXPIRAT;
+				aprinde_led(timere[id_timer].callback_fct);   //apelare functie dupa expirarea perioadei
+				timere[id_timer].stare = EXPIRAT;			  //timerul trece din pornit -> expirat dupa ce a expirat perioada
 				
-				if(timere[id_timer].autoreset == TRUE) 
-					timere[id_timer].stare = PORNIT;
+				if(timere[id_timer].autoreset == TRUE)		  //verificare daca timerul este one shot
+					timere[id_timer].stare = PORNIT;	      //schimbare stare timer
 				else
 					timere[id_timer].stare = OPRIT;
 					
-				timere[id_timer].counter_initial = 0;
+				timere[id_timer].counter_initial = 0;         //resetare contor initial
 			}
 		}
 	} 
@@ -133,7 +127,7 @@ ISR(TIMER0_COMPA_vect){
 	
 	cli();
 		
-	flag = 1;
+	flag = 1;     
 	counter_timp = 1;
 	
 	sei();
