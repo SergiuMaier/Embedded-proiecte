@@ -49,12 +49,6 @@ struct timer creeaza_timer(uint8_t id, uint8_t var_stare,  uint8_t var_autoreset
 	return t;	
 }
 
-struct timer update_timer(struct timer x, uint8_t var_autoreset, uint32_t perioada){
-	
-	struct timer t = { .autoreset = var_autoreset, .perioada = perioada};
-
-	return t;
-}
 
 void evalueaza_timer(){
 	
@@ -88,11 +82,21 @@ void evalueaza_timer(){
 	} 
 }
 
-void reset_timer(int i, uint32_t perioada){
+void update_timer(int i, uint8_t var_stare, uint8_t var_autoreset, uint32_t perioada, uint32_t timp_update){
 	
-	if(sys_tick == perioada)
-		timere[i].counter_initial = 0;
+	if(sys_tick == timp_update)
+	{
+		timere[--i].counter_initial = 0;
+		timere[--i].stare = var_stare;
+		timere[--i].autoreset = var_autoreset;
+		timere[--i].perioada = perioada;
+	}
+}
+
+void reset_timer(int i, uint32_t timp_reset){
 	
+	if(sys_tick == timp_reset)
+		timere[--i].counter_initial = 0;	
 }
 
 ISR(TIMER0_COMPA_vect){ 

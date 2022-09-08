@@ -19,6 +19,7 @@ int main(void){
 	init_devices();	//porturi, timer, intreruperi
 	start_timer0(); 
 	
+                           //(ID, STARE, AUTORESET, VAL INI, PERIOADA, FUNCTIE)
 	timere[0] = creeaza_timer(1, PORNIT, TRUE, 0, 2000, pin_toggle_led0);
 	timere[1] = creeaza_timer(2, PORNIT, FALSE, 0, 3000, pin_toggle_led1);
 	timere[2] = creeaza_timer(3, PORNIT, TRUE, 0, 5000, pin_toggle_led2);
@@ -30,9 +31,13 @@ int main(void){
 		{
 			flag = 0;
 			evalueaza_timer();	
+			
+			//reset_timer(2, 2000);
+			
+			update_timer(2, PORNIT, TRUE, 3000, 10000);
 		}
-			reset_timer(3, 22000);
-
+			
+			
 	}while(1);
 }
 

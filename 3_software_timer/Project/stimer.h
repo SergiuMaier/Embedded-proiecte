@@ -57,10 +57,10 @@ struct timer creeaza_timer(uint8_t id, uint8_t var_stare,  uint8_t var_autoreset
 void evalueaza_timer();
 
 //functie pentru resetarea unui element la valorile initiale
-void reset_timer(int i, uint32_t perioada);
+void reset_timer(int i, uint32_t timp_reset);
 
 //functie pentru actualizarea valorilor unui element deja creat
-//add
+void update_timer(int i, uint8_t var_stare, uint8_t var_autoreset, uint32_t perioada, uint32_t timp_update);
 
 //functie pentru stergerea unui timer creat
 //add
