@@ -27,16 +27,17 @@ typedef struct timer{
 	uint32_t counter_initial;                                       //valoarea initiala de la care porneste cronometrarea
 	uint32_t perioada;                                              //valoarea la care timerul expira
 
-	void *callback_fct;                                             //functia care este apelata dupa expirarea timerului
+	void (*callback_fct)(void);                                             //functia care este apelata dupa expirarea timerului
 	
 }stimer;
 
 stimer timere[MAX_NR_TIMERE];     //array de timere
 
 volatile uint32_t sys_tick;
-int id_timer;		//id-ul elementrului creat
-int flag;           //variabila pentru verificare intrerupere
-int counter_timp;   //--//--
+int index_timer;                    //id-ul elementrului creat
+int flag;                        //variabila pentru verificare intrerupere
+int counter_timp;                //--//--
+int counter_timere_create;    //variabila pt numarul timerelor create 
 
 //functii pentru toggle diferiti pini
 void pin_toggle_led0();
@@ -47,25 +48,22 @@ void pin_toggle_led2();
 
 void pin_toggle_led3();
 
-//callback function apelata dupa expirarea perioadei
-void aprinde_led(void (*callback_fct)());  
-
 //functie pentru crearea unui element din structura
-struct timer creeaza_timer(uint8_t id, uint8_t var_stare,  uint8_t var_autoreset, uint32_t val_initiala, uint32_t perioada, void *pfct);
+void creeaza_timer(uint8_t index, uint8_t var_stare, uint8_t var_autoreset, uint32_t val_initiala, uint32_t perioada, void (*pfct)(void));
 
 //functie pentru evaluarea starii timerului la fiecare moment de timp
 void evalueaza_timer();
 
 //functie pentru resetarea unui element la valorile initiale
-void reset_timer(int i, uint32_t timp_reset);
+void reset_timer();
+void reset_timer_dorit(uint8_t index);
 
 //functie pentru actualizarea valorilor unui element deja creat
-void update_timer(int i, uint8_t var_stare, uint8_t var_autoreset, uint32_t perioada, uint32_t timp_update);
+void update_timer();
+void update_timer_dorit(uint8_t index);
 
 //functie pentru stergerea unui timer creat
-//add
-
-
+//adauga...
 
 ISR(TIMER0_COMPA_vect);
 

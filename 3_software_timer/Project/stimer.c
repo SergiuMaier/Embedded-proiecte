@@ -30,73 +30,69 @@ void pin_toggle_led3(){
 	PORTB ^=  1 << PINB3;
 }
 
-void aprinde_led(void(*fptr)()){ 
+void reset_timer_dorit(uint8_t index){
 	
-	(*fptr)();
+	timere[index].counter_initial = 0;
 }
 
-struct timer creeaza_timer(uint8_t id, uint8_t var_stare,  uint8_t var_autoreset, uint32_t val_initiala, uint32_t perioada, void *pfct){
+void reset_timer(){
+	
+	reset_timer_dorit(4);
+}
+
+void update_timer_dorit(uint8_t index){
+	
+	timere[index].stare = PORNIT;
+	timere[index].autoreset = FALSE;
+}
+
+void update_timer(){
+	
+	update_timer_dorit(0);
+}
+
+void creeaza_timer(uint8_t index, uint8_t var_stare, uint8_t var_autoreset, uint32_t val_initiala, uint32_t perioada, void (*pfct)(void)){
 	
 	struct timer t;
 	
-	t.id = id;                            //variabila pentru a tine evidenta timerelor utilizate 
+	t.id = index;                         //variabila pentru a tine evidenta timerelor utilizate 
 	t.stare = var_stare;                  //stabilirea starii timerului (OPRIT, PORNIT, EXPIRAT)
 	t.autoreset = var_autoreset;          //stabilire daca timerul este one-shot (FALSE) sau cu autoreset (TRUE)
 	t.counter_initial = val_initiala;     //variabila pentru valoarea initiala de la care porneste cronometrarea 
 	t.perioada = perioada;                //valoarea la care timerul expira
 	t.callback_fct = pfct;                //functia care este apelata dupa expirarea timerului
-		
-	return t;	
+	
+	timere[index] = t;
+	
+	counter_timere_create++;              //numarul timerelor create initial	
 }
 
-
-void evalueaza_timer(){
+void evalueaza_timer(){ 
 	
-	int counter_timere_utilizate = 0;                        //contor pentru numararea timerelor create
-	
-	for(id_timer = 0; id_timer < MAX_NR_TIMERE; id_timer++) 
-	{
-		if(timere[id_timer].id != 0)                         //verificare timere utilizate in functie de id
-			counter_timere_utilizate++;                      //determinare numar timere create
-	}
-	
-	if((counter_timere_utilizate != 0) && (counter_timp == 1))  //conditie pentru a verifica daca exista timere create si are loc intreruperea
+	if((counter_timere_create != 0) && (counter_timp == 1))  //conditie pentru a verifica daca exista timere create si are loc intreruperea
 	{	
-		for(id_timer = 0; id_timer <= counter_timere_utilizate; id_timer++)   
-		{			
-			timere[id_timer].counter_initial++;              //incrementare contor initial (= sys_tick)
-			
-			if((timere[id_timer].counter_initial == timere[id_timer].perioada) && (timere[id_timer].stare == PORNIT))  
-			{                                                //verificare daca a trecut perioada & timerul creat este pornit
-				aprinde_led(timere[id_timer].callback_fct);  //apelare functie dupa expirarea perioadei
-				timere[id_timer].stare = EXPIRAT;            //timerul trece din pornit -> expirat dupa ce a expirat perioada
+		for(index_timer = 0; index_timer <= counter_timere_create; index_timer++)   
+		{		
+			if(timere[index_timer].stare == PORNIT)
+			{	
+				timere[index_timer].counter_initial++;           //incrementare contor initial (= sys_tick)
 				
-				if(timere[id_timer].autoreset == TRUE)       //verificare daca timerul este one shot
-					timere[id_timer].stare = PORNIT;         //schimbare stare timer
-				else
-					timere[id_timer].stare = OPRIT;
+				if(timere[index_timer].counter_initial == timere[index_timer].perioada)  //timer EXPIRAT
+				{    
+					timere[index_timer].callback_fct();
+					 
+					//timere[id_timer].stare = EXPIRAT;          //timerul trece din pornit -> expirat dupa ce a expirat perioada
+				
+					if(timere[index_timer].autoreset == TRUE)    //verificare daca timerul este one shot
+						timere[index_timer].stare = PORNIT;      //schimbare stare timer
+					else
+						timere[index_timer].stare = OPRIT;
 					
-				timere[id_timer].counter_initial = 0;        //resetare contor initial
+					timere[index_timer].counter_initial = 0;     //resetare contor initial	
+				}
 			}
 		}
 	} 
-}
-
-void update_timer(int i, uint8_t var_stare, uint8_t var_autoreset, uint32_t perioada, uint32_t timp_update){
-	
-	if(sys_tick == timp_update)
-	{
-		timere[--i].counter_initial = 0;
-		timere[--i].stare = var_stare;
-		timere[--i].autoreset = var_autoreset;
-		timere[--i].perioada = perioada;
-	}
-}
-
-void reset_timer(int i, uint32_t timp_reset){
-	
-	if(sys_tick == timp_reset)
-		timere[--i].counter_initial = 0;	
 }
 
 ISR(TIMER0_COMPA_vect){ 
