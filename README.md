@@ -19,6 +19,7 @@
 - [3_software_timer](./3_software_timer/Project)
    
    - realizarea unui timer software;
+   - implementarea în noile fișiere stimer.h și stimer.c;
    - realizare funcții pentru creare, update și reset timer;
-   - implementarea a fost făcută în noile fișiere stimer.h și stimer.c;
+  
    
