@@ -12,7 +12,7 @@
 
 - [2_timer0_start_stop](./2_timer0_start_stop/Project)
     
-   - implementarea timerului 0 a fost mutata in fisierele separate timer0_func.h si timer0_func.c;
+   - implementarea timerului 0 a fost mutata in fisierele timer0_func.h si timer0_func.c;
    - realizare functii pt start si stop timer;
    - timer-ul functioneaza doar atunci cand este nevoie sa se contorizeze secuntele;
 
