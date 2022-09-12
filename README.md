@@ -17,3 +17,8 @@
    - timer-ul functioneaza doar atunci cand este nevoie sa se contorizeze secuntele;
 
 - [3_software_timer](./3_software_timer/Project)
+   
+   - realizarea unui timer software;
+   - realizare funcții pentru creare, update și reset timer;
+   - implementarea a fost facută în noile fișiere stimer.h și stimer.c;
+   
