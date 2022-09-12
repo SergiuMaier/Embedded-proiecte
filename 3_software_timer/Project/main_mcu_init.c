@@ -11,6 +11,37 @@
 
 #include <stdio.h>
 
+void pin_toggle_led0(){
+	
+	PORTB ^=  1 << PINB0;
+}
+
+void pin_toggle_led1(){
+	
+	PORTB ^=  1 << PINB1;
+}
+
+void pin_toggle_led2(){
+	
+	PORTB ^=  1 << PINB2;
+}
+
+void pin_toggle_led3(){
+	
+	PORTB ^=  1 << PINB3;
+}
+
+ISR(TIMER0_COMPA_vect){
+	
+	cli();
+	
+	sys_tick++;
+	flag = 1;
+	counter_timp = 1;
+	
+	sei();
+}
+
 void port_init(void){
 	
 	DDRB = 0x0F;                          //00001111
@@ -36,4 +67,14 @@ void init_devices(void){
 	timer0_init();
 	
 	sei();
+}
+
+void reset_timer(){
+	
+	reset_timer_dorit(4);
+}
+
+void update_timer(){
+	
+	update_timer_dorit(0);
 }

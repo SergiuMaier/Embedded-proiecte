@@ -39,15 +39,6 @@ int flag;                        //variabila pentru verificare intrerupere
 int counter_timp;                //--//--
 int counter_timere_create;    //variabila pt numarul timerelor create 
 
-//functii pentru toggle diferiti pini
-void pin_toggle_led0();
-
-void pin_toggle_led1();
-
-void pin_toggle_led2();
-
-void pin_toggle_led3();
-
 //functie pentru crearea unui element din structura
 void creeaza_timer(uint8_t index, uint8_t var_stare, uint8_t var_autoreset, uint32_t val_initiala, uint32_t perioada, void (*pfct)(void));
 
@@ -56,15 +47,8 @@ void evalueaza_timer();
 
 //functie pentru resetarea unui element la valorile initiale
 void reset_timer();
-void reset_timer_dorit(uint8_t index);
 
 //functie pentru actualizarea valorilor unui element deja creat
 void update_timer();
-void update_timer_dorit(uint8_t index);
-
-//functie pentru stergerea unui timer creat
-//adauga...
-
-ISR(TIMER0_COMPA_vect);
 
 #endif /* MAIN_FUNC_H_ */

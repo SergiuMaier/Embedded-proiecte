@@ -5,50 +5,21 @@
  *  Author: Sergiu Maier
  */ 
 #include "main_defines.h"
+#include "main_mcu_init.h"
 #include "timer0_def.h"
 #include "stimer.h"
 
 #include <util/delay.h>
-
-void pin_toggle_led0(){  
-	
-	PORTB ^=  1 << PINB0;	
-}
-
-void pin_toggle_led1(){
-	
-	PORTB ^=  1 << PINB1;
-}
-
-void pin_toggle_led2(){
-	
-	PORTB ^=  1 << PINB2;
-}
-
-void pin_toggle_led3(){
-	
-	PORTB ^=  1 << PINB3;
-}
 
 void reset_timer_dorit(uint8_t index){
 	
 	timere[index].counter_initial = 0;
 }
 
-void reset_timer(){
-	
-	reset_timer_dorit(4);
-}
-
 void update_timer_dorit(uint8_t index){
 	
 	timere[index].stare = PORNIT;
 	timere[index].autoreset = FALSE;
-}
-
-void update_timer(){
-	
-	update_timer_dorit(0);
 }
 
 void creeaza_timer(uint8_t index, uint8_t var_stare, uint8_t var_autoreset, uint32_t val_initiala, uint32_t perioada, void (*pfct)(void)){
@@ -95,13 +66,3 @@ void evalueaza_timer(){
 	} 
 }
 
-ISR(TIMER0_COMPA_vect){ 
-	
-	cli();
-	
-	sys_tick++;
-	flag = 1;     
-	counter_timp = 1;
-	
-	sei();
-}
