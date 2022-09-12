@@ -20,5 +20,5 @@
    
    - realizarea unui timer software;
    - realizare funcții pentru creare, update și reset timer;
-   - implementarea a fost facută în noile fișiere stimer.h și stimer.c;
+   - implementarea a fost făcută în noile fișiere stimer.h și stimer.c;
    
