@@ -22,4 +22,8 @@
    - implementarea în noile fișiere stimer.h și stimer.c;
    - realizare funcții pentru creare, update și reset timer;
   
+- [4_pwm](./4_pwm/Project)
+
+  - implementarea modului PWM pentru Timer0 (explicații în cod);
+  - modificarea intensitații unui LED utilizand PWM;
    
