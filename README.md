@@ -24,6 +24,6 @@
   
 - [4_pwm](./4_pwm/Project)
 
-  - implementarea modului PWM pentru Timer0 (explicații în cod);
-  - modificarea intensitații unui LED utilizand PWM;
+  - implementare Timer0 cu PWM (explicații în cod);
+  - modificarea intensitații unui LED;
    
