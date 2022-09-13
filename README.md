@@ -12,8 +12,14 @@
 
 - [2_timer0_start_stop](./2_timer0_start_stop/Project)
     
-   - creare fisiere separate pt timer0;
+   - implementarea timerului 0 a fost mutata in fisierele timer0_func.h si timer0_func.c;
    - realizare functii pt start si stop timer;
    - timer-ul functioneaza doar atunci cand este nevoie sa se contorizeze secuntele;
 
 - [3_software_timer](./3_software_timer/Project)
+   
+   - realizarea unui timer software;
+   - implementarea în noile fișiere stimer.h și stimer.c;
+   - realizare funcții pentru creare, update și reset timer;
+  
+   
