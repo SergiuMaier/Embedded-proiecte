@@ -6,7 +6,7 @@
  */ 
 
 #include "main_defines.h"
-#include "timer0_func_def.h"
+#include "timer0_func.h"
 #include "main_func.h"
 #include "main_mcu_init.h"
 

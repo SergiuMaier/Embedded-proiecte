@@ -1,4 +1,4 @@
-timer0_func.d timer0_func.o: .././timer0_func.c .././timer0_func_def.h \
+timer0_func.d timer0_func.o: .././timer0_func.c .././timer0_func.h \
  .././main_defines.h \
  d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h \
  d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\sfr_defs.h \
@@ -13,7 +13,7 @@ timer0_func.d timer0_func.o: .././timer0_func.c .././timer0_func_def.h \
  d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\lock.h \
  d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h
 
-.././timer0_func_def.h:
+.././timer0_func.h:
 
 .././main_defines.h:
 

@@ -7,7 +7,7 @@
 
 #include "main_func.h"
 #include "main_defines.h"
-#include "timer0_func_def.h"
+#include "timer0_func.h"
 
 int flag_on = 0;		//initial, led-urile sunt stinse
 int contor_secunde = 0;	//contor pentru generarea secundelor

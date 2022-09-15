@@ -15,7 +15,7 @@ main_func.d main_func.o: .././main_func.c .././main_func.h \
  d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay.h \
  d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h \
  d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h \
- .././timer0_func_def.h
+ .././timer0_func.h
 
 .././main_func.h:
 
@@ -51,4 +51,4 @@ d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h:
 
 d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h:
 
-.././timer0_func_def.h:
+.././timer0_func.h:

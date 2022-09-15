@@ -487,13 +487,13 @@ END GROUP
  .debug_abbrev  0x00000745       0x68 main.o
  .debug_abbrev  0x000007ad       0x67 timer0_func.o
 
-.debug_line     0x00000000      0x51e
+.debug_line     0x00000000      0x51a
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x134 D:/DRIVERE/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega328p/avr5/crtatmega328p.o
- .debug_line    0x00000134      0x1ae main_func.o
- .debug_line    0x000002e2      0x10c main_mcu_init.o
- .debug_line    0x000003ee       0x6b main.o
- .debug_line    0x00000459       0xc5 timer0_func.o
+ .debug_line    0x00000134      0x1aa main_func.o
+ .debug_line    0x000002de      0x10c main_mcu_init.o
+ .debug_line    0x000003ea       0x6b main.o
+ .debug_line    0x00000455       0xc5 timer0_func.o
 
 .debug_frame    0x00000000      0x188
  *(.debug_frame)
@@ -502,17 +502,17 @@ END GROUP
  .debug_frame   0x00000120       0x24 main.o
  .debug_frame   0x00000144       0x44 timer0_func.o
 
-.debug_str      0x00000000      0x438
+.debug_str      0x00000000      0x437
  *(.debug_str)
  .debug_str     0x00000000      0x208 D:/DRIVERE/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega328p/avr5/crtatmega328p.o
- .debug_str     0x00000208      0x1c5 main_func.o
-                                0x201 (size before relaxing)
- .debug_str     0x000003cd       0x47 main_mcu_init.o
-                                0x1bc (size before relaxing)
- .debug_str     0x00000414       0x11 main.o
-                                0x18d (size before relaxing)
- .debug_str     0x00000425       0x13 timer0_func.o
-                                0x1a8 (size before relaxing)
+ .debug_str     0x00000208      0x1c4 main_func.o
+                                0x200 (size before relaxing)
+ .debug_str     0x000003cc       0x47 main_mcu_init.o
+                                0x1bb (size before relaxing)
+ .debug_str     0x00000413       0x11 main.o
+                                0x18c (size before relaxing)
+ .debug_str     0x00000424       0x13 timer0_func.o
+                                0x1a7 (size before relaxing)
 
 .debug_loc      0x00000000      0x143
  *(.debug_loc)

@@ -138,7 +138,7 @@
     <Compile Include="main_mcu_init.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="timer0_func_def.h">
+    <Compile Include="timer0_func.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="timer0_func.c">

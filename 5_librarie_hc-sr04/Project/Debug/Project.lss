@@ -19,15 +19,15 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
   7 .debug_abbrev 00000814  00000000  00000000  00000fec  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   0000051e  00000000  00000000  00001800  2**0
+  8 .debug_line   0000051a  00000000  00000000  00001800  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  00000188  00000000  00000000  00001d20  2**2
+  9 .debug_frame  00000188  00000000  00000000  00001d1c  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    00000438  00000000  00000000  00001ea8  2**0
+ 10 .debug_str    00000437  00000000  00000000  00001ea4  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    00000143  00000000  00000000  000022e0  2**0
+ 11 .debug_loc    00000143  00000000  00000000  000022db  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000088  00000000  00000000  00002423  2**0
+ 12 .debug_ranges 00000088  00000000  00000000  0000241e  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -428,7 +428,7 @@ int main(void){
 
 0000028e <timer0_init>:
  */ 
-#include "timer0_func_def.h"
+#include "timer0_func.h"
 
 void timer0_init(void){
 	
@@ -439,7 +439,6 @@ void timer0_init(void){
 	OCR0A = 0xF9;
  294:	89 ef       	ldi	r24, 0xF9	; 249
  296:	87 bd       	out	0x27, r24	; 39
-	//OCR0A = 155;
 	TIMSK0 |= (1 << OCIE0A);
  298:	ee e6       	ldi	r30, 0x6E	; 110
  29a:	f0 e0       	ldi	r31, 0x00	; 0

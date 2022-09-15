@@ -7,7 +7,7 @@
 
 #include "main_mcu_init.h"
 #include "main_defines.h"
-#include "timer0_func_def.h"
+#include "timer0_func.h"
 #include "main_func.h"
 
 #include <stdio.h>
@@ -16,8 +16,6 @@ void port_init(void){
 	
 	DDRB = 0x0F;   //00001111
 	PORTB = 0x00;
-	DDRD |= (1 << PIND2) | (1 << PIND3);  //INT0 & INT1
-	PORTD |= (1 << PIND2) | (1 << PIND3);
 }
 
 void interrupt_init(void){
