@@ -1,5 +1,5 @@
-main_func.d main_func.o: .././main_func.c .././main_mcu_init.h \
- .././main_defines.h .././main_func.h \
+main_func.d main_func.o: .././main_func.c .././main_func.h \
+ .././main_defines.h \
  d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h \
  d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\sfr_defs.h \
  d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\inttypes.h \
@@ -15,13 +15,11 @@ main_func.d main_func.o: .././main_func.c .././main_mcu_init.h \
  d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay.h \
  d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h \
  d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h \
- .././timer0_func.h
-
-.././main_mcu_init.h:
-
-.././main_defines.h:
+ .././timer0_func_def.h
 
 .././main_func.h:
+
+.././main_defines.h:
 
 d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h:
 
@@ -53,4 +51,4 @@ d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h:
 
 d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h:
 
-.././timer0_func.h:
+.././timer0_func_def.h:

@@ -6,7 +6,7 @@
  */ 
 
 #include "main_defines.h"
-#include "timer0_func.h"
+#include "timer0_func_def.h"
 #include "main_func.h"
 #include "main_mcu_init.h"
 
@@ -19,7 +19,7 @@ int main(void){
 	init_devices();	//porturi, timer, intreruperi
 					      
 	do
-	{		
+	{
 		led_on();	
 
 	}while(1);

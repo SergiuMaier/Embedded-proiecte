@@ -5,6 +5,7 @@
  *  Author: Sergiu Maier
  */ 
 
+#include "main_mcu_init.h"
 #include "main_func.h"
 #include "main_defines.h"
 #include "timer0_func.h"
@@ -26,8 +27,9 @@ void pinReset(volatile uint8_t *port, uint8_t pin){
 
 void led_on(){			
 	
-	start_timer0();  //prescalar 64
+	start_timer0(); 
 	
+	OCR0A = contor_secunde;
 }
 
 ISR(TIMER0_COMPA_vect){  //pt caz general
@@ -37,7 +39,6 @@ ISR(TIMER0_COMPA_vect){  //pt caz general
 	contor_secunde++;
 	
 	if(contor_secunde >= (1/GENERARE_INTRERUPERE)){
-		secunde++;
 		contor_secunde = 0;
 	}
 	
