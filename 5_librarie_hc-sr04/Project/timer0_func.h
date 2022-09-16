@@ -12,7 +12,7 @@
 #include <avr/io.h>
 #include <avr/interrupt.h>
 
-#define START_TIMER0 (0 << CS02) | (1 << CS01) | (1 << CS00) //64
+#define START_TIMER0 (0 << CS02) | (1 << CS01) | (1 << CS00) //prescalar
 #define STOP_TIMER0 0b11111000
 
 #define GENERARE_INTRERUPERE 0.001 //generarea unei intreruperi la fiecare x secunde

@@ -15,7 +15,7 @@ main.d main.o: .././main.c .././main_defines.h .././timer0_func.h \
  d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay.h \
  d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h \
  d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h \
- .././main_mcu_init.h
+ .././main_mcu_init.h .././senzor_hc_sr04.h
 
 .././main_defines.h:
 
@@ -54,3 +54,5 @@ d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h:
 d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h:
 
 .././main_mcu_init.h:
+
+.././senzor_hc_sr04.h:

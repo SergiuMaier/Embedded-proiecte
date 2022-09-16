@@ -14,14 +14,17 @@
 
 void port_init(void){
 	
-	DDRB = 0x0F;   //00001111
-	PORTB = 0x00;
+	DDRB = 0x01;   //00000011
+	PORTB = 0x00;  //00000010
+	
+	DDRD |= (1 << PIND2);  //INT0
+	PORTD |= (1 << PIND2);
 }
 
 void interrupt_init(void){
 	
-	EICRA |= (1 << ISC11) | (1 << ISC10) | (1 << ISC01) | (1 << ISC00);
-	EIMSK |= (1 << INT1) | (1 << INT0);
+	EICRA |= (0 << ISC11) | (0 << ISC10) | (0 << ISC01) | (1 << ISC00);
+	EIMSK |= (0 << INT1) | (1 << INT0);
 	EIFR |= (0 << INTF1) | (0 << INTF0);
 	PCICR |= (0 << PCIE2) | (0 << PCIE1) | (0 << PCIE0);
 }

@@ -1,5 +1,5 @@
-main_func.d main_func.o: .././main_func.c .././main_func.h \
- .././main_defines.h \
+senzor_hc_sr04.d senzor_hc_sr04.o: .././senzor_hc_sr04.c \
+ .././senzor_hc_sr04.h \
  d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h \
  d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\sfr_defs.h \
  d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\inttypes.h \
@@ -12,14 +12,12 @@ main_func.d main_func.o: .././main_func.c .././main_func.h \
  d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\fuse.h \
  d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\lock.h \
  d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h \
+ .././main_func.h .././main_defines.h \
  d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay.h \
  d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h \
- d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h \
- .././timer0_func.h .././senzor_hc_sr04.h
+ d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h
 
-.././main_func.h:
-
-.././main_defines.h:
+.././senzor_hc_sr04.h:
 
 d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h:
 
@@ -45,12 +43,12 @@ d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\lock.h:
 
 d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h:
 
+.././main_func.h:
+
+.././main_defines.h:
+
 d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay.h:
 
 d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h:
 
 d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h:
-
-.././timer0_func.h:
-
-.././senzor_hc_sr04.h:

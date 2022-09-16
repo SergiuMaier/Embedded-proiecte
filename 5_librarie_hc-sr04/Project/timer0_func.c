@@ -9,7 +9,7 @@
 void timer0_init(void){
 	
 	TCCR0A |= (1 << WGM01) | (0 << WGM00);  //modul CTC
-	OCR0A = 0xF9;
+	OCR0A = 0xF9;              
 	TIMSK0 |= (1 << OCIE0A);
 }
 

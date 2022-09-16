@@ -138,6 +138,12 @@
     <Compile Include="main_mcu_init.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="senzor_hc_sr04.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="senzor_hc_sr04.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="timer0_func.h">
       <SubType>compile</SubType>
     </Compile>

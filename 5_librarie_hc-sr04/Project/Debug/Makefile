@@ -40,6 +40,7 @@ C_SRCS +=  \
 ../main_func.c \
 ../main_mcu_init.c \
 ../main.c \
+../senzor_hc_sr04.c \
 ../timer0_func.c
 
 
@@ -53,24 +54,28 @@ OBJS +=  \
 main_func.o \
 main_mcu_init.o \
 main.o \
+senzor_hc_sr04.o \
 timer0_func.o
 
 OBJS_AS_ARGS +=  \
 main_func.o \
 main_mcu_init.o \
 main.o \
+senzor_hc_sr04.o \
 timer0_func.o
 
 C_DEPS +=  \
 main_func.d \
 main_mcu_init.d \
 main.d \
+senzor_hc_sr04.d \
 timer0_func.d
 
 C_DEPS_AS_ARGS +=  \
 main_func.d \
 main_mcu_init.d \
 main.d \
+senzor_hc_sr04.d \
 timer0_func.d
 
 OUTPUT_FILE_PATH +=Project.elf
@@ -102,6 +107,13 @@ LINKER_SCRIPT_DEP+=
 	
 
 ./main.o: .././main.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)D:\DRIVERE\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"D:\DRIVERE\7.0\Packs\atmel\ATmega_DFP\1.7.374\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega328p -B "D:\DRIVERE\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega328p" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+./senzor_hc_sr04.o: .././senzor_hc_sr04.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)D:\DRIVERE\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"D:\DRIVERE\7.0\Packs\atmel\ATmega_DFP\1.7.374\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega328p -B "D:\DRIVERE\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega328p" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
