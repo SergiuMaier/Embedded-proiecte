@@ -6,16 +6,19 @@
  */ 
 
 #include <avr/io.h>
+
 #include "main_defines.h"
+#include "main_func.h"
 #include "USART_func.h"
 
 int main(void)
-{
+{	
+	init_devices();
 	USART_Init(MYUBRR);
    
     while (1) 
     {
-		//SendData("Sergiu\r\n");
+		send_data("secunde");
     }
 }
 

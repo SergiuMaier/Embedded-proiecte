@@ -28,11 +28,3 @@ unsigned char USART_Receive(void){
 	
 	return UDR0;
 }
-
-void SendData(char *ptr){
-	
-	while(*ptr != 0x00){
-		USART_Transmit(*ptr);
-		ptr++;	
-	}
-}

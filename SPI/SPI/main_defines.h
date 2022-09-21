@@ -10,6 +10,7 @@
 #define MAIN_DEFINES_H_
 
 #include <avr/io.h>
+#include <avr/interrupt.h>
 
 #define FOSC 16000000UL
 #define BAUD 9600
