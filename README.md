@@ -27,3 +27,6 @@
   - implementare Timer0 cu PWM (explicații în cod);
   - modificarea intensitații unui LED;
    
+- [5_librarie_hc_sr04](./5_librarie_hc_sr04/Project)
+
+- [SPI](./SPI/SPI)
