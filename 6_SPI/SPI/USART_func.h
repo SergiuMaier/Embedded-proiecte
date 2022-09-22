@@ -12,7 +12,11 @@
 #include "main_defines.h"
 
 void USART_Init(unsigned int ubrr);
+
 void USART_Transmit(unsigned char data);
+
 unsigned char USART_Receive(void);
+
+void send_data(char *ptr);
 
 #endif /* MAIN_FUNC_H_ */

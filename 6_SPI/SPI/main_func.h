@@ -16,14 +16,11 @@ int secunde;
 int minute;
 int ore;
 
-void interrupt_init(void);
-
 void timer_init(void);
 
-void init_devices();
+void init_devices(void);
 
-void send_data(char *ptr);
-//void increment_minute(void);
+void apelare(void);
 
 ISR(TIMER0_COMPA_vect);
 

@@ -4,6 +4,7 @@
  * Created: 9/21/2022 11:46:57 AM
  *  Author: sergiu
  */ 
+
 #include "main_defines.h"
 #include "USART_func.h"
 
@@ -27,4 +28,13 @@ unsigned char USART_Receive(void){
 	while(!(UCSR0A & (1<<RXC0)));
 	
 	return UDR0;
+}
+
+void send_data(char *ptr){
+	
+	while(*ptr != 0x00)
+	{
+		USART_Transmit(*ptr);
+		ptr++;
+	}
 }

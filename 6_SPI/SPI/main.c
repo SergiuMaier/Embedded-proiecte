@@ -18,7 +18,7 @@ int main(void)
    
     while(1) 
     {
-		send_data("secunde\r\n");
+		apelare();
     }
 }
 
