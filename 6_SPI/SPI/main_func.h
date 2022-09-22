@@ -23,7 +23,6 @@ void timer_init(void);
 void init_devices();
 
 void send_data(char *ptr);
-
 //void increment_minute(void);
 
 ISR(TIMER0_COMPA_vect);

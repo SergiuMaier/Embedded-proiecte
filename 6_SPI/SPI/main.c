@@ -16,9 +16,9 @@ int main(void)
 	init_devices();
 	USART_Init(MYUBRR);
    
-    while (1) 
+    while(1) 
     {
-		send_data("secunde");
+		send_data("secunde\r\n");
     }
 }
 

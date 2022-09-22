@@ -7,6 +7,7 @@
 
 #include "main_func.h"
 #include "main_defines.h"
+#include "USART_func.h"
 
 void interrupt_init(void){
 	
@@ -46,7 +47,8 @@ void init_devices(){
 
 void send_data(char *ptr){
 	
-	while(*ptr != 0x00){
+	while(*ptr != 0x00)
+	{
 		USART_Transmit(*ptr);
 		ptr++;
 	}
