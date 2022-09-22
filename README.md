@@ -29,4 +29,4 @@
    
 - [5_librarie_hc_sr04](./5_librarie_hc_sr04/Project)
 
-- [SPI](./SPI/SPI)
+- [6_SPI](./6_SPI/SPI)
