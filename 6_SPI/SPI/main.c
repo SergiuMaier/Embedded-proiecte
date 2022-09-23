@@ -2,7 +2,7 @@
  * SPI.c
  *
  * Created: 9/21/2022 10:53:40 AM
- * Author : Sergiu
+ * Author : Sergiu Maier
  */ 
 
 #include <avr/io.h>
@@ -13,12 +13,16 @@
 
 int main(void)
 {	
-	init_devices();
+	DDRB = 0x01;
+	PORTB = 0x00;
+	//init_devices();
 	USART_Init(MYUBRR);
    
     while(1) 
     {
-		apelare();
+		//PORTB |= (1 << PINB0);  
+		//apelare();
+		send_data("aprins\n\r");
     }
 }
 

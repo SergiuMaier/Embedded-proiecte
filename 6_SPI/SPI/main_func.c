@@ -2,7 +2,7 @@
  * main_func.c
  *
  * Created: 9/21/2022 12:29:37 PM
- *  Author: sergiu
+ *  Author: Sergiu Maier
  */ 
 
 #include "main_func.h"
@@ -48,6 +48,10 @@ ISR(TIMER0_COMPA_vect){
 }
 
 void apelare(){
-	if(secunde == 10)
-		send_data("secunde = 10\r\n");
+	
+	if(secunde % 2 == 0)
+		PORTB |= (1 << PINB0); 
+	else 
+		PORTB &= ~(1 << PINB0);
+		 
 }

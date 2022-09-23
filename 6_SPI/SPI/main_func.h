@@ -2,7 +2,7 @@
  * main_func.h
  *
  * Created: 9/21/2022 12:29:51 PM
- *  Author: sergiu
+ *  Author: Sergiu Maier
  */ 
 
 

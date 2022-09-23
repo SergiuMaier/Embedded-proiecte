@@ -2,7 +2,7 @@
  * main_func.c
  *
  * Created: 9/21/2022 11:46:57 AM
- *  Author: sergiu
+ *  Author: Sergiu Maier
  */ 
 
 #include "main_defines.h"
