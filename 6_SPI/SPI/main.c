@@ -26,13 +26,13 @@ int main(void)
 		
 		if(a < 10){
 			SendData("00:00:0");
-			a++;
+			//a++;
 		}
 		else{
 			SendData("00:00:");	
-			a++;
+			//a++;
 		}
-		
+		a++;
 		SendData(val);
 		SendData("\n\r");
 		
