@@ -10,8 +10,9 @@
 #define MAIN_FUNC_H_
 
 #include <stdlib.h>
+#include <avr/interrupt.h>
 
-int contor, secunde, minute;
+volatile int contor, secunde, minute;
 
 void timer_init();
 

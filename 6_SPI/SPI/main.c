@@ -10,33 +10,39 @@
 #include "USART_func.h"
 #include <avr/io.h>
 #include <stdlib.h>
+#include <avr/interrupt.h>
 #include <util/delay.h>
 
 int main(void)
 {	
+	DDRB |= 0x01;
+	PORTB |= 0x00;
 	char val[10];
-	int a = 0;
-
+	int secunde = 0;
+	
 	//init_devices();	
 	USART_Init(MYUBRR);
 	
     while(1) 
     { 
-		itoa(a, val, 10);
+		SendData(CLEAR);
 		
-		if(a < 10){
-			SendData("00:00:0");
-			//a++;
+		itoa(secunde, val, 10);
+		SendData("Time:");
+		
+		if(secunde < 10)
+			SendData("  00:00:0");
+		else
+			SendData("  00:00:");	
+		
+		secunde++;
+		
+		if(secunde >= 60){
+			secunde = 0; 
 		}
-		else{
-			SendData("00:00:");	
-			//a++;
-		}
-		a++;
+		
 		SendData(val);
 		SendData("\n\r");
-		
-		//a++;
 		_delay_ms(1000);
     }
 }

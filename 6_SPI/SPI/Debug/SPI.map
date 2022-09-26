@@ -225,7 +225,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0x216
+.text           0x00000000      0x242
  *(.vectors)
  .vectors       0x00000000       0x68 D:/DRIVERE/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega328p/avr5/crtatmega328p.o
                 0x00000000                __vector_default
@@ -311,35 +311,35 @@ END GROUP
                 0x000000a2                __vector_20
                 0x000000a6                . = ALIGN (0x2)
  *(.text.*)
- .text.main     0x000000a6       0x6e main.o
+ .text.main     0x000000a6       0x92 main.o
                 0x000000a6                main
  .text.__vector_14
-                0x00000114       0x56 main_func.o
-                0x00000114                __vector_14
+                0x00000138       0x5e main_func.o
+                0x00000138                __vector_14
  .text.USART_Init
-                0x0000016a       0x16 USART_func.o
-                0x0000016a                USART_Init
+                0x00000196       0x16 USART_func.o
+                0x00000196                USART_Init
  .text.USART_Transmit
-                0x00000180        0xe USART_func.o
-                0x00000180                USART_Transmit
+                0x000001ac        0xe USART_func.o
+                0x000001ac                USART_Transmit
  .text.SendData
-                0x0000018e       0x1a USART_func.o
-                0x0000018e                SendData
+                0x000001ba       0x1a USART_func.o
+                0x000001ba                SendData
  .text.avr-libc
-                0x000001a8       0x16 d:/drivere/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(itoa_ncheck.o)
-                0x000001a8                __itoa_ncheck
+                0x000001d4       0x16 d:/drivere/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(itoa_ncheck.o)
+                0x000001d4                __itoa_ncheck
  .text.avr-libc
-                0x000001be       0x34 d:/drivere/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(utoa_ncheck.o)
-                0x000001be                __utoa_ncheck
-                0x000001c0                __utoa_common
+                0x000001ea       0x34 d:/drivere/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(utoa_ncheck.o)
+                0x000001ea                __utoa_ncheck
+                0x000001ec                __utoa_common
  .text.avr-libc
-                0x000001f2       0x20 d:/drivere/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(strrev.o)
-                0x000001f2                strrev
-                0x00000212                . = ALIGN (0x2)
+                0x0000021e       0x20 d:/drivere/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(strrev.o)
+                0x0000021e                strrev
+                0x0000023e                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00000212        0x0 d:/drivere/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
-                0x00000212                _exit
-                0x00000212                exit
+ .fini9         0x0000023e        0x0 d:/drivere/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+                0x0000023e                _exit
+                0x0000023e                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -358,11 +358,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00000212        0x4 d:/drivere/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+ .fini0         0x0000023e        0x4 d:/drivere/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x00000216                _etext = .
+                0x00000242                _etext = .
 
-.data           0x00800100       0x12 load address 0x00000216
+.data           0x00800100       0x28 load address 0x00000242
                 0x00800100                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -370,30 +370,31 @@ END GROUP
  *(.rodata)
  *(.rodata*)
  .rodata.str1.1
-                0x00800100       0x12 main.o
+                0x00800100       0x27 main.o
  *(.gnu.linkonce.r*)
-                0x00800112                . = ALIGN (0x2)
-                0x00800112                _edata = .
-                0x00800112                PROVIDE (__data_end, .)
+                0x00800128                . = ALIGN (0x2)
+ *fill*         0x00800127        0x1 
+                0x00800128                _edata = .
+                0x00800128                PROVIDE (__data_end, .)
 
-.bss            0x00800112        0x6
-                0x00800112                PROVIDE (__bss_start, .)
+.bss            0x00800128        0x6
+                0x00800128                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
  *(COMMON)
- COMMON         0x00800112        0x6 main_func.o
-                0x00800112                minute
-                0x00800114                secunde
-                0x00800116                contor
-                0x00800118                PROVIDE (__bss_end, .)
-                0x00000216                __data_load_start = LOADADDR (.data)
-                0x00000228                __data_load_end = (__data_load_start + SIZEOF (.data))
+ COMMON         0x00800128        0x6 main_func.o
+                0x00800128                minute
+                0x0080012a                secunde
+                0x0080012c                contor
+                0x0080012e                PROVIDE (__bss_end, .)
+                0x00000242                __data_load_start = LOADADDR (.data)
+                0x0000026a                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x00800118        0x0
+.noinit         0x0080012e        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
  *(.noinit*)
                 [!provide]                PROVIDE (__noinit_end, .)
-                0x00800118                _end = .
+                0x0080012e                _end = .
                 [!provide]                PROVIDE (__heap_start, .)
 
 .eeprom         0x00810000        0x0
@@ -472,26 +473,26 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000      0xabb
+.debug_info     0x00000000      0xb05
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x5f4 D:/DRIVERE/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega328p/avr5/crtatmega328p.o
- .debug_info    0x000005f4      0x2bd main.o
- .debug_info    0x000008b1       0xf1 main_func.o
- .debug_info    0x000009a2      0x119 USART_func.o
+ .debug_info    0x000005f4      0x302 main.o
+ .debug_info    0x000008f6       0xf6 main_func.o
+ .debug_info    0x000009ec      0x119 USART_func.o
 
-.debug_abbrev   0x00000000      0x8c0
+.debug_abbrev   0x00000000      0x8c7
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0x5a2 D:/DRIVERE/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega328p/avr5/crtatmega328p.o
  .debug_abbrev  0x000005a2      0x1bb main.o
- .debug_abbrev  0x0000075d       0x9b main_func.o
- .debug_abbrev  0x000007f8       0xc8 USART_func.o
+ .debug_abbrev  0x0000075d       0xa2 main_func.o
+ .debug_abbrev  0x000007ff       0xc8 USART_func.o
 
-.debug_line     0x00000000      0x482
+.debug_line     0x00000000      0x4a6
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x134 D:/DRIVERE/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega328p/avr5/crtatmega328p.o
- .debug_line    0x00000134      0x130 main.o
- .debug_line    0x00000264      0x10a main_func.o
- .debug_line    0x0000036e      0x114 USART_func.o
+ .debug_line    0x00000134      0x154 main.o
+ .debug_line    0x00000288      0x10a main_func.o
+ .debug_line    0x00000392      0x114 USART_func.o
 
 .debug_frame    0x00000000       0xf4
  *(.debug_frame)
@@ -502,9 +503,9 @@ END GROUP
 .debug_str      0x00000000      0x452
  *(.debug_str)
  .debug_str     0x00000000      0x208 D:/DRIVERE/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega328p/avr5/crtatmega328p.o
- .debug_str     0x00000208      0x1be main.o
-                                0x1fc (size before relaxing)
- .debug_str     0x000003c6       0x53 main_func.o
+ .debug_str     0x00000208      0x1ce main.o
+                                0x20c (size before relaxing)
+ .debug_str     0x000003d6       0x43 main_func.o
                                 0x1a9 (size before relaxing)
  .debug_str     0x00000419       0x39 USART_func.o
                                 0x1b0 (size before relaxing)

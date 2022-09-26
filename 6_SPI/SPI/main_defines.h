@@ -10,8 +10,8 @@
 #define MAIN_DEFINES_H_
 
 #include <avr/io.h>
-#include <avr/interrupt.h>
 
+#define CLEAR "\e[1;1H\e[2J"
 #define FOSC 16000000UL
 #define F_CPU 16000000UL
 
