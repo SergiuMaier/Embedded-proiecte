@@ -5,24 +5,39 @@
  * Author : Sergiu Maier
  */ 
 
-#include <avr/io.h>
-
 #include "main_defines.h"
-#include "main_func.h"
+//#include "main_func.h"
 #include "USART_func.h"
+#include <avr/io.h>
+#include <stdlib.h>
+#include <util/delay.h>
 
 int main(void)
 {	
-	DDRB = 0x01;
-	PORTB = 0x00;
-	//init_devices();
+	char val[10];
+	int a = 0;
+
+	//init_devices();	
 	USART_Init(MYUBRR);
-   
+	
     while(1) 
-    {
-		//PORTB |= (1 << PINB0);  
-		//apelare();
-		send_data("aprins\n\r");
+    { 
+		itoa(a, val, 10);
+		
+		if(a < 10){
+			SendData("00:00:0");
+			a++;
+		}
+		else{
+			SendData("00:00:");	
+			a++;
+		}
+		
+		SendData(val);
+		SendData("\n\r");
+		
+		//a++;
+		_delay_ms(1000);
     }
 }
 

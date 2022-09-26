@@ -13,6 +13,8 @@
 #include <avr/interrupt.h>
 
 #define FOSC 16000000UL
+#define F_CPU 16000000UL
+
 #define BAUD 9600
 #define MYUBRR FOSC/16/BAUD-1
 

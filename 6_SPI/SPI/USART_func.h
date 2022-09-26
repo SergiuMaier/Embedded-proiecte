@@ -5,7 +5,6 @@
  *  Author: Sergiu Maier
  */ 
 
-
 #ifndef MAIN_FUNC_H_
 #define MAIN_FUNC_H_
 
@@ -17,6 +16,6 @@ void USART_Transmit(unsigned char data);
 
 unsigned char USART_Receive(void);
 
-void send_data(char *ptr);
+void SendData(char *ptr);
 
 #endif /* MAIN_FUNC_H_ */

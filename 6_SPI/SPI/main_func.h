@@ -1,7 +1,7 @@
 /*
  * main_func.h
  *
- * Created: 9/21/2022 12:29:51 PM
+ * Created: 9/26/2022 11:12:50 AM
  *  Author: Sergiu Maier
  */ 
 
@@ -9,18 +9,13 @@
 #ifndef MAIN_FUNC_H_
 #define MAIN_FUNC_H_
 
-#include <avr/interrupt.h>
+#include <stdlib.h>
 
-int contor;
-int secunde;
-int minute;
-int ore;
+int contor, secunde, minute;
 
-void timer_init(void);
+void timer_init();
 
-void init_devices(void);
-
-void apelare(void);
+void init_devices();
 
 ISR(TIMER0_COMPA_vect);
 

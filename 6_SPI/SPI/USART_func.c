@@ -30,7 +30,7 @@ unsigned char USART_Receive(void){
 	return UDR0;
 }
 
-void send_data(char *ptr){
+void SendData(char *ptr){
 	
 	while(*ptr != 0x00)
 	{
