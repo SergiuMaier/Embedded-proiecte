@@ -28,5 +28,7 @@
   - modificarea intensitații unui LED;
    
 - [5_librarie_hc_sr04](./5_librarie_hc_sr04/Project)
-
+  - creare librarie pentru senzorul cu ultrasunete;
+  
 - [6_SPI](./6_SPI/SPI)
+  - afisare cronometru pe seriala;
