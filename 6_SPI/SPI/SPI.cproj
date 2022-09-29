@@ -132,10 +132,10 @@
     <Compile Include="main_func.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="USART_func.c">
+    <Compile Include="USART.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="USART_func.h">
+    <Compile Include="USART.h">
       <SubType>compile</SubType>
     </Compile>
   </ItemGroup>

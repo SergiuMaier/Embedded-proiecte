@@ -9,14 +9,16 @@
 #ifndef MAIN_FUNC_H_
 #define MAIN_FUNC_H_
 
-#include <stdlib.h>
-#include <avr/interrupt.h>
+#include "main_defines.h"
 
-volatile int contor, secunde, minute;
+volatile uint16_t contor, secunde, minute;
+char ch_sec[100], ch_min[100];
 
 void timer_init();
 
 void init_devices();
+
+void afisare_timp();
 
 ISR(TIMER0_COMPA_vect);
 

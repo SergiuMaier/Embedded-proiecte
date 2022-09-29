@@ -9,13 +9,15 @@
 #define MAIN_FUNC_H_
 
 #include "main_defines.h"
+#include <util/delay.h>
 
-void USART_Init(unsigned int ubrr);
+volatile uint8_t flag;
+volatile char *str;
 
-void USART_Transmit(unsigned char data);
+void USART_Init(uint16_t ubrr);
 
-unsigned char USART_Receive(void);
+void SendData(char *c);
 
-void SendData(char *ptr);
+ISR(USART_UDRE_vect);
 
 #endif /* MAIN_FUNC_H_ */

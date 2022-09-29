@@ -1,5 +1,4 @@
-main_func.d main_func.o: .././main_func.c .././main_func.h \
- .././main_defines.h \
+USART.d USART.o: .././USART.c .././USART.h .././main_defines.h \
  d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdlib.h \
  d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stddef.h \
  d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h \
@@ -13,9 +12,12 @@ main_func.d main_func.o: .././main_func.c .././main_func.h \
  d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\version.h \
  d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\fuse.h \
  d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\lock.h \
- d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h
+ d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h \
+ d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay.h \
+ d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h \
+ d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h
 
-.././main_func.h:
+.././USART.h:
 
 .././main_defines.h:
 
@@ -46,3 +48,9 @@ d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\fuse.h:
 d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\lock.h:
 
 d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h:
+
+d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay.h:
+
+d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h:
+
+d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h:

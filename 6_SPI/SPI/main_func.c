@@ -4,9 +4,8 @@
  * Created: 9/26/2022 11:12:11 AM
  *  Author: Sergiu Maier
  */ 
+
 #include "main_func.h"
-#include "main_defines.h"
-#include "USART_func.h"
 
 void timer_init(){
 	
@@ -23,6 +22,53 @@ void init_devices(){
 	timer_init();
 	
 	sei();
+}
+
+void afisare_timp(){
+	
+	SendData(CLEAR);
+	
+	itoa(secunde, ch_sec, 10);
+	itoa(minute, ch_min, 10);
+	
+	SendData("Timp:");
+	
+	if(secunde >= 60)
+	{
+		minute++;
+		secunde = 0;
+	}
+	
+	if((secunde < 10) && (minute == 0))
+	{
+		SendData(" 00:0");
+		SendData(ch_sec);
+	}
+	else if((secunde >= 10) && (minute == 0))
+	{
+		SendData(" 00:");
+		SendData(ch_sec);
+	}
+	else if((secunde < 10) && (minute < 10))
+	{
+		SendData(" 0");
+		SendData(ch_min);
+		SendData(":0");
+		SendData(ch_sec);
+	}
+	else if((secunde >= 10) && (minute < 10))
+	{
+		SendData(" 0");
+		SendData(ch_min);
+		SendData(":");
+		SendData(ch_sec);
+	}
+	else if((secunde >= 10) && (minute >= 10))
+	{
+		SendData(ch_min);
+		SendData(":");
+		SendData(ch_sec);
+	}
 }
 
 ISR(TIMER0_COMPA_vect){
