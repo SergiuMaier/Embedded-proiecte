@@ -26,8 +26,6 @@ void init_devices(){
 
 void afisare_timp(){
 	
-	SendData(CLEAR);	
-	
 	itoa(secunde, ch_sec, 10);
 	itoa(minute, ch_min, 10);
 	
