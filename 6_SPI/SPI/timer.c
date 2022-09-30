@@ -36,11 +36,11 @@ void afisare_timp(){
 		minute++;
 		secunde = 0;
 	}
-	else if((secunde >= 10) && (minute == 0))
-	{
-		SendData(" 00:");
-		SendData(ch_sec);
-	}
+	//else if((secunde >= 10) && (minute == 0))
+	//{
+		//SendData(" 00:");
+		//SendData(ch_sec);
+	//}
 	else if((secunde < 10) && (minute < 10))
 	{
 		SendData(" 0");
