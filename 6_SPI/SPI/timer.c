@@ -34,27 +34,27 @@ void afisare_timp(){
 		SendData(CLEAR);
 		SendData("Timp: ");
 		
-		if((secunde < 10) && (minute < 10))
+		if((secunde <= 10) && (minute <= 10))
 		{
 			SendData(" 0");
 			SendData(ch_min);
 			SendData(":0");
 			SendData(ch_sec);
 		}
-		else if((secunde < 10) && (minute >= 10))
+		else if((secunde <= 10) && (minute > 10))
 		{
 			SendData(ch_min);
 			SendData(":0");
 			SendData(ch_sec);
 		}
-		else if((secunde >= 10) && (minute < 10))
+		else if((secunde > 10) && (minute <= 10))
 		{
 			SendData(" 0");
 			SendData(ch_min);
 			SendData(":");
 			SendData(ch_sec);
 		}
-		else if((secunde >= 10) && (minute >= 10))
+		else if((secunde > 10) && (minute > 10))
 		{
 			SendData(ch_min);
 			SendData(":");
