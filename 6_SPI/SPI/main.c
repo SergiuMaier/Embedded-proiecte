@@ -6,7 +6,7 @@
  */ 
 
 #include "USART.h"
-#include "main_func.h"
+#include "timer.h"
 
 int main(void)
 {	

@@ -4,7 +4,7 @@
 
 main.c
 
-main_func.c
+timer.c
 
 USART.c
 

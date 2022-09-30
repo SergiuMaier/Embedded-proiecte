@@ -38,7 +38,7 @@ SUBDIRS :=
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
 ../main.c \
-../main_func.c \
+../timer.c \
 ../USART.c
 
 
@@ -50,22 +50,22 @@ ASM_SRCS +=
 
 OBJS +=  \
 main.o \
-main_func.o \
+timer.o \
 USART.o
 
 OBJS_AS_ARGS +=  \
 main.o \
-main_func.o \
+timer.o \
 USART.o
 
 C_DEPS +=  \
 main.d \
-main_func.d \
+timer.d \
 USART.d
 
 C_DEPS_AS_ARGS +=  \
 main.d \
-main_func.d \
+timer.d \
 USART.d
 
 OUTPUT_FILE_PATH +=SPI.elf
@@ -89,7 +89,7 @@ LINKER_SCRIPT_DEP+=
 	@echo Finished building: $<
 	
 
-./main_func.o: .././main_func.c
+./timer.o: .././timer.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)D:\DRIVERE\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"D:\DRIVERE\7.0\Packs\atmel\ATmega_DFP\1.7.374\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega328p -B "D:\DRIVERE\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega328p" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 

@@ -126,10 +126,10 @@
     <Compile Include="main_defines.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="main_func.c">
+    <Compile Include="timer.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="main_func.h">
+    <Compile Include="timer.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="USART.c">

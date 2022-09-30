@@ -18,7 +18,7 @@ void USART_Init(uint16_t ubrr)
 	sei();
 }
 
-ISR(USART_UDRE_vect){
+ISR(USART_UDRE_vect){ //apelata atunci cand se pot trimite info
 
 	flag = 1;
 
