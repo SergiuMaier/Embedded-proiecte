@@ -14,7 +14,7 @@ int main(void)
 	USART_Init(MYUBRR);
 	
 	while(1) 
-    { 			
+    { 		
 		SendData(CLEAR);
 		afisare_timp();
     }

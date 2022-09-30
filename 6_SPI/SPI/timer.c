@@ -36,14 +36,15 @@ void afisare_timp(){
 		minute++;
 		secunde = 0;
 	}
-	//else if((secunde >= 10) && (minute == 0))
-	//{
-		//SendData(" 00:");
-		//SendData(ch_sec);
-	//}
 	else if((secunde < 10) && (minute < 10))
 	{
 		SendData(" 0");
+		SendData(ch_min);
+		SendData(":0");
+		SendData(ch_sec);
+	}
+	else if((secunde < 10) && (minute >= 10))
+	{
 		SendData(ch_min);
 		SendData(":0");
 		SendData(ch_sec);
@@ -67,6 +68,7 @@ ISR(TIMER0_COMPA_vect){
 	
 	cli();
 	
+	flag_timer = 1;
 	contor++;
 	
 	if(contor >= 1000){

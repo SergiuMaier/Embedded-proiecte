@@ -6,6 +6,8 @@
  */ 
 
 #include "USART.h"
+#include "timer.h"
+extern uint8_t flag_timer;
 
 void USART_Init(uint16_t ubrr){
 	
@@ -20,7 +22,7 @@ void USART_Init(uint16_t ubrr){
 
 ISR(USART_UDRE_vect){ //apelata atunci cand se pot trimite info
 
-	flag = 1;
+	flag = 1;		
 
 }
 
@@ -28,10 +30,13 @@ void SendData(char *c){
 
 	while(*c != '\0')
 	{	
-		if(flag == 1){
+		if((flag == 1) && (flag_timer == 1))
+		{
 			UDR0 = *c;
 			c++;
+			
 			flag = 0;
+			flag_timer = 0;
 		}
 	}
 }

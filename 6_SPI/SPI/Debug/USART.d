@@ -15,7 +15,8 @@ USART.d USART.o: .././USART.c .././USART.h .././main_defines.h \
  d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h \
  d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay.h \
  d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h \
- d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h
+ d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h \
+ .././timer.h
 
 .././USART.h:
 
@@ -54,3 +55,5 @@ d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay.h:
 d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h:
 
 d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h:
+
+.././timer.h:

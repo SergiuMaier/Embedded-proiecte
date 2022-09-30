@@ -9,6 +9,7 @@
 #define MAIN_FUNC_H_
 
 #include "main_defines.h"
+
 #include <util/delay.h>
 
 volatile uint8_t flag;
