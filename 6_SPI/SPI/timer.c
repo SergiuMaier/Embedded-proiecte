@@ -28,39 +28,40 @@ void afisare_timp(){
 	
 	itoa(secunde, ch_sec, 10);
 	itoa(minute, ch_min, 10);
-	
-	SendData("Timp:");
-	
-	if(secunde >= 60)
-	{
-		minute++;
-		secunde = 0;
-	}
-	else if((secunde < 10) && (minute < 10))
-	{
-		SendData(" 0");
-		SendData(ch_min);
-		SendData(":0");
-		SendData(ch_sec);
-	}
-	else if((secunde < 10) && (minute >= 10))
-	{
-		SendData(ch_min);
-		SendData(":0");
-		SendData(ch_sec);
-	}
-	else if((secunde >= 10) && (minute < 10))
-	{
-		SendData(" 0");
-		SendData(ch_min);
-		SendData(":");
-		SendData(ch_sec);
-	}
-	else if((secunde >= 10) && (minute >= 10))
-	{
-		SendData(ch_min);
-		SendData(":");
-		SendData(ch_sec);
+		
+	if(flag_timer == 1)
+	{	
+		SendData(CLEAR);
+		SendData("Timp: ");
+		
+		if((secunde < 10) && (minute < 10))
+		{
+			SendData(" 0");
+			SendData(ch_min);
+			SendData(":0");
+			SendData(ch_sec);
+		}
+		else if((secunde < 10) && (minute >= 10))
+		{
+			SendData(ch_min);
+			SendData(":0");
+			SendData(ch_sec);
+		}
+		else if((secunde >= 10) && (minute < 10))
+		{
+			SendData(" 0");
+			SendData(ch_min);
+			SendData(":");
+			SendData(ch_sec);
+		}
+		else if((secunde >= 10) && (minute >= 10))
+		{
+			SendData(ch_min);
+			SendData(":");
+			SendData(ch_sec);
+		}
+		
+		flag_timer = 0;
 	}
 }
 
@@ -68,12 +69,18 @@ ISR(TIMER0_COMPA_vect){
 	
 	cli();
 	
-	flag_timer = 1;
 	contor++;
 	
 	if(contor >= 1000){
 		secunde++;
+		flag_timer = 1;
 		contor = 0;
+		
+		if(secunde >= 60)
+		{
+			minute++;
+			secunde = 0;
+		}
 	}
 	
 	sei();

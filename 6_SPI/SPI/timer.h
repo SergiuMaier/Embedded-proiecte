@@ -11,6 +11,8 @@
 
 #include "main_defines.h"
 
+#include <string.h>
+
 volatile uint16_t contor, secunde, minute;
 char ch_sec[100], ch_min[100];
 uint8_t flag_timer;
