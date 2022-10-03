@@ -32,20 +32,20 @@ void afisare_timp(){
 	if(flag_timer == 1)
 	{	
 		SendData(CLEAR);
-		SendData("Timp: ");
+		SendData("Timp:  ");
+		
+		//Timp:  00:00
 		
 		if(minute < 10)
 		{
-			SendData(" 0");
+			SendData("0");
 			SendData(ch_min);
 		}
 		else
-		{
-			SendData(" ");
 			SendData(ch_min);
-		}
 		
-		if(secunde <= 10){
+		if((secunde >= 1) && (secunde <= 10)) //interval pt rezolvare bug 00:059
+		{
 			SendData(":0");
 			SendData(ch_sec);
 		}
@@ -54,33 +54,6 @@ void afisare_timp(){
 			SendData(":");
 			SendData(ch_sec);
 		}
-		
-		//if((secunde <= 10) && (minute <= 10))
-		//{
-			//SendData(" 0");
-			//SendData(ch_min);
-			//SendData(":0");
-			//SendData(ch_sec);
-		//}
-		//else if((secunde <= 10) && (minute > 10))
-		//{
-			//SendData(ch_min);
-			//SendData(":0");
-			//SendData(ch_sec);
-		//}
-		//else if((secunde > 10) && (minute <= 10))
-		//{
-			//SendData(" 0");
-			//SendData(ch_min);
-			//SendData(":");
-			//SendData(ch_sec);
-		//}
-		//else if((secunde > 10) && (minute > 10))
-		//{
-			//SendData(ch_min);
-			//SendData(":");
-			//SendData(ch_sec);
-		//}
 		
 		flag_timer = 0;
 	}
