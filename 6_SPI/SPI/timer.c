@@ -32,7 +32,9 @@ void afisare_timp(){
 	if(flag_timer == 1)
 	{	
 		SendData(CLEAR);
-		SendData("Timp:  ");
+		SendData("  _____________\n\r");
+		SendData(" |");
+		SendData(" Timp: ");
 		
 		//Timp:  00:00
 		
@@ -54,9 +56,11 @@ void afisare_timp(){
 			SendData(":");
 			SendData(ch_sec);
 		}
-		
+		SendData(" |");
 		flag_timer = 0;
 	}
+	
+	
 }
 
 ISR(TIMER0_COMPA_vect){
