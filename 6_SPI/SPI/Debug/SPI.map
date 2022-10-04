@@ -37,17 +37,11 @@ Discarded input sections
  .text          0x00000000        0x0 timer.o
  .data          0x00000000        0x0 timer.o
  .bss           0x00000000        0x0 timer.o
- .rodata.str1.1
-                0x00000000       0x49 timer.o
- .text.afisare_timp
-                0x00000000       0xc4 timer.o
  .text.introducere_mesaj
                 0x00000000       0x12 timer.o
  .text          0x00000000        0x0 USART.o
  .data          0x00000000        0x0 USART.o
  .bss           0x00000000        0x0 USART.o
- .text.SendData
-                0x00000000       0x1e USART.o
  .text          0x00000000        0x0 d:/drivere/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
  .data          0x00000000        0x0 d:/drivere/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
  .bss           0x00000000        0x0 d:/drivere/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
@@ -113,18 +107,12 @@ Discarded input sections
  .text          0x00000000        0x0 d:/drivere/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(itoa_ncheck.o)
  .data          0x00000000        0x0 d:/drivere/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(itoa_ncheck.o)
  .bss           0x00000000        0x0 d:/drivere/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(itoa_ncheck.o)
- .text.avr-libc
-                0x00000000       0x16 d:/drivere/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(itoa_ncheck.o)
  .text          0x00000000        0x0 d:/drivere/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(utoa_ncheck.o)
  .data          0x00000000        0x0 d:/drivere/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(utoa_ncheck.o)
  .bss           0x00000000        0x0 d:/drivere/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(utoa_ncheck.o)
- .text.avr-libc
-                0x00000000       0x34 d:/drivere/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(utoa_ncheck.o)
  .text          0x00000000        0x0 d:/drivere/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(strrev.o)
  .data          0x00000000        0x0 d:/drivere/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(strrev.o)
  .bss           0x00000000        0x0 d:/drivere/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(strrev.o)
- .text.avr-libc
-                0x00000000       0x20 d:/drivere/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(strrev.o)
 
 Memory Configuration
 
@@ -254,7 +242,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0x242
+.text           0x00000000      0x392
  *(.vectors)
  .vectors       0x00000000       0x68 D:/DRIVERE/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega328p/avr5/crtatmega328p.o
                 0x00000000                __vector_default
@@ -338,34 +326,50 @@ END GROUP
                 0x000000a2                __vector_20
                 0x000000a6                . = ALIGN (0x2)
  *(.text.*)
- .text.main     0x000000a6        0xe main.o
+ .text.main     0x000000a6       0x12 main.o
                 0x000000a6                main
  .text.timer_init
-                0x000000b4       0x1c timer.o
-                0x000000b4                timer_init
+                0x000000b8       0x1c timer.o
+                0x000000b8                timer_init
  .text.init_devices
-                0x000000d0        0xa timer.o
-                0x000000d0                init_devices
+                0x000000d4        0xa timer.o
+                0x000000d4                init_devices
+ .text.afisare_timp
+                0x000000de       0xc4 timer.o
+                0x000000de                afisare_timp
  .text.__vector_14
-                0x000000da       0xda timer.o
-                0x000000da                __vector_14
+                0x000001a2       0xda timer.o
+                0x000001a2                __vector_14
  .text.USART_Init
-                0x000001b4       0x26 USART.o
-                0x000001b4                USART_Init
+                0x0000027c       0x26 USART.o
+                0x0000027c                USART_Init
  .text.__vector_19
-                0x000001da       0x1e USART.o
-                0x000001da                __vector_19
+                0x000002a2       0x1e USART.o
+                0x000002a2                __vector_19
  .text.__vector_18
-                0x000001f8       0x28 USART.o
-                0x000001f8                __vector_18
+                0x000002c0       0x28 USART.o
+                0x000002c0                __vector_18
+ .text.SendData
+                0x000002e8       0x1e USART.o
+                0x000002e8                SendData
  .text.libgcc.mul
-                0x00000220       0x1e d:/drivere/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_umulhisi3.o)
-                0x00000220                __umulhisi3
-                0x0000023e                . = ALIGN (0x2)
+                0x00000306       0x1e d:/drivere/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_umulhisi3.o)
+                0x00000306                __umulhisi3
+ .text.avr-libc
+                0x00000324       0x16 d:/drivere/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(itoa_ncheck.o)
+                0x00000324                __itoa_ncheck
+ .text.avr-libc
+                0x0000033a       0x34 d:/drivere/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(utoa_ncheck.o)
+                0x0000033a                __utoa_ncheck
+                0x0000033c                __utoa_common
+ .text.avr-libc
+                0x0000036e       0x20 d:/drivere/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(strrev.o)
+                0x0000036e                strrev
+                0x0000038e                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x0000023e        0x0 d:/drivere/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
-                0x0000023e                _exit
-                0x0000023e                exit
+ .fini9         0x0000038e        0x0 d:/drivere/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+                0x0000038e                _exit
+                0x0000038e                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -384,46 +388,50 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x0000023e        0x4 d:/drivere/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+ .fini0         0x0000038e        0x4 d:/drivere/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x00000242                _etext = .
+                0x00000392                _etext = .
 
-.data           0x00800100        0x0 load address 0x00000242
+.data           0x00800100       0x48 load address 0x00000392
                 0x00800100                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
  *(.gnu.linkonce.d*)
  *(.rodata)
  *(.rodata*)
+ .rodata.str1.1
+                0x00800100       0x47 timer.o
+                                 0x49 (size before relaxing)
  *(.gnu.linkonce.r*)
-                0x00800100                . = ALIGN (0x2)
-                0x00800100                _edata = .
-                0x00800100                PROVIDE (__data_end, .)
+                0x00800148                . = ALIGN (0x2)
+ *fill*         0x00800147        0x1 
+                0x00800148                _edata = .
+                0x00800148                PROVIDE (__data_end, .)
 
-.bss            0x00800100       0xd1
-                0x00800100                PROVIDE (__bss_start, .)
+.bss            0x00800148       0xd1
+                0x00800148                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
  *(COMMON)
- COMMON         0x00800100        0x2 main.o
-                0x00800100                flag_rx
-                0x00800101                flag_tx
- COMMON         0x00800102       0xcf timer.o
-                0x00800102                flag_timer
-                0x00800103                minute
-                0x00800105                secunde
-                0x00800107                contor
-                0x00800109                ch_min
-                0x0080016d                ch_sec
-                0x008001d1                PROVIDE (__bss_end, .)
-                0x00000242                __data_load_start = LOADADDR (.data)
-                0x00000242                __data_load_end = (__data_load_start + SIZEOF (.data))
+ COMMON         0x00800148        0x2 main.o
+                0x00800148                flag_rx
+                0x00800149                flag_tx
+ COMMON         0x0080014a       0xcf timer.o
+                0x0080014a                flag_timer
+                0x0080014b                minute
+                0x0080014d                secunde
+                0x0080014f                contor
+                0x00800151                ch_min
+                0x008001b5                ch_sec
+                0x00800219                PROVIDE (__bss_end, .)
+                0x00000392                __data_load_start = LOADADDR (.data)
+                0x000003da                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x008001d1        0x0
+.noinit         0x00800219        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
  *(.noinit*)
                 [!provide]                PROVIDE (__noinit_end, .)
-                0x008001d1                _end = .
+                0x00800219                _end = .
                 [!provide]                PROVIDE (__heap_start, .)
 
 .eeprom         0x00810000        0x0
@@ -502,26 +510,26 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000      0xcbd
+.debug_info     0x00000000      0xcf4
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x5f4 D:/DRIVERE/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega328p/avr5/crtatmega328p.o
- .debug_info    0x000005f4      0x101 main.o
- .debug_info    0x000006f5      0x488 timer.o
- .debug_info    0x00000b7d      0x140 USART.o
+ .debug_info    0x000005f4      0x138 main.o
+ .debug_info    0x0000072c      0x488 timer.o
+ .debug_info    0x00000bb4      0x140 USART.o
 
-.debug_abbrev   0x00000000      0x8e0
+.debug_abbrev   0x00000000      0x8eb
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0x5a2 D:/DRIVERE/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega328p/avr5/crtatmega328p.o
- .debug_abbrev  0x000005a2       0xbc main.o
- .debug_abbrev  0x0000065e      0x1af timer.o
- .debug_abbrev  0x0000080d       0xd3 USART.o
+ .debug_abbrev  0x000005a2       0xc7 main.o
+ .debug_abbrev  0x00000669      0x1af timer.o
+ .debug_abbrev  0x00000818       0xd3 USART.o
 
-.debug_line     0x00000000      0x4e1
+.debug_line     0x00000000      0x4eb
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x134 D:/DRIVERE/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega328p/avr5/crtatmega328p.o
- .debug_line    0x00000134       0x99 main.o
- .debug_line    0x000001cd      0x1ea timer.o
- .debug_line    0x000003b7      0x12a USART.o
+ .debug_line    0x00000134       0xa3 main.o
+ .debug_line    0x000001d7      0x1ea timer.o
+ .debug_line    0x000003c1      0x12a USART.o
 
 .debug_frame    0x00000000      0x144
  *(.debug_frame)
@@ -532,9 +540,9 @@ END GROUP
 .debug_str      0x00000000      0x445
  *(.debug_str)
  .debug_str     0x00000000      0x208 D:/DRIVERE/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega328p/avr5/crtatmega328p.o
- .debug_str     0x00000208      0x163 main.o
-                                0x197 (size before relaxing)
- .debug_str     0x0000036b       0xb0 timer.o
+ .debug_str     0x00000208      0x170 main.o
+                                0x1a4 (size before relaxing)
+ .debug_str     0x00000378       0xa3 timer.o
                                 0x225 (size before relaxing)
  .debug_str     0x0000041b       0x2a USART.o
                                 0x1ba (size before relaxing)

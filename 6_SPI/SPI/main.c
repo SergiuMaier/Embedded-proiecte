@@ -15,7 +15,7 @@ int main(void)
 	
 	while(1) 
     { 	
-		//afisare_timp();
+		afisare_timp();
     }
 }
 
