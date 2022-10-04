@@ -15,7 +15,7 @@
 volatile uint8_t flag_tx;
 volatile uint8_t flag_rx;
 
-void USART_Init(uint16_t ubrr);
+void init_USART(uint16_t ubrr);
 
 void SendData(char *c);
 

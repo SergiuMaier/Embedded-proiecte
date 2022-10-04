@@ -14,10 +14,10 @@
 #include <string.h>
 
 volatile uint16_t contor, secunde, minute;
-char ch_sec[100], ch_min[100];
+char ch_sec[10], ch_min[10];
 uint8_t flag_timer;
 
-void timer_init();
+void init_timer();
 
 void init_devices();
 

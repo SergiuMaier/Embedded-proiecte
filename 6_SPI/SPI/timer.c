@@ -7,7 +7,7 @@
 
 #include "timer.h"
 
-void timer_init(){
+void init_timer(){
 	
 	TCCR0A |= (1 << WGM01)|(0 << WGM00);           //mod ctc
 	OCR0A = 0xF9;                                  //duty cycle 10ms
@@ -19,7 +19,7 @@ void init_devices(){
 	
 	cli();
 	
-	timer_init();
+	init_timer();
 	
 	sei();
 }
@@ -29,34 +29,38 @@ void afisare_timp(){
 	itoa(secunde, ch_sec, 10);
 	itoa(minute, ch_min, 10);
 		
-	if(flag_timer == 1){
-			
+	if(flag_timer == 1)
+	{	
 		SendData(CLEAR);
 		
-		SendData(" .-------------.\n\r");
+		SendData("\n\r");
+		SendData(" |-------------|\n\r");
 		SendData(" |");
 		SendData(" Timp: ");
 		
 		//Timp:  00:00
 		
-		if(minute < 10){
+		if(minute < 10)
+		{
 			SendData("0");
 			SendData(ch_min);
 		}
 		else
 			SendData(ch_min);
 		
-		if((secunde >= 1) && (secunde <= 10)){ //interval pt rezolvare bug 00:059
+		if((secunde >= 1) && (secunde <= 10)) //interval pt rezolvare bug 00:059
+		{
 			SendData(":0");
 			SendData(ch_sec);
 		}
-		else{
+		else
+		{
 			SendData(":");
 			SendData(ch_sec);
 		}
 		
 		SendData(" |\n\r");
-		SendData(" '-------------'");
+		SendData(" |-------------|");
 		
 		flag_timer = 0;
 	}

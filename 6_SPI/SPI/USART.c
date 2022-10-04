@@ -8,7 +8,7 @@
 #include "USART.h"
 #include "timer.h"
 
-void USART_Init(uint16_t ubrr){
+void init_USART(uint16_t ubrr){
 	
 	UBRR0H = (unsigned char)(ubrr >> 8);
 	UBRR0L = (unsigned char)ubrr;
