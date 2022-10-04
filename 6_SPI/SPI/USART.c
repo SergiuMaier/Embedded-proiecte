@@ -2,7 +2,7 @@
  * main_func.c
  *
  * Created: 9/29/2022 11:46:57 AM
- *  Author: Sergiu Maier
+ * Author: Sergiu Maier
  */ 
 
 #include "USART.h"
@@ -21,25 +21,27 @@ void USART_Init(uint16_t ubrr){
 
 ISR(USART_UDRE_vect){ //apelata atunci cand se pot trimite info
 
-	flag = 1;	
+	flag_tx = 1;	
 }
 
 ISR(USART_RX_vect){
 
 	char rec;
-	rec = UDR0;   //preiau valoarea receptata 
-	UDR0 = rec;   //echo 
+	
+	rec = UDR0;
+	UDR0 = rec;
+	
 }
 
 void SendData(char *c){
 	
 	while(*c != '\0')
 	{
-		if(flag == 1)
+		if(flag_tx == 1)
 		{			
 			UDR0 = *c;
 			c++;
-			flag = 0;
+			flag_tx = 0;
 		}
 	}
 }

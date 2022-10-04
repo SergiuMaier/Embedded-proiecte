@@ -29,37 +29,45 @@ void afisare_timp(){
 	itoa(secunde, ch_sec, 10);
 	itoa(minute, ch_min, 10);
 		
-	if(flag_timer == 1)
-	{	
+	if(flag_timer == 1){
+			
 		SendData(CLEAR);
-		SendData("  _____________\n\r");
+		
+		SendData(" .-------------.\n\r");
 		SendData(" |");
 		SendData(" Timp: ");
 		
 		//Timp:  00:00
 		
-		if(minute < 10)
-		{
+		if(minute < 10){
 			SendData("0");
 			SendData(ch_min);
 		}
 		else
 			SendData(ch_min);
 		
-		if((secunde >= 1) && (secunde <= 10)) //interval pt rezolvare bug 00:059
-		{
+		if((secunde >= 1) && (secunde <= 10)){ //interval pt rezolvare bug 00:059
 			SendData(":0");
 			SendData(ch_sec);
 		}
-		else
-		{
+		else{
 			SendData(":");
 			SendData(ch_sec);
 		}
-		SendData(" |");
+		
+		SendData(" |\n\r");
+		SendData(" '-------------'");
+		
 		flag_timer = 0;
 	}
+}
+
+void introducere_mesaj(){
 	
+	//SendData(CLEAR);
+	
+	SendData("\n\r\n\r");
+	SendData("<pla>");
 	
 }
 

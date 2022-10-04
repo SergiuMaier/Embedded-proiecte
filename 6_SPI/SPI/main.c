@@ -14,8 +14,8 @@ int main(void)
 	USART_Init(MYUBRR);
 	
 	while(1) 
-    { 		
-		afisare_timp();
+    { 	
+		//afisare_timp();
     }
 }
 

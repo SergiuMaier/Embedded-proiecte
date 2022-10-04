@@ -23,6 +23,8 @@ void init_devices();
 
 void afisare_timp();
 
+void introducere_mesaj();
+
 ISR(TIMER0_COMPA_vect);
 
 #endif /* MAIN_FUNC_H_ */
