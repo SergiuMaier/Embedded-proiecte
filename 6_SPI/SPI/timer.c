@@ -29,6 +29,12 @@ void afisare_timp(){
 	itoa(secunde, ch_sec, 10);
 	itoa(minute, ch_min, 10);
 		
+	if(secunde >= 60)	//in ISR aveam 01:59 in loc de 01:00
+	{
+		secunde %= 60;
+		minute++;
+	}	
+		
 	if(flag_timer == 1)
 	{	
 		SendData(CLEAR);
@@ -71,7 +77,7 @@ void introducere_mesaj(){
 	//SendData(CLEAR);
 	
 	SendData("\n\r\n\r");
-	SendData("<pla>");
+	SendData("<txt>");
 	
 }
 
@@ -82,15 +88,9 @@ ISR(TIMER0_COMPA_vect){
 	contor++;
 	
 	if(contor >= 1000){
-		++secunde;
-		flag_timer = 1;
+		secunde++;
 		contor = 0;
-		
-		if(secunde >= 60)
-		{
-			secunde %= 60;
-			++minute;
-		}
+		flag_timer = 1;
 	}
 	
 	sei();
