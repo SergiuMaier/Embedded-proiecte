@@ -15,15 +15,15 @@
 
 volatile uint16_t contor, secunde, minute;
 char ch_sec[10], ch_min[10];
-uint8_t flag_timer;
+volatile uint8_t flag_timer;
 
 void init_timer();
 
 void init_devices();
 
-void afisare_timp();
+void rand_nou();
 
-void introducere_mesaj();
+void afisare_timp();
 
 ISR(TIMER0_COMPA_vect);
 

@@ -13,7 +13,7 @@ void init_USART(uint16_t ubrr){
 	UBRR0H = (unsigned char)(ubrr >> 8);
 	UBRR0L = (unsigned char)ubrr;
 	UCSR0B |= (1 << RXEN0)|(1 << TXEN0);
-	UCSR0B |= (1 << RXCIE0)|(1 << UDRIE0);//(1 << TXCIE0)	
+	UCSR0B |= (1 << RXCIE0)|(1 << UDRIE0);//(1 << TXCIE0);	
 	UCSR0C |= (1 << USBS0)|(3 << UCSZ00);
 	
 	sei();
@@ -24,24 +24,51 @@ ISR(USART_UDRE_vect){ //apelata atunci cand se pot trimite info
 	flag_tx = 1;	
 }
 
-ISR(USART_RX_vect){
-
-	char rec;
-	
-	rec = UDR0;
-	UDR0 = rec;
-	
-}
-
-void SendData(char *c){
+void send_data(char *c){
 	
 	while(*c != '\0')
 	{
 		if(flag_tx == 1)
-		{			
+		{
 			UDR0 = *c;
 			c++;
 			flag_tx = 0;
 		}
 	}
 }
+
+ISR(USART_RX_vect){
+	
+	flag_rx = 1;
+}
+
+void receive_data(){
+	
+	char c;
+
+	if(flag_rx == 1)
+	{	
+		c = UDR0;
+		UDR0 = c; //echo, afisez ce tastez
+		
+		switch(c){
+			case '1': //send_data(CLEAR);
+			          rand_nou();
+					  flag_afisare_timp = 1;
+			          break;
+			
+			case '2': send_data(CLEAR);
+					  rand_nou();
+					  flag_afisare_timp = 0;
+			          break;
+			
+			default: send_data("\n\rNAN\n\r");
+					 rand_nou();		  
+					 break;
+		}
+		
+		flag_rx = 0;
+	}		
+}
+
+

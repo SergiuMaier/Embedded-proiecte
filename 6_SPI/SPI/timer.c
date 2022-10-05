@@ -24,6 +24,11 @@ void init_devices(){
 	sei();
 }
 
+void rand_nou(){ //apelata in fiecare functie afisata
+	
+	send_data("\n\r>>");
+}
+
 void afisare_timp(){
 	
 	itoa(secunde, ch_sec, 10);
@@ -37,49 +42,43 @@ void afisare_timp(){
 		
 	if(flag_timer == 1)
 	{	
-		SendData(CLEAR);
+		send_data(CLEAR);
 		
-		SendData("\n\r");
-		SendData(" |-------------|\n\r");
-		SendData(" |");
-		SendData(" Timp: ");
+		send_data("\n\r");
+		send_data(" |-------------|\n\r");
+		send_data(" |");
+		send_data(" Timp: ");
 		
 		//Timp:  00:00
 		
 		if(minute < 10)
 		{
-			SendData("0");
-			SendData(ch_min);
+			send_data("0");
+			send_data(ch_min);
 		}
 		else
-			SendData(ch_min);
+			send_data(ch_min);
 		
 		if((secunde >= 1) && (secunde <= 10)) //interval pt rezolvare bug 00:059
 		{
-			SendData(":0");
-			SendData(ch_sec);
+			send_data(":0");
+			send_data(ch_sec);
 		}
 		else
 		{
-			SendData(":");
-			SendData(ch_sec);
+			send_data(":");
+			send_data(ch_sec);
 		}
 		
-		SendData(" |\n\r");
-		SendData(" |-------------|");
+		send_data(" |\n\r");
+		send_data(" |-------------|");
+		send_data("\n\r\n\r");
+		
+		rand_nou();
 		
 		flag_timer = 0;
 	}
-}
-
-void introducere_mesaj(){
-	
-	//SendData(CLEAR);
-	
-	SendData("\n\r\n\r");
-	SendData("<txt>");
-	
-}
+} 
 
 ISR(TIMER0_COMPA_vect){
 	
