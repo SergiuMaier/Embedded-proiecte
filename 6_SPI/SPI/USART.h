@@ -17,11 +17,14 @@ volatile uint8_t flag_rx;
 volatile uint8_t afiseaza_timp;
 uint8_t flag_afisare_timp;
 
-
 void init_USART(uint16_t ubrr);
 
 void send_data(char *c);
 
+void receive_data();
+
 ISR(USART_UDRE_vect);
+
+ISR(USART_RX_vect);
 
 #endif /* MAIN_FUNC_H_ */
