@@ -21,8 +21,6 @@ void init_timer();
 
 void init_devices();
 
-void rand_nou();
-
 void afisare_timp();
 
 ISR(TIMER0_COMPA_vect);

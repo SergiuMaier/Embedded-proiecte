@@ -37,38 +37,4 @@ void send_data(char *c){
 	}
 }
 
-ISR(USART_RX_vect){
-	
-	flag_rx = 1;
-}
-
-void receive_data(){
-	
-	char c;
-
-	if(flag_rx == 1)
-	{	
-		c = UDR0;
-		UDR0 = c; //echo, afisez ce tastez
-		
-		switch(c){
-			case '1': //send_data(CLEAR);
-			          rand_nou();
-					  flag_afisare_timp = 1;
-			          break;
-			
-			case '2': send_data(CLEAR);
-					  rand_nou();
-					  flag_afisare_timp = 0;
-			          break;
-			
-			default: send_data("\n\rNAN\n\r");
-					 rand_nou();		  
-					 break;
-		}
-		
-		flag_rx = 0;
-	}		
-}
-
 

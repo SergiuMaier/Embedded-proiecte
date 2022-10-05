@@ -24,11 +24,6 @@ void init_devices(){
 	sei();
 }
 
-void rand_nou(){ //apelata in fiecare functie afisata
-	
-	send_data("\n\r>>");
-}
-
 void afisare_timp(){
 	
 	itoa(secunde, ch_sec, 10);
@@ -73,8 +68,6 @@ void afisare_timp(){
 		send_data(" |\n\r");
 		send_data(" |-------------|");
 		send_data("\n\r\n\r");
-		
-		rand_nou();
 		
 		flag_timer = 0;
 	}
