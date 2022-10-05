@@ -522,12 +522,12 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000      0xe87
+.debug_info     0x00000000      0xe66
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x5f4 D:/DRIVERE/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega328p/avr5/crtatmega328p.o
- .debug_info    0x000005f4      0x1e9 main.o
- .debug_info    0x000007dd      0x4b6 timer.o
- .debug_info    0x00000c93      0x1f4 USART.o
+ .debug_info    0x000005f4      0x1c8 main.o
+ .debug_info    0x000007bc      0x4b6 timer.o
+ .debug_info    0x00000c72      0x1f4 USART.o
 
 .debug_abbrev   0x00000000      0x942
  *(.debug_abbrev)
