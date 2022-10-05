@@ -22,15 +22,15 @@
    - implementarea în noile fișiere stimer.h și stimer.c;
    - realizare funcții pentru creare, update și reset timer;
   
-- [4_pwm](./4_pwm/Project)
+- [4_timer0_pwm](./4_timer0_pwm/Project)
 
   - implementare Timer0 cu PWM (explicații în cod);
   - modificarea intensitații unui LED;
    
-- [5_librarie_hc_sr04](./5_librarie_hc_sr04/Project)
+- [5_hcsr04_lib](./5_hcsr04_lib/Project)
   - creare librarie pentru senzorul cu ultrasunete care poate fi inclusa in viitoarele proiecte;
   
-- [6_spi_cronometru](./6_SPI/SPI)
+- [6_spi_cronometru](./6_spi_cronometru/SPI)
   - afisare cronometru pe seriala;
   - s-a folosit intreruperea pt USART;
   
