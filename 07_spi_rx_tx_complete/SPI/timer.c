@@ -19,6 +19,10 @@ void init_devices(){
 	
 	cli();
 	
+	//init_porturi:
+	DDRB = 0x01;
+	PORTB = 0x00;
+	
 	init_timer();
 	
 	sei();
@@ -48,44 +52,5 @@ void incrementare_minute(){
 	}
 }
 
-void afisare_timp(){
-	
-	incrementare_minute();	
-	
-	if(flag_timer == 1)
-	{	
-		send_data(CLEAR);
-		send_data("\n\r |-------------|-------------|\n\r");
-		send_data(" | Timp: ");
-		
-		itoa(secunde, ch_sec, 10);
-		itoa(minute, ch_min, 10);
-		
-		//format 00:00
-			
-		if(minute < 10)
-		{
-			send_data("0");
-			send_data(ch_min);
-		}
-		else
-			send_data(ch_min);
-		
-		if((secunde >= 0) && (secunde < 10)) //interval pt rezolvare bug 00:059
-		{
-			send_data(":0");
-			send_data(ch_sec);
-		}
-		else
-		{
-			send_data(":");
-			send_data(ch_sec);
-		}
-		
-		send_data(" |\n\r |-------------|-------------|\n\r");
-		new_line();
-		
-		flag_timer = 0;
-	}
-} 
+
 
