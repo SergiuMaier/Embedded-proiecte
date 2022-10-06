@@ -15,11 +15,9 @@ uint8_t flag_afisare_timp;
 uint8_t stare_led;
 
 void switch_data(char c);
-
 void new_line();
-
 void afisare_meniu();
-
+void aprinde_led();
 void afisare_program();
 
 #endif /* FUNCTII_AFISARE_H_ */

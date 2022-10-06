@@ -48,7 +48,7 @@ void receive_data(){
 	if(flag_rx == 1)
 	{	
 		c = UDR0;
-		UDR0 = c; //echo, afisez ce tastez
+		UDR0 = c; //echo, afisez ce trimit (tastez)
 		
 		switch_data(c);
 		
