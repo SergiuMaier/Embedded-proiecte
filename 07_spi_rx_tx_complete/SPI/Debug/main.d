@@ -16,7 +16,7 @@ main.d main.o: .././main.c .././USART.h .././main_defines.h \
  d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay.h \
  d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h \
  d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h \
- .././timer.h
+ .././timer.h .././functii_afisare.h
 
 .././USART.h:
 
@@ -57,3 +57,5 @@ d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h:
 d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h:
 
 .././timer.h:
+
+.././functii_afisare.h:

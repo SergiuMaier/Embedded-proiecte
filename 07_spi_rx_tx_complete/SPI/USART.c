@@ -6,7 +6,6 @@
  */ 
 
 #include "USART.h"
-#include "timer.h"
 
 void init_USART(uint16_t ubrr){
 	
@@ -51,24 +50,54 @@ void receive_data(){
 		c = UDR0;
 		UDR0 = c; //echo, afisez ce tastez
 		
-		switch(c){
-			case '1': //send_data(CLEAR);
-			          rand_nou();
-					  flag_afisare_timp = 1;
-			          break;
-			
-			case '2': send_data(CLEAR);
-					  rand_nou();
-					  flag_afisare_timp = 0;
-			          break;
-			
-			default: send_data("\n\rNAN\n\r");
-					 rand_nou();		  
-					 break;
-		}
+		switch_data(c);
 		
 		flag_rx = 0;
 	}		
 }
 
+void switch_data(char c){
+	
+	switch(c)
+	{
+		case '1': new_line();
+		          flag_afisare_timp = 1;
+		          break;
+		
+		case '2': send_data(CLEAR);
+		          send_data("\n\r Ascuns\n\r");
+				  afisare_meniu();
+		          new_line();
+		          flag_afisare_timp = 0;
+		          break;
+		
+		case '5': //new_line();
+		          stare_led = !stare_led;
+				  
+				  if(stare_led == 1)
+				  {
+					  send_data("\n\rLED ON\n\r");
+					  PORTB |= (1 << PINB0) ;
+					  new_line();
+				  }
+				  else
+				  {
+					  send_data("\n\rLED OFF\n\r");
+					  PORTB &= ~(1 << PINB0);
+					  new_line();
+				  }
+				  
+		          break;
+		
+		default: send_data("\n\rINCORECT!\n\r");
+	             afisare_meniu();
+		         new_line();
+		         break;
+	}
+}
+
+void new_line(){ //apelata in fiecare functie afisata
+	
+	send_data("\n\r>>");
+}
 

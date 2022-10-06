@@ -16,12 +16,17 @@ volatile uint8_t flag_tx;
 volatile uint8_t flag_rx;
 volatile uint8_t afiseaza_timp;
 uint8_t flag_afisare_timp;
+uint8_t stare_led;
 
 void init_USART(uint16_t ubrr);
 
 void send_data(char *c);
 
 void receive_data();
+
+void switch_data(char c);
+
+void new_line();
 
 ISR(USART_UDRE_vect);
 

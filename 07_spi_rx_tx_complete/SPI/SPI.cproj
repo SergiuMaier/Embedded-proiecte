@@ -120,6 +120,12 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="functii_afisare.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="functii_afisare.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="main.c">
       <SubType>compile</SubType>
     </Compile>

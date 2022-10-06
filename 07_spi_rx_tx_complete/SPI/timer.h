@@ -21,7 +21,7 @@ void init_timer();
 
 void init_devices();
 
-void rand_nou();
+void incrementare_minute();
 
 void afisare_timp();
 
