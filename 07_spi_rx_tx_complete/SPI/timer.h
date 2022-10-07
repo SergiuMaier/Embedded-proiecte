@@ -18,11 +18,8 @@ char ch_sec[10], ch_min[10];
 volatile uint8_t flag_timer;
 
 void init_timer();
-
 void init_devices();
-
 void incrementare_minute();
-
 void afisare_timp();
 
 ISR(TIMER0_COMPA_vect);
