@@ -45,8 +45,7 @@ ISR(TIMER0_COMPA_vect){
 
 void incrementare_minute(){
 	
-	if(secunde > 59)	//in ISR aveam 01:59 in loc de 01:00
-	{
+	if(secunde >= 60){	//in ISR aveam 01:59 in loc de 01:00
 		secunde %= 60;
 		minute++;
 	}

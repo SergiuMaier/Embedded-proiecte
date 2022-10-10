@@ -9,11 +9,9 @@
 #define FUNCTII_AFISARE_H_
 
 #include "timer.h"
-//#include "USART.h"
 
 uint8_t flag_afisare_timp;
 uint8_t stare_led;
-char a[200];
 
 void switch_data(char c);
 void new_line();

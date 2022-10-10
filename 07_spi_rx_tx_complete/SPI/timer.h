@@ -9,7 +9,6 @@
 #define MAIN_FUNC_H_
 
 #include "main_defines.h"
-//#include "USART.h" //test warning
 #include <string.h>
 
 volatile uint16_t contor, secunde, minute;
