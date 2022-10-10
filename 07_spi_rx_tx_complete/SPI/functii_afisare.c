@@ -11,22 +11,21 @@
 
 void new_line(){
 	
-	send_data("\n\r>>");
+	send_data(">>");
 }
 
 void afisare_meniu(){
 	
-	send_data("\n\rApasa tasta:\n\r 1. Meniu\n\r 2. Timp\n\r 5. LED ON/OFF\n\r");
+	send_data("\n\rApasa tasta:\n\r 1. Meniu\n\r 2. Timp\n\r 3. LED ON/OFF\n\r\n\r");
 }
 
 void switch_data(char c){
-	//
 	
 	switch(c)
 	{
 	case '1':
 		
-		send_data(CLEAR);  	  
+		//send_data(CLEAR);  	  
 		afisare_meniu();
 		new_line();
 		flag_afisare_timp = 0;
@@ -36,15 +35,15 @@ void switch_data(char c){
 		
 	    flag_afisare_timp = 1;
 		break;
-			
-	case '5': 
+	
+	case '3': 
 		
 		stare_led = !stare_led;
 		aprinde_led();
 		break;
-		
+	
 	default: 
-		
+
 		send_data("INCORECT!\n\r");
 		afisare_meniu();
 		new_line();
@@ -52,16 +51,20 @@ void switch_data(char c){
 	}
 }
 
+//caracter gresit -> printeaza tot din default corect
+//caracter din case -> printeaza case + default
+//se blocheaza dupa 2 caractere
+
 void aprinde_led(){
 	
 	if(stare_led == 1){
-		//send_data("LED ON\n\r");
 		PORTB |= (1 << PINB0);
+		send_data("LED ON\n\r");
 		//new_line();
 	}
 	else{
-		//send_data("LED OFF\n\r");
 		PORTB &= ~(1 << PINB0);
+		send_data("LED OFF\n\r");
 		//new_line();
 	}
 }
@@ -75,13 +78,13 @@ void afisare_timp(){
 		
 		//send_data(CLEAR);
 		
-		send_data("Timp: ");
+		//send_data("Timp: ");
 		
 		itoa(secunde,  ch_sec, 10);
 		itoa(minute, ch_min, 10);
 		
 		//format 00:00
-		
+			
 		if(minute < 10)
 		{
 			send_data("0");
@@ -90,10 +93,9 @@ void afisare_timp(){
 		else
 			send_data(ch_min);
 		
-		if((secunde >= 0) && (secunde < 10)) //interval pt rezolvare bug 00:059
+		if((secunde >= 0) && (secunde < 10))
 		{
 			send_data(":");
-			PORTB |= (1 << PINB0);  //debug
 			send_data(ch_sec);
 		}
 		else
@@ -101,6 +103,7 @@ void afisare_timp(){
 			send_data(":");
 			send_data(ch_sec);
 		}
+		
 		
 		send_data("\n\r");
 		new_line();
