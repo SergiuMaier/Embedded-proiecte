@@ -40,9 +40,12 @@ void switch_data(char c){
 			break;
 	
 		default: //intra aici pt ca mai este un caracter la final
-			send_data("Incorect!\n\r");
-			afisare_meniu();
-			new_line();
+			
+			if(c != '\r'){		
+				send_data("Incorect!\n\r");
+				afisare_meniu();
+				new_line();
+			}
 	}
 }
 
