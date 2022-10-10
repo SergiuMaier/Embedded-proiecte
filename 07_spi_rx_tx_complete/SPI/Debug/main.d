@@ -1,4 +1,5 @@
-main.d main.o: .././main.c .././USART.h .././main_defines.h \
+main.d main.o: .././main.c .././functii_afisare.h .././timer.h \
+ .././main_defines.h \
  d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdlib.h \
  d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stddef.h \
  d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h \
@@ -13,12 +14,12 @@ main.d main.o: .././main.c .././USART.h .././main_defines.h \
  d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\fuse.h \
  d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\lock.h \
  d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h \
- .././functii_afisare.h .././timer.h \
- d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay.h \
- d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h \
- d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h
+ .././USART.h \
+ d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\string.h
 
-.././USART.h:
+.././functii_afisare.h:
+
+.././timer.h:
 
 .././main_defines.h:
 
@@ -50,12 +51,6 @@ d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\lock.h:
 
 d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h:
 
-.././functii_afisare.h:
+.././USART.h:
 
-.././timer.h:
-
-d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay.h:
-
-d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h:
-
-d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h:
+d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\string.h:

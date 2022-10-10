@@ -5,13 +5,14 @@
  * Author : Sergiu Maier
  */ 
 
-#include "USART.h"
-#include "timer.h"
+//#include "main_func.h"
+//#include "USART.h"
+//#include "timer.h"
 #include "functii_afisare.h"
 
 int main(void)
 {	
-	init_devices();	
+	init_devices();
 	init_USART(MYUBRR);
 	
 	send_data(CLEAR);

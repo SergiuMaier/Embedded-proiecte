@@ -5,12 +5,11 @@
  *  Author: Sergiu Maier
  */ 
 
-
 #ifndef MAIN_FUNC_H_
 #define MAIN_FUNC_H_
 
 #include "main_defines.h"
-
+#include "USART.h" //test warning
 #include <string.h>
 
 volatile uint16_t contor, secunde, minute;
@@ -21,7 +20,6 @@ void init_timer();
 void init_devices();
 void incrementare_minute();
 void afisare_timp();
-
 ISR(TIMER0_COMPA_vect);
 
 #endif /* MAIN_FUNC_H_ */

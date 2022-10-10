@@ -6,6 +6,7 @@
  */ 
 
 #include "functii_afisare.h"
+#include <stdio.h>
 
 void new_line(){
 	
@@ -18,13 +19,16 @@ void afisare_meniu(){
 }
 
 void switch_data(char c){
+	//char a[200];
 	
 	switch(c)
 	{
 	case '1':
+		
+		//PORTB |= (1 << PINB0);
 	
-		send_data(CLEAR);
-		//send_data("\n\r Ascuns\n\r");
+		send_data(CLEAR);  	  
+		send_data("\n\r Ascuns\n\r");
 		afisare_meniu();
 		new_line();
 		flag_afisare_timp = 0;
@@ -44,6 +48,9 @@ void switch_data(char c){
 		
 	default: 
 		
+		//sprintf(a, "incorect");
+		//send_data(a);
+		
 		send_data("\n\rINCORECT!\n\r");
 		afisare_meniu();
 		new_line();
@@ -55,7 +62,7 @@ void aprinde_led(){
 	
 	if(stare_led == 1){
 		send_data("\n\rLED ON\n\r");
-		PORTB |= (1 << PINB0) ;
+		PORTB |= (1 << PINB0);
 		new_line();
 	}
 	else{
@@ -74,7 +81,7 @@ void afisare_program(){
 		send_data(CLEAR);
 		send_data("\n\r Timp: ");
 		
-		itoa(secunde, ch_sec, 10);
+		itoa(secunde,  ch_sec, 10);
 		itoa(minute, ch_min, 10);
 		
 		//format 00:00
@@ -85,7 +92,7 @@ void afisare_program(){
 			send_data(ch_min);
 		}
 		else
-		send_data(ch_min);
+			send_data(ch_min);
 		
 		if((secunde >= 0) && (secunde < 10)) //interval pt rezolvare bug 00:059
 		{

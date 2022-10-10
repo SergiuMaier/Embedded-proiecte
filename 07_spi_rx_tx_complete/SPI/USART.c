@@ -29,6 +29,7 @@ void send_data(char *c){
 	{
 		if(flag_tx == 1)
 		{
+		//	PORTB ^= (1 << PINB0);
 			UDR0 = *c;
 			c++;
 			flag_tx = 0;
@@ -44,15 +45,16 @@ ISR(USART_RX_vect){
 void receive_data(){
 	
 	char c;
-
+	 
 	if(flag_rx == 1)
 	{	
+		
 		c = UDR0;
-		UDR0 = c; //echo, afisez ce trimit (tastez)
-		
-		switch_data(c);
-		
+		//UDR0 = c; //echo, afisez ce trimit (tastez)
+		//c++;  
+			
+		switch_data(c);	
 		flag_rx = 0;
-	}		
+	}
 }
 

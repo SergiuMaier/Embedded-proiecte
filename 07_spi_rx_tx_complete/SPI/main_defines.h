@@ -13,7 +13,6 @@
 #include <avr/io.h>
 #include <avr/interrupt.h>
 
-//#define CLEAR "\e[1;1H\e[2J"
 #define CLEAR "\033\143"
 #define F_CPU 16000000UL
 #define BAUD 9600

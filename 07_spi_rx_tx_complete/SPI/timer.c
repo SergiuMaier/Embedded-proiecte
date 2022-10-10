@@ -8,9 +8,9 @@
 #include "timer.h"
 
 void init_timer(){
-	
+
 	TCCR0A |= (1 << WGM01)|(0 << WGM00);           //mod ctc
-	OCR0A = 0xF9;                                  //duty cycle 10ms
+	OCR0A = 0xF9;                                  //pt 10ms
 	TCCR0B |= (0 << CS02)|(1 << CS01)|(1 << CS00); //prescalar 64
 	TIMSK0 |= (1 << OCIE0A);
 }
