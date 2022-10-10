@@ -20,7 +20,7 @@ void init_devices(){
 	cli();
 	
 	//init_porturi:
-	DDRB = 0x01;
+	DDRB = 0x03;
 	PORTB = 0x00;
 	
 	init_timer();

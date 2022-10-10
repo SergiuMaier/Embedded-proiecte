@@ -13,7 +13,6 @@ timer.d timer.o: .././timer.c .././timer.h .././main_defines.h \
  d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\fuse.h \
  d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\lock.h \
  d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h \
- .././USART.h \
  d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\string.h
 
 .././timer.h:
@@ -47,7 +46,5 @@ d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\fuse.h:
 d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\lock.h:
 
 d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h:
-
-.././USART.h:
 
 d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\string.h:

@@ -14,8 +14,8 @@ functii_afisare.d functii_afisare.o: .././functii_afisare.c \
  d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\fuse.h \
  d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\lock.h \
  d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h \
- .././USART.h \
  d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\string.h \
+ .././USART.h \
  d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdio.h \
  d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdarg.h
 
@@ -53,9 +53,9 @@ d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\lock.h:
 
 d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h:
 
-.././USART.h:
-
 d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\string.h:
+
+.././USART.h:
 
 d:\drivere\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdio.h:
 

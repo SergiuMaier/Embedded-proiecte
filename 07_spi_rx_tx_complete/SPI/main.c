@@ -5,9 +5,8 @@
  * Author : Sergiu Maier
  */ 
 
-//#include "main_func.h"
-//#include "USART.h"
-//#include "timer.h"
+#include "USART.h"
+#include "timer.h"
 #include "functii_afisare.h"
 
 int main(void)
@@ -22,7 +21,7 @@ int main(void)
 	while(1) 
     {
 		receive_data();
-		afisare_program();
+		afisare_timp();
     }
 }
 
