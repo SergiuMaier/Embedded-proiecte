@@ -5,7 +5,6 @@
  *  Author: sergiu
  */ 
 
-
 #ifndef MAIN_DEFINES_H_
 #define MAIN_DEFINES_H_
 

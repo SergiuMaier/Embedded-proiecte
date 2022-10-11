@@ -18,7 +18,7 @@ void init_USART(uint16_t ubrr){
 	sei();
 }
 
-void USART_Transmit(unsigned char data)
+void transmit_data(unsigned char data)
 {
 	while (!(UCSR0A & (1<<UDRE0)));
 	
@@ -43,9 +43,9 @@ void send_data(char *c){
 	
 	while(*c != '\0')
 	{
-		USART_Transmit(*c);
+		transmit_data(*c); //fara intrerupere
 		c++;
-		//if(flag_tx == 1)
+		//if(flag_tx == 1) //cu intrerupere
 		//{
 		//	UDR0 = *c;
 		//	c++;
@@ -61,16 +61,21 @@ ISR(USART_RX_vect){
 
 void receive_data(){
 	
-	char c;
+	int i;
+	i = 0;
 	 
 	if(flag_rx == 1)
-	{	
+	{		
+		c[i] = UDR0;
 		
-		c = UDR0;
-		//UDR0 = c; //echo, afisez ce trimit (tastez)
-		//c++;  
+		while((r[i] = c[i]) != '\0'){
+			i++;
+		}
+		
+		//send_data(r); //pt verificare
 			
-		switch_data(c);	
+		switch_data(r);
+		
 		flag_rx = 0;
 	}
 }

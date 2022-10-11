@@ -7,7 +7,6 @@
 
 #include "functii_afisare.h"
 #include "USART.h"
-#include <stdio.h>
 
 void new_line(){
 	
@@ -19,10 +18,26 @@ void afisare_meniu(){
 	send_data("\n\rApasa tasta:\n\r 1. Meniu\n\r 2. Afisare timp\n\r 3. Schimbare stare LED\n\r");
 }
 
-void switch_data(char c){
+void switch_data(char *c){
 	
-	switch(c)
-	{
+	//if( strcmp(c, "123") == 0)
+	//{
+		//send_data(CLEAR);
+		//afisare_meniu();
+		//new_line();
+		//flag_afisare_timp = 0;
+	//}
+	//else
+	//{
+		//if(c != '\r'){
+			//send_data("Incorect!\n\r");
+			//afisare_meniu();
+			//new_line();
+		//}
+	//}
+	
+	switch(*c)
+	{	
 		case '1':
 			send_data(CLEAR);  	  
 			afisare_meniu();
@@ -39,9 +54,9 @@ void switch_data(char c){
 			aprinde_led();
 			break;
 	
-		default: //intra aici pt ca mai este un caracter la final
+		default:
 			
-			if(c != '\r'){		
+			if(*c != '\r'){		
 				send_data("Incorect!\n\r");
 				afisare_meniu();
 				new_line();

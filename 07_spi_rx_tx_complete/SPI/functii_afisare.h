@@ -9,11 +9,14 @@
 #define FUNCTII_AFISARE_H_
 
 #include "timer.h"
+#include <stdio.h>
+#include <string.h>
 
 uint8_t flag_afisare_timp;
 uint8_t stare_led;
+extern char c[200];
 
-void switch_data(char c);
+void switch_data(char *c);
 void new_line();
 void afisare_meniu();
 void aprinde_led();
