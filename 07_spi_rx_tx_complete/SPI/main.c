@@ -16,9 +16,8 @@ int main(void)
 	afisare_meniu();
 	new_line();
 	
-	while(1) 
-    {
-		
+	while(1){
+	
     }
 }
 

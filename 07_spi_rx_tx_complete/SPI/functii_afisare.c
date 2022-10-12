@@ -9,7 +9,7 @@
 
 void new_line(){
 	
-	send_data("\n\r>> ");
+	send_data("\n\r>>");
 }
 
 void afisare_meniu(){
@@ -26,33 +26,18 @@ void switch_data(char data[]){
 		new_line();
 		flag_afisare_timp = 0;
 	}
-	else if(strcmp(data, "timp") == 0){
+	else if(strcmp(data, "timp") == 0)
 		flag_afisare_timp = 1;
-	}
-	else if(strcmp(data, "led") == 0){
-		stare_led = !stare_led;
-		aprinde_led();
-	}
+	
+	else if(strcmp(data, "led on") == 0)
+		PORTB |= (1 << PINB0); //functie cu parametrii pin si port
+
+	else if(strcmp(data, "led off") == 0)
+		PORTB &= ~(1 << PINB0);
 	else
 	{
 		send_data("Comanda incorecta!\n\r");
 		afisare_meniu();
-		new_line();
-	}
-}
-
-void aprinde_led(){
-	
-	if(stare_led == 1)
-	{
-		PORTB |= (1 << PINB0);
-		send_data("LED ON\n\r");
-		new_line();
-	}
-	else
-	{
-		PORTB &= ~(1 << PINB0);
-		send_data("LED OFF\n\r");
 		new_line();
 	}
 }
@@ -63,7 +48,7 @@ void afisare_timp(){
 		
 	if((flag_timer == 1) && (flag_afisare_timp == 1))
 	{	
-		send_data(CLEAR);
+		//send_data(CLEAR);
 		
 		send_data("\n\r Timp: ");
 		

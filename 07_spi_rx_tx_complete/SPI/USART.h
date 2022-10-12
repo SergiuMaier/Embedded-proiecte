@@ -21,7 +21,7 @@ void init_USART(uint16_t ubrr);
 void transmit_data(unsigned char data);
 unsigned char receive_data(void);
 void send_data(char data[]);
-void read_data(char data[], uint8_t max_length);
+void read_data(char data[]);
 ISR(USART_RX_vect);
 
 #endif /* MAIN_FUNC_H_ */

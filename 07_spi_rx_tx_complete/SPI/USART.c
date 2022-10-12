@@ -4,11 +4,10 @@
  * Created: 9/29/2022 11:46:57 AM
  * Author: Sergiu Maier
  */ 
-
+#define MAX_LENGTH 50
 #include "USART.h"
 
 char msg[10]; //trebuie mutate de aici
-uint8_t charsize = 50;
 
 void init_USART(uint16_t ubrr){
 	
@@ -39,8 +38,9 @@ ISR(USART_RX_vect) //atunci cand este apasata tasta Enter
 {
 	//flag_rx = 1;
 	
-	read_data(msg, charsize);
-	switch_data(msg);
+	read_data(msg);
+	send_data(msg);
+	//switch_data(msg);
 }
 
 void send_data(char data[]){
@@ -53,13 +53,13 @@ void send_data(char data[]){
 	}
 }
 
-void read_data(char data[], uint8_t max_length)
+void read_data(char data[])
 {	
 	char response;
 	uint8_t i;
 	i = 0;
 	
-	while (i < (max_length - 1))
+	while (i < (MAX_LENGTH - 1))
 	{	
 		response = receive_data();		
 		
@@ -76,5 +76,4 @@ void read_data(char data[], uint8_t max_length)
 	
 	data[i] = 0; //final de string
 }
-
 
