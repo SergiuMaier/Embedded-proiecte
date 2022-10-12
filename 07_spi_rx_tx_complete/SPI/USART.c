@@ -47,9 +47,9 @@ void send_data(char *c){
 		c++;
 		//if(flag_tx == 1) //cu intrerupere
 		//{
-		//	UDR0 = *c;
-		//	c++;
-		//	flag_tx = 0;
+			//UDR0 = *c;
+			//c++;
+			//flag_tx = 0;
 		//}
 	}
 }
@@ -63,20 +63,44 @@ void receive_data(){
 	
 	int i;
 	i = 0;
-	 
+		
 	if(flag_rx == 1)
-	{		
-		c[i] = UDR0;
-		
-		while((r[i] = c[i]) != '\0'){
-			i++;
-		}
-		
-		//send_data(r); //pt verificare
+	{	
+		//PORTB &= ~(1 << PINB0); //pt debug
 			
-		switch_data(r);
-		
-		flag_rx = 0;
+		c[i] = UDR0;
+		i++;
+			
+		flag_rx = 0;	
 	}
+	else
+	{
+		//send_data(c);
+		
+		switch_data(c);
+		
+		//PORTB |= (1 << PINB0);  //pt debug
+		
+		//--------------test---------------------//
+	/*
+	
+		if( strcmp(c, "m") == 0)
+		{
+			send_data(CLEAR);
+			afisare_meniu();
+			new_line();
+			flag_afisare_timp = 0;
+		}
+		else
+		{
+			//send_data(c); //afiseaza prima litera
+			if((*c != '\r') && (*c != '\0')){
+				send_data("Incorect!\n\r");
+				afisare_meniu();
+				new_line();
+			}
+		}
+	*/
+		//---------------test--------------------//
+	}			
 }
-

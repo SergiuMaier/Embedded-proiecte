@@ -9,7 +9,7 @@
 #define MAIN_FUNC_H_
 
 #include "main_defines.h"
-#include "functii_afisare.h"
+#include "functii_afisare.h" //doar pt switch_data
 
 #include <util/delay.h>
 #include <string.h>

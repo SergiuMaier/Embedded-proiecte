@@ -6,7 +6,6 @@
  */ 
 
 #include "USART.h"
-#include "timer.h"
 #include "functii_afisare.h"
 
 int main(void)
