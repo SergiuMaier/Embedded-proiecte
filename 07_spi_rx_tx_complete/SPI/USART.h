@@ -16,14 +16,12 @@
 
 volatile uint8_t flag_tx;
 volatile uint8_t flag_rx;
-char c[200];
-char r[200];
 
 void init_USART(uint16_t ubrr);
 void transmit_data(unsigned char data);
-void send_data(char *c);
-void receive_data();
-ISR(USART_UDRE_vect);
+unsigned char receive_data(void);
+void send_data(char data[]);
+void read_data(char data[], uint8_t max_length);
 ISR(USART_RX_vect);
 
 #endif /* MAIN_FUNC_H_ */

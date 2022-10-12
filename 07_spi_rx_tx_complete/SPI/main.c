@@ -6,7 +6,6 @@
  */ 
 
 #include "USART.h"
-#include "functii_afisare.h"
 
 int main(void)
 {	
@@ -19,8 +18,7 @@ int main(void)
 	
 	while(1) 
     {
-		receive_data();
-		afisare_timp();
+		
     }
 }
 

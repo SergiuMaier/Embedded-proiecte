@@ -7,10 +7,9 @@
 
 #include "functii_afisare.h"
 
-
 void new_line(){
 	
-	send_data("\n\r>>");
+	send_data("\n\r>> ");
 }
 
 void afisare_meniu(){
@@ -18,44 +17,40 @@ void afisare_meniu(){
 	send_data("\n\rApasa tasta:\n\r 1. Meniu\n\r 2. Afisare timp\n\r 3. Schimbare stare LED\n\r");
 }
 
-void switch_data(char *c){
+void switch_data(char data[]){
 	
-	switch(*c)
+	if(strcmp(data, "meniu") == 0)
 	{
-		case '1':
-			send_data(CLEAR);
-			afisare_meniu();
-			new_line();
-			flag_afisare_timp = 0;
-			break;
-		
-		case '2':
-			flag_afisare_timp = 1;
-			break;
-		
-		case '3':
-			stare_led = !stare_led;
-			aprinde_led();
-			break;
-		
-		default:
-		
-			if((*c != '\r') && (*c != '\0')){
-				send_data("Incorect!\n\r");
-				afisare_meniu();
-				new_line();
-		}
+		send_data(CLEAR);
+		afisare_meniu();
+		new_line();
+		flag_afisare_timp = 0;
+	}
+	else if(strcmp(data, "timp") == 0){
+		flag_afisare_timp = 1;
+	}
+	else if(strcmp(data, "led") == 0){
+		stare_led = !stare_led;
+		aprinde_led();
+	}
+	else
+	{
+		send_data("Comanda incorecta!\n\r");
+		afisare_meniu();
+		new_line();
 	}
 }
 
 void aprinde_led(){
 	
-	if(stare_led == 1){
+	if(stare_led == 1)
+	{
 		PORTB |= (1 << PINB0);
 		send_data("LED ON\n\r");
 		new_line();
 	}
-	else{
+	else
+	{
 		PORTB &= ~(1 << PINB0);
 		send_data("LED OFF\n\r");
 		new_line();

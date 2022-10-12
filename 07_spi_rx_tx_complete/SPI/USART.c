@@ -7,6 +7,9 @@
 
 #include "USART.h"
 
+char msg[10]; //trebuie mutate de aici
+uint8_t charsize = 50;
+
 void init_USART(uint16_t ubrr){
 	
 	UBRR0H = (unsigned char)(ubrr >> 8);
@@ -25,82 +28,53 @@ void transmit_data(unsigned char data)
 	UDR0 = data;
 }
 
-//----------------------------------------/
-ISR(USART_UDRE_vect){ //apelata atunci cand se pot trimite info
-	
-	//flag_tx = 1;
-			
+unsigned char receive_data(void)
+{
+	while (!(UCSR0A & (1<<RXC0)));
+
+	return UDR0;
 }
 
-ISR(USART_TX_vect){
+ISR(USART_RX_vect) //atunci cand este apasata tasta Enter
+{
+	//flag_rx = 1;
 	
-	//NIMIC MOMENTAN
-}
-//----------------------------------------*/
-
-
-void send_data(char *c){
-	
-	while(*c != '\0')
-	{
-		transmit_data(*c); //fara intrerupere
-		c++;
-		//if(flag_tx == 1) //cu intrerupere
-		//{
-			//UDR0 = *c;
-			//c++;
-			//flag_tx = 0;
-		//}
-	}
+	read_data(msg, charsize);
+	switch_data(msg);
 }
 
-ISR(USART_RX_vect){
+void send_data(char data[]){
 	
-	flag_rx = 1;
-}
-
-void receive_data(){
+	uint8_t i = 0;
 	
-	int i;
-	i = 0;
-		
-	if(flag_rx == 1)
-	{	
-		//PORTB &= ~(1 << PINB0); //pt debug
-			
-		c[i] = UDR0;
+	while(data[i]){
+		transmit_data(data[i]);
 		i++;
-			
-		flag_rx = 0;	
 	}
-	else
-	{
-		//send_data(c);
-		
-		switch_data(c);
-		
-		//PORTB |= (1 << PINB0);  //pt debug
-		
-		//--------------test---------------------//
-	/*
+}
+
+void read_data(char data[], uint8_t max_length)
+{	
+	char response;
+	uint8_t i;
+	i = 0;
 	
-		if( strcmp(c, "m") == 0)
+	while (i < (max_length - 1))
+	{	
+		response = receive_data();		
+		
+		if(response == '\r')
 		{
-			send_data(CLEAR);
-			afisare_meniu();
-			new_line();
-			flag_afisare_timp = 0;
+			break;	
 		}
 		else
 		{
-			//send_data(c); //afiseaza prima litera
-			if((*c != '\r') && (*c != '\0')){
-				send_data("Incorect!\n\r");
-				afisare_meniu();
-				new_line();
-			}
+			data[i] = response;
+			i++;
 		}
-	*/
-		//---------------test--------------------//
-	}			
+	}
+	
+	data[i] = 0; //final de string
 }
+
+
