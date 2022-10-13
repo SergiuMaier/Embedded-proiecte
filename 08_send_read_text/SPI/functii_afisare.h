@@ -14,14 +14,12 @@
 #include <stdio.h>
 #include <string.h>
 
-uint8_t flag_afisare_timp;
-uint8_t stare_led;
-extern char c[200];
+uint8_t stare_led;    //flag pt a memora starea LED-ului
 
-void switch_data(char data[]);
-void new_line();
-void afisare_meniu();
-void aprinde_led();
-void afisare_timp();
+void switch_data(char data[]); //verificare mesaje primite din putty si executarea lor
+void new_line();      //inceput de rand nou, unde se poate tasta o comanda
+void afisare_meniu(); //afisare lista comenzi
+void schimbare_stare_led(uint8_t stare); //schimbare stare led
+void afisare_timp();  //afisare timpul curent 
 
 #endif /* FUNCTII_AFISARE_H_ */

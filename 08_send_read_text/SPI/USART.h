@@ -14,14 +14,16 @@
 #include <util/delay.h>
 #include <string.h>
 
-volatile uint8_t flag_tx;
-volatile uint8_t flag_rx;
+volatile uint8_t flag_tx; //flag-uri folosite atunci cand are loc o intrerupere de USART
+volatile uint8_t flag_rx; //flag_rx devine 1 atunci cand este apasata tasta Enter
 
-void init_USART(uint16_t ubrr);
-void transmit_data(unsigned char data);
-unsigned char receive_data(void);
-void send_data(char data[]);
-void read_data(char data[], uint8_t max_length);
-ISR(USART_RX_vect);
+void init_USART(uint16_t ubrr); //initializare
+void transmit_data(unsigned char data); //transmitere date
+unsigned char receive_data(void); //primire date
+void send_data(char data[]);  //trimiterea unui nou mesaj
+void read_data(char data[]);  //citirea unui mesaj primit
+void start_program(); //citirea si executarea comenzilor primite
+
+ISR(USART_RX_vect);  //intrerupere rx complet
 
 #endif /* MAIN_FUNC_H_ */
