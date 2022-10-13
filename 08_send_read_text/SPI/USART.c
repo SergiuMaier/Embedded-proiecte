@@ -8,8 +8,6 @@
 
 #include "USART.h"
 
-
-
 void init_USART(uint16_t ubrr)
 {	
 	UBRR0H = (unsigned char)(ubrr >> 8);
@@ -54,8 +52,7 @@ void send_data(char data[])
 void read_data(char data[])
 {	
 	char mesaj_primit;
-	uint8_t i;
-	i = 0;
+	uint8_t i = 0;
 	
 	while (i < (MAX_LENGTH - 1))
 	{	
@@ -66,15 +63,16 @@ void read_data(char data[])
 			data[i] = mesaj_primit;
 			i++;
 		}
-		else
+		else{
 			break;
+		}
 	}
 	
-	data[i] = 0; //caracter final
+	data[i] = '\0'; //caracter final
 }
 
 void start_program()
-{	
+{
 	if(flag_rx == 1)
 	{
 		read_data(mesaj);

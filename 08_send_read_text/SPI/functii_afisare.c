@@ -9,7 +9,7 @@
 
 void new_line()
 {
-	send_data("\n\r>> ");
+	send_data("\n\r>>");
 }
 
 void afisare_meniu()
@@ -25,18 +25,14 @@ void switch_data(char data[])
 		new_line();
 	}		
 	else if(strcmp(data, "timp") == 0)
-	{
 		afisare_timp();
-	}
+		
 	else if(strcmp(data, "led on") == 0)
-	{
 		schimbare_stare_led(&PORTB, PINB0, 1);
 		
-	}
 	else if(strcmp(data, "led off") == 0)
-	{
 		schimbare_stare_led(&PORTB, PINB0, 0);
-	}
+		
 	else if(strcmp(data, "clear") == 0)
 	{
 		send_data(CLEAR);
@@ -76,7 +72,7 @@ void afisare_timp()
 	{			
 		send_data("Timp curent: ");
 		
-		itoa(secunde,  ch_sec, 10); //conversie sec si min in char
+		itoa(secunde,  ch_sec, 10); //conversie sec si min din int in char
 		itoa(minute, ch_min, 10);
 		
 		//format 00:00
@@ -106,4 +102,5 @@ void afisare_timp()
 		flag_timer = 0;
 	}
 }
+
 
