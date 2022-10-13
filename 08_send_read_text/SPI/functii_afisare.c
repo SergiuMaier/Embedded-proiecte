@@ -30,13 +30,12 @@ void switch_data(char data[])
 	}
 	else if(strcmp(data, "led on") == 0)
 	{
-		schimbare_stare_led(1);
+		schimbare_stare_led(&PORTB, PINB0, 1);
 		
 	}
 	else if(strcmp(data, "led off") == 0)
 	{
-		schimbare_stare_led(0);
-		
+		schimbare_stare_led(&PORTB, PINB0, 0);
 	}
 	else if(strcmp(data, "clear") == 0)
 	{
@@ -53,17 +52,17 @@ void switch_data(char data[])
 	}
 }
 
-void schimbare_stare_led(uint8_t stare)
+void schimbare_stare_led(volatile uint8_t *port, uint8_t pin, uint8_t stare)
 {
 	if(stare == 1)
 	{
-		PORTB |= (1 << PINB0);
+		*port |= (1 << pin);
 		send_data("ON\n\r");
 		new_line();
 	}
 	else
 	{
-		PORTB &= ~(1 << PINB0);
+		*port &= ~(1 << pin);
 		send_data("OFF\n\r");
 		new_line();
 	}
