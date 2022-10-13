@@ -15,19 +15,19 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY
   5 .debug_aranges 000000e8  00000000  00000000  00000654  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   00001226  00000000  00000000  0000073c  2**0
+  6 .debug_info   0000124f  00000000  00000000  0000073c  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 00000a5b  00000000  00000000  00001962  2**0
+  7 .debug_abbrev 00000a7e  00000000  00000000  0000198b  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   00000720  00000000  00000000  000023bd  2**0
+  8 .debug_line   00000720  00000000  00000000  00002409  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  000001b8  00000000  00000000  00002ae0  2**2
+  9 .debug_frame  000001b8  00000000  00000000  00002b2c  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    00000542  00000000  00000000  00002c98  2**0
+ 10 .debug_str    000004e7  00000000  00000000  00002ce4  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    000002e4  00000000  00000000  000031da  2**0
+ 11 .debug_loc    000002e4  00000000  00000000  000031cb  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 000000a8  00000000  00000000  000034be  2**0
+ 12 .debug_ranges 000000a8  00000000  00000000  000034af  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -542,7 +542,7 @@ void incrementare_minute(){
 
 00000338 <init_USART>:
 
-char msg[10]; //trebuie mutat de aici
+
 
 void init_USART(uint16_t ubrr)
 {	
@@ -669,7 +669,7 @@ void read_data(char data[])
  3c0:	1f 93       	push	r17
  3c2:	cf 93       	push	r28
  3c4:	8c 01       	movw	r16, r24
-	char response;
+	char mesaj_primit;
 	uint8_t i;
 	i = 0;
  3c6:	c0 e0       	ldi	r28, 0x00	; 0
@@ -677,14 +677,14 @@ void read_data(char data[])
 	while (i < (MAX_LENGTH - 1))
  3c8:	09 c0       	rjmp	.+18     	; 0x3dc <read_data+0x1e>
 	{	
-		response = receive_data();		
+		mesaj_primit = receive_data();		
  3ca:	0e 94 b6 01 	call	0x36c	; 0x36c <receive_data>
 		
-		if(response != '\r')
+		if(mesaj_primit != '\r')
  3ce:	8d 30       	cpi	r24, 0x0D	; 13
  3d0:	39 f0       	breq	.+14     	; 0x3e0 <read_data+0x22>
 		{
-			data[i] = response;
+			data[i] = mesaj_primit;
  3d2:	f8 01       	movw	r30, r16
  3d4:	ec 0f       	add	r30, r28
  3d6:	f1 1d       	adc	r31, r1
@@ -692,19 +692,19 @@ void read_data(char data[])
 			i++;
  3da:	cf 5f       	subi	r28, 0xFF	; 255
 {	
-	char response;
+	char mesaj_primit;
 	uint8_t i;
 	i = 0;
 	
 	while (i < (MAX_LENGTH - 1))
  3dc:	c1 33       	cpi	r28, 0x31	; 49
  3de:	a8 f3       	brcs	.-22     	; 0x3ca <read_data+0xc>
-		{
-			break;
 		}
+		else
+			break;
 	}
 	
-	data[i] = 0; //char final
+	data[i] = 0; //caracter final
  3e0:	f8 01       	movw	r30, r16
  3e2:	ec 0f       	add	r30, r28
  3e4:	f1 1d       	adc	r31, r1
@@ -725,11 +725,11 @@ void start_program()
  3f6:	41 f4       	brne	.+16     	; 0x408 <__EEPROM_REGION_LENGTH__+0x8>
 	{
 		read_data(msg);
- 3f8:	84 ec       	ldi	r24, 0xC4	; 196
+ 3f8:	83 ec       	ldi	r24, 0xC3	; 195
  3fa:	91 e0       	ldi	r25, 0x01	; 1
  3fc:	0e 94 df 01 	call	0x3be	; 0x3be <read_data>
 		switch_data(msg);
- 400:	84 ec       	ldi	r24, 0xC4	; 196
+ 400:	83 ec       	ldi	r24, 0xC3	; 195
  402:	91 e0       	ldi	r25, 0x01	; 1
  404:	0e 94 c7 00 	call	0x18e	; 0x18e <switch_data>
  408:	08 95       	ret

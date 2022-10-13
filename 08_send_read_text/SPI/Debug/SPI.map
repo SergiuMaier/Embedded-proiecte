@@ -23,7 +23,7 @@ Common symbol       size              file
 flag_rx             0x1               main.o
 flag_timer          0x1               functii_afisare.o
 stare_led           0x1               functii_afisare.o
-msg                 0xa               USART.o
+msg                 0xa               main.o
 minute              0x2               functii_afisare.o
 secunde             0x2               functii_afisare.o
 flag_tx             0x1               main.o
@@ -459,11 +459,10 @@ END GROUP
                 0x008001ac                contor
                 0x008001ae                ch_min
                 0x008001b8                ch_sec
- COMMON         0x008001c2        0x2 main.o
+ COMMON         0x008001c2        0xc main.o
                 0x008001c2                flag_rx
-                0x008001c3                flag_tx
- COMMON         0x008001c4        0xa USART.o
-                0x008001c4                msg
+                0x008001c3                msg
+                0x008001cd                flag_tx
                 0x008001ce                PROVIDE (__bss_end, .)
                 0x000004a8                __data_load_start = LOADADDR (.data)
                 0x0000054e                __data_load_end = (__data_load_start + SIZEOF (.data))
@@ -554,21 +553,21 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x1226
+.debug_info     0x00000000     0x124f
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x5f4 D:/DRIVERE/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega328p/avr5/crtatmega328p.o
  .debug_info    0x000005f4      0x6e5 functii_afisare.o
- .debug_info    0x00000cd9      0x189 main.o
- .debug_info    0x00000e62      0x16f timer.o
- .debug_info    0x00000fd1      0x255 USART.o
+ .debug_info    0x00000cd9      0x1b2 main.o
+ .debug_info    0x00000e8b      0x16f timer.o
+ .debug_info    0x00000ffa      0x255 USART.o
 
-.debug_abbrev   0x00000000      0xa5b
+.debug_abbrev   0x00000000      0xa7e
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0x5a2 D:/DRIVERE/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega328p/avr5/crtatmega328p.o
  .debug_abbrev  0x000005a2      0x1cf functii_afisare.o
- .debug_abbrev  0x00000771       0xbe main.o
- .debug_abbrev  0x0000082f       0xb4 timer.o
- .debug_abbrev  0x000008e3      0x178 USART.o
+ .debug_abbrev  0x00000771       0xe1 main.o
+ .debug_abbrev  0x00000852       0xb4 timer.o
+ .debug_abbrev  0x00000906      0x178 USART.o
 
 .debug_line     0x00000000      0x720
  *(.debug_line .debug_line.* .debug_line_end)
@@ -585,17 +584,17 @@ END GROUP
  .debug_frame   0x00000094       0x70 timer.o
  .debug_frame   0x00000104       0xb4 USART.o
 
-.debug_str      0x00000000      0x542
+.debug_str      0x00000000      0x4e7
  *(.debug_str)
  .debug_str     0x00000000      0x208 D:/DRIVERE/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega328p/avr5/crtatmega328p.o
  .debug_str     0x00000208      0x224 functii_afisare.o
                                 0x278 (size before relaxing)
  .debug_str     0x0000042c       0x47 main.o
-                                0x1ec (size before relaxing)
- .debug_str     0x00000473       0x83 timer.o
-                                0x204 (size before relaxing)
- .debug_str     0x000004f6       0x4c USART.o
-                                0x226 (size before relaxing)
+                                0x1f5 (size before relaxing)
+ .debug_str     0x00000473       0x24 timer.o
+                                0x200 (size before relaxing)
+ .debug_str     0x00000497       0x50 USART.o
+                                0x22a (size before relaxing)
 
 .debug_loc      0x00000000      0x2e4
  *(.debug_loc)
