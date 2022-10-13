@@ -32,6 +32,11 @@
   
 - [06_spi_cronometru](./06_spi_cronometru/SPI)
   - afisare cronometru pe seriala;
-  - s-a folosit intreruperea pt USART;
   
 - [07_spi_rx_tx_complete](./07_spi_rx_tx_complete/SPI)  
+  - recunoasterea unui singur caracter introdus in putty;
+  - executarea unor comenzi pe baza caracterelor primite;
+
+- [08_send_read_text](./08_send_read_text/SPI) 
+  - trimiterea si citirea mesajelor pe seriala;
+  - recunoasterea si executarea comenzilor introduse in putty;
