@@ -356,8 +356,6 @@ int main(void)
  226:	8f e8       	ldi	r24, 0x8F	; 143
  228:	91 e0       	ldi	r25, 0x01	; 1
  22a:	0e 94 c0 01 	call	0x380	; 0x380 <send_data>
-	//afisare_meniu();  //afisare lista comenzi
-	//new_line();       //rand nou unde se poate introduce o comanda
 	
 	while(1) 
     {
