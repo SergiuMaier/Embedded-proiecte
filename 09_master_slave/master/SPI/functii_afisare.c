@@ -19,32 +19,22 @@ void afisare_meniu()
 
 void switch_data(char data[])
 {	
-	if(strcmp(data, "meniu") == 0)
-	{
-		afisare_meniu();
-		new_line();
-	}		
-	else if(strcmp(data, "timp") == 0)
-		afisare_timp();
-		
-	else if(strcmp(data, "led on") == 0)
-		schimbare_stare_led(&PORTB, PINB0, 1);
+	if(strcmp(data, "led on") == 0)
+		send_data("led on\n\r");
 		
 	else if(strcmp(data, "led off") == 0)
-		schimbare_stare_led(&PORTB, PINB0, 0);
-		
+		send_data("led off\n\r");
+	
+	else if(strcmp(data, "timp") == 0)
+		send_data("timp\n\r");
+
+	
 	else if(strcmp(data, "clear") == 0)
-	{
-		send_data(CLEAR);
-		new_line();
-	}
-	else
-	{
-		send_data("'");
+		send_data("clear\n\r");
+
+	else{
 		send_data(data);
-		send_data("' nu este o comanda!\n\r");
-		afisare_meniu();
-		new_line();
+		send_data("\n\r");
 	}
 }
 

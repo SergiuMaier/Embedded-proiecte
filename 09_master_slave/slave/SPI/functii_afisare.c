@@ -19,32 +19,37 @@ void afisare_meniu()
 
 void switch_data(char data[])
 {	
-	if(strcmp(data, "meniu") == 0)
-	{
-		afisare_meniu();
-		new_line();
-	}		
-	else if(strcmp(data, "timp") == 0)
-		afisare_timp();
+	//-----------verificare daca se primesc mesaje de la master---------------/
+	
+	//if(data){
+		//send_data(data);
+		//send_data("0");
+		//send_data("\n\r");
 		
-	else if(strcmp(data, "led on") == 0)
+		//sau
+		
+	//	schimbare_stare_led(&PORTB, PINB0, 1);
+	//}
+	
+	//---------------------------------------------------------------------/
+	
+	if(strcmp(data, "\rled on") == 0)
 		schimbare_stare_led(&PORTB, PINB0, 1);
-		
-	else if(strcmp(data, "led off") == 0)
+	
+	else if(strcmp(data, "\rled off") == 0)
 		schimbare_stare_led(&PORTB, PINB0, 0);
 		
-	else if(strcmp(data, "clear") == 0)
-	{
+	else if(strcmp(data, "\rtimp") == 0)
+		afisare_timp();
+		
+	else if(strcmp(data, "\rclear") == 0)
 		send_data(CLEAR);
-		new_line();
-	}
-	else
-	{
+
+	else{
 		send_data("'");
 		send_data(data);
-		send_data("' nu este o comanda!\n\r");
-		afisare_meniu();
-		new_line();
+		send_data("' ");
+		send_data("nu este o comanda!\n\r");
 	}
 }
 
@@ -54,13 +59,11 @@ void schimbare_stare_led(volatile uint8_t *port, uint8_t pin, uint8_t stare)
 	{
 		*port |= (1 << pin);
 		send_data("ON\n\r");
-		new_line();
 	}
 	else
 	{
 		*port &= ~(1 << pin);
 		send_data("OFF\n\r");
-		new_line();
 	}
 }
 
@@ -97,7 +100,6 @@ void afisare_timp()
 		}
 		
 		send_data("\n\r");
-		new_line();
 		
 		flag_timer = 0;
 	}

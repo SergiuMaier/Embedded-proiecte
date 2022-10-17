@@ -76,6 +76,9 @@ void start_program()
 	if(flag_rx == 1)
 	{
 		read_data(mesaj);
+		//send_data(mesaj);
+		//send_data("\n\r");
+		
 		switch_data(mesaj);
 	}
 }

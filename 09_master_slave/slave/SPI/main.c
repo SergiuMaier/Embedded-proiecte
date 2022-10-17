@@ -5,6 +5,8 @@
  * Author : Sergiu Maier
  */ 
 
+//-----------SLAVE------------//
+
 #include "USART.h"
 
 int main(void)
@@ -13,8 +15,8 @@ int main(void)
 	init_USART(MYUBRR);
 	
 	send_data(CLEAR); //clear putty
-	afisare_meniu();  //afisare lista comenzi
-	new_line();       //rand nou unde se poate introduce o comanda
+	//afisare_meniu();  //afisare lista comenzi
+	//new_line();       //rand nou unde se poate introduce o comanda
 	
 	while(1) 
     {
