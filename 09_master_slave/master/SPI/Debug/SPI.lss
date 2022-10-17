@@ -3,31 +3,31 @@ SPI.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .data         000000a0  00800100  000002b0  00000344  2**0
+  0 .data         00000082  00800100  000002b0  00000344  2**0
                   CONTENTS, ALLOC, LOAD, DATA
   1 .text         000002b0  00000000  00000000  00000094  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .bss          00000028  008001a0  008001a0  000003e4  2**0
+  2 .bss          00000028  00800182  00800182  000003c6  2**0
                   ALLOC
-  3 .comment      00000030  00000000  00000000  000003e4  2**0
+  3 .comment      00000030  00000000  00000000  000003c6  2**0
                   CONTENTS, READONLY
-  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00000414  2**2
+  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  000003f8  2**2
                   CONTENTS, READONLY
-  5 .debug_aranges 000000e8  00000000  00000000  00000454  2**0
+  5 .debug_aranges 000000d8  00000000  00000000  00000438  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   0000124b  00000000  00000000  0000053c  2**0
+  6 .debug_info   00000eff  00000000  00000000  00000510  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 00000a6b  00000000  00000000  00001787  2**0
+  7 .debug_abbrev 000009a5  00000000  00000000  0000140f  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   000006e9  00000000  00000000  000021f2  2**0
+  8 .debug_line   00000615  00000000  00000000  00001db4  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  000001b8  00000000  00000000  000028dc  2**2
+  9 .debug_frame  00000198  00000000  00000000  000023cc  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    00000552  00000000  00000000  00002a94  2**0
+ 10 .debug_str    0000050d  00000000  00000000  00002564  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    00000382  00000000  00000000  00002fe6  2**0
+ 11 .debug_loc    00000252  00000000  00000000  00002a71  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 000000a8  00000000  00000000  00003368  2**0
+ 12 .debug_ranges 00000098  00000000  00000000  00002cc3  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -77,13 +77,13 @@ Disassembly of section .text:
   7e:	02 c0       	rjmp	.+4      	; 0x84 <__do_copy_data+0x10>
   80:	05 90       	lpm	r0, Z+
   82:	0d 92       	st	X+, r0
-  84:	a0 3a       	cpi	r26, 0xA0	; 160
+  84:	a2 38       	cpi	r26, 0x82	; 130
   86:	b1 07       	cpc	r27, r17
   88:	d9 f7       	brne	.-10     	; 0x80 <__do_copy_data+0xc>
 
 0000008a <__do_clear_bss>:
   8a:	21 e0       	ldi	r18, 0x01	; 1
-  8c:	a0 ea       	ldi	r26, 0xA0	; 160
+  8c:	a2 e8       	ldi	r26, 0x82	; 130
   8e:	b1 e0       	ldi	r27, 0x01	; 1
   90:	01 c0       	rjmp	.+2      	; 0x94 <.do_clear_bss_start>
 
@@ -91,7 +91,7 @@ Disassembly of section .text:
   92:	1d 92       	st	X+, r1
 
 00000094 <.do_clear_bss_start>:
-  94:	a8 3c       	cpi	r26, 0xC8	; 200
+  94:	aa 3a       	cpi	r26, 0xAA	; 170
   96:	b2 07       	cpc	r27, r18
   98:	e1 f7       	brne	.-8      	; 0x92 <.do_clear_bss_loop>
   9a:	0e 94 8f 00 	call	0x11e	; 0x11e <main>
@@ -167,7 +167,7 @@ void switch_data(char data[])
  10a:	ce 01       	movw	r24, r28
  10c:	0e 94 14 01 	call	0x228	; 0x228 <send_data>
 		send_data("\n\r");
- 110:	87 e8       	ldi	r24, 0x87	; 135
+ 110:	8a e6       	ldi	r24, 0x6A	; 106
  112:	91 e0       	ldi	r25, 0x01	; 1
  114:	0e 94 14 01 	call	0x228	; 0x228 <send_data>
 	}
@@ -190,7 +190,7 @@ int main(void)
  126:	0e 94 e4 00 	call	0x1c8	; 0x1c8 <init_USART>
 	
 	send_data(CLEAR); //clear putty
- 12a:	8d e9       	ldi	r24, 0x9D	; 157
+ 12a:	8f e7       	ldi	r24, 0x7F	; 127
  12c:	91 e0       	ldi	r25, 0x01	; 1
  12e:	0e 94 14 01 	call	0x228	; 0x228 <send_data>
 	
@@ -264,30 +264,30 @@ ISR(TIMER0_COMPA_vect){
  174:	f8 94       	cli
 	
 	contor++;
- 176:	80 91 a6 01 	lds	r24, 0x01A6	; 0x8001a6 <contor>
- 17a:	90 91 a7 01 	lds	r25, 0x01A7	; 0x8001a7 <contor+0x1>
+ 176:	80 91 88 01 	lds	r24, 0x0188	; 0x800188 <contor>
+ 17a:	90 91 89 01 	lds	r25, 0x0189	; 0x800189 <contor+0x1>
  17e:	01 96       	adiw	r24, 0x01	; 1
- 180:	90 93 a7 01 	sts	0x01A7, r25	; 0x8001a7 <contor+0x1>
- 184:	80 93 a6 01 	sts	0x01A6, r24	; 0x8001a6 <contor>
+ 180:	90 93 89 01 	sts	0x0189, r25	; 0x800189 <contor+0x1>
+ 184:	80 93 88 01 	sts	0x0188, r24	; 0x800188 <contor>
 	
 	if(contor >= 1000){
- 188:	80 91 a6 01 	lds	r24, 0x01A6	; 0x8001a6 <contor>
- 18c:	90 91 a7 01 	lds	r25, 0x01A7	; 0x8001a7 <contor+0x1>
+ 188:	80 91 88 01 	lds	r24, 0x0188	; 0x800188 <contor>
+ 18c:	90 91 89 01 	lds	r25, 0x0189	; 0x800189 <contor+0x1>
  190:	88 3e       	cpi	r24, 0xE8	; 232
  192:	93 40       	sbci	r25, 0x03	; 3
  194:	80 f0       	brcs	.+32     	; 0x1b6 <__vector_14+0x52>
 		secunde++;
- 196:	80 91 a4 01 	lds	r24, 0x01A4	; 0x8001a4 <secunde>
- 19a:	90 91 a5 01 	lds	r25, 0x01A5	; 0x8001a5 <secunde+0x1>
+ 196:	80 91 86 01 	lds	r24, 0x0186	; 0x800186 <secunde>
+ 19a:	90 91 87 01 	lds	r25, 0x0187	; 0x800187 <secunde+0x1>
  19e:	01 96       	adiw	r24, 0x01	; 1
- 1a0:	90 93 a5 01 	sts	0x01A5, r25	; 0x8001a5 <secunde+0x1>
- 1a4:	80 93 a4 01 	sts	0x01A4, r24	; 0x8001a4 <secunde>
+ 1a0:	90 93 87 01 	sts	0x0187, r25	; 0x800187 <secunde+0x1>
+ 1a4:	80 93 86 01 	sts	0x0186, r24	; 0x800186 <secunde>
 		contor = 0;
- 1a8:	10 92 a7 01 	sts	0x01A7, r1	; 0x8001a7 <contor+0x1>
- 1ac:	10 92 a6 01 	sts	0x01A6, r1	; 0x8001a6 <contor>
+ 1a8:	10 92 89 01 	sts	0x0189, r1	; 0x800189 <contor+0x1>
+ 1ac:	10 92 88 01 	sts	0x0188, r1	; 0x800188 <contor>
 		flag_timer = 1;
  1b0:	81 e0       	ldi	r24, 0x01	; 1
- 1b2:	80 93 a0 01 	sts	0x01A0, r24	; 0x8001a0 <__data_end>
+ 1b2:	80 93 82 01 	sts	0x0182, r24	; 0x800182 <__data_end>
 	}
 	
 	sei();
@@ -374,7 +374,7 @@ ISR(USART_RX_vect)
  214:	8f 93       	push	r24
 	flag_rx = 1;
  216:	81 e0       	ldi	r24, 0x01	; 1
- 218:	80 93 c6 01 	sts	0x01C6, r24	; 0x8001c6 <flag_rx>
+ 218:	80 93 a8 01 	sts	0x01A8, r24	; 0x8001a8 <flag_rx>
 }
  21c:	8f 91       	pop	r24
  21e:	0f 90       	pop	r0
@@ -481,19 +481,19 @@ void read_data(char data[])
 void start_program()
 {
 	if(flag_rx == 1)
- 280:	80 91 c6 01 	lds	r24, 0x01C6	; 0x8001c6 <flag_rx>
+ 280:	80 91 a8 01 	lds	r24, 0x01A8	; 0x8001a8 <flag_rx>
  284:	81 30       	cpi	r24, 0x01	; 1
  286:	41 f4       	brne	.+16     	; 0x298 <start_program+0x18>
 	{
 		read_data(mesaj);
- 288:	8c eb       	ldi	r24, 0xBC	; 188
+ 288:	8e e9       	ldi	r24, 0x9E	; 158
  28a:	91 e0       	ldi	r25, 0x01	; 1
  28c:	0e 94 27 01 	call	0x24e	; 0x24e <read_data>
 		//send_data(mesaj);
 		//send_data("\n\r");
 		
 		switch_data(mesaj);
- 290:	8c eb       	ldi	r24, 0xBC	; 188
+ 290:	8e e9       	ldi	r24, 0x9E	; 158
  292:	91 e0       	ldi	r25, 0x01	; 1
  294:	0e 94 53 00 	call	0xa6	; 0xa6 <switch_data>
  298:	08 95       	ret
