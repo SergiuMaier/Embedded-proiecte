@@ -341,14 +341,14 @@ END GROUP
                 0x000000a6                . = ALIGN (0x2)
  *(.text.*)
  .text.schimbare_stare_led
-                0x000000a6       0x44 functii_afisare.o
+                0x000000a6       0x34 functii_afisare.o
                 0x000000a6                schimbare_stare_led
  .text.afisare_timp
-                0x000000ea       0xa4 functii_afisare.o
-                0x000000ea                afisare_timp
+                0x000000da       0xa4 functii_afisare.o
+                0x000000da                afisare_timp
  .text.switch_data
-                0x0000018e       0x8c functii_afisare.o
-                0x0000018e                switch_data
+                0x0000017e       0x9c functii_afisare.o
+                0x0000017e                switch_data
  .text.main     0x0000021a       0x1a main.o
                 0x0000021a                main
  .text.init_timer
@@ -427,7 +427,7 @@ END GROUP
  *(.fini0)
                 0x00000490                _etext = .
 
-.data           0x00800100       0xa4 load address 0x00000490
+.data           0x00800100       0xac load address 0x00000490
                 0x00800100                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -435,41 +435,41 @@ END GROUP
  *(.rodata)
  *(.rodata*)
  .rodata.str1.1
-                0x00800100       0xa4 functii_afisare.o
-                                 0xa9 (size before relaxing)
+                0x00800100       0xac functii_afisare.o
+                                 0xb1 (size before relaxing)
  .rodata.str1.1
-                0x008001a4        0x3 main.o
+                0x008001ac        0x3 main.o
  *(.gnu.linkonce.r*)
-                0x008001a8                . = ALIGN (0x2)
-                0x008001a8                _edata = .
-                0x008001a8                PROVIDE (__data_end, .)
+                0x008001b0                . = ALIGN (0x2)
+                0x008001b0                _edata = .
+                0x008001b0                PROVIDE (__data_end, .)
 
-.bss            0x008001a4       0x28
-                0x008001a4                PROVIDE (__bss_start, .)
+.bss            0x008001ac       0x28
+                0x008001ac                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
  *(COMMON)
- COMMON         0x008001a4       0x1c functii_afisare.o
-                0x008001a4                flag_timer
-                0x008001a5                stare_led
-                0x008001a6                minute
-                0x008001a8                secunde
-                0x008001aa                contor
-                0x008001ac                ch_min
-                0x008001b6                ch_sec
- COMMON         0x008001c0        0xc main.o
-                0x008001c0                mesaj
-                0x008001ca                flag_rx
-                0x008001cb                flag_tx
-                0x008001cc                PROVIDE (__bss_end, .)
+ COMMON         0x008001ac       0x1c functii_afisare.o
+                0x008001ac                flag_timer
+                0x008001ad                stare_led
+                0x008001ae                minute
+                0x008001b0                secunde
+                0x008001b2                contor
+                0x008001b4                ch_min
+                0x008001be                ch_sec
+ COMMON         0x008001c8        0xc main.o
+                0x008001c8                mesaj
+                0x008001d2                flag_rx
+                0x008001d3                flag_tx
+                0x008001d4                PROVIDE (__bss_end, .)
                 0x00000490                __data_load_start = LOADADDR (.data)
-                0x00000534                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x0000053c                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x008001cc        0x0
+.noinit         0x008001d4        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
  *(.noinit*)
                 [!provide]                PROVIDE (__noinit_end, .)
-                0x008001cc                _end = .
+                0x008001d4                _end = .
                 [!provide]                PROVIDE (__heap_start, .)
 
 .eeprom         0x00810000        0x0
@@ -559,13 +559,13 @@ END GROUP
  .debug_info    0x00000e3c      0x16f timer.o
  .debug_info    0x00000fab      0x255 USART.o
 
-.debug_abbrev   0x00000000      0xa6b
+.debug_abbrev   0x00000000      0xa7a
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0x5a2 D:/DRIVERE/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega328p/avr5/crtatmega328p.o
- .debug_abbrev  0x000005a2      0x1de functii_afisare.o
- .debug_abbrev  0x00000780       0xd0 main.o
- .debug_abbrev  0x00000850       0xb4 timer.o
- .debug_abbrev  0x00000904      0x167 USART.o
+ .debug_abbrev  0x000005a2      0x1ed functii_afisare.o
+ .debug_abbrev  0x0000078f       0xd0 main.o
+ .debug_abbrev  0x0000085f       0xb4 timer.o
+ .debug_abbrev  0x00000913      0x167 USART.o
 
 .debug_line     0x00000000      0x6e4
  *(.debug_line .debug_line.* .debug_line_end)
@@ -594,11 +594,11 @@ END GROUP
  .debug_str     0x00000501       0x50 USART.o
                                 0x234 (size before relaxing)
 
-.debug_loc      0x00000000      0x382
+.debug_loc      0x00000000      0x2e2
  *(.debug_loc)
- .debug_loc     0x00000000      0x195 functii_afisare.o
- .debug_loc     0x00000195       0x56 timer.o
- .debug_loc     0x000001eb      0x197 USART.o
+ .debug_loc     0x00000000       0xf5 functii_afisare.o
+ .debug_loc     0x000000f5       0x56 timer.o
+ .debug_loc     0x0000014b      0x197 USART.o
 
 .debug_macinfo
  *(.debug_macinfo)

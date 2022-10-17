@@ -1,7 +1,7 @@
 /*
  * functii_afisare.c
  *
- * Created: 10/6/2022 10:51:48 AM
+ * Created: 10/17/2022 10:51:48 AM
  *  Author: Sergiu Maier
  */ 
 
@@ -33,12 +33,14 @@ void switch_data(char data[])
 	
 	//---------------------------------------------------------------------/
 	
-	if(strcmp(data, "\rled on") == 0)
+	if(strcmp(data, "\rled on") == 0){
 		schimbare_stare_led(&PORTB, PINB0, 1);
-	
-	else if(strcmp(data, "\rled off") == 0)
+		send_data("LED ON\n\r");
+	}
+	else if(strcmp(data, "\rled off") == 0){
 		schimbare_stare_led(&PORTB, PINB0, 0);
-		
+		send_data("LED OFF\n\r");
+	}
 	else if(strcmp(data, "\rtimp") == 0)
 		afisare_timp();
 		
@@ -56,15 +58,9 @@ void switch_data(char data[])
 void schimbare_stare_led(volatile uint8_t *port, uint8_t pin, uint8_t stare)
 {
 	if(stare == 1)
-	{
 		*port |= (1 << pin);
-		send_data("ON\n\r");
-	}
 	else
-	{
 		*port &= ~(1 << pin);
-		send_data("OFF\n\r");
-	}
 }
 
 void afisare_timp()
