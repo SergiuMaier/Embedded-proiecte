@@ -15,6 +15,7 @@ int main(void)
 	init_USART(MYUBRR);
 	
 	send_data(CLEAR); //clear putty
+	send_data("----slave----\n\r");
 	
 	while(1) 
     {

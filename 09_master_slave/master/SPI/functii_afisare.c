@@ -19,21 +19,23 @@ void afisare_meniu()
 
 void switch_data(char data[])
 {	
-	if(strcmp(data, "led on") == 0)
+	if(strcmp(data, "led on") == 0){
 		send_data("led on\n\r");
-		
-	else if(strcmp(data, "led off") == 0)
+	}
+	else if(strcmp(data, "led off") == 0){
 		send_data("led off\n\r");
-	
-	else if(strcmp(data, "timp") == 0)
+	}
+	else if(strcmp(data, "timp") == 0){
 		send_data("timp\n\r");
-
-	
-	else if(strcmp(data, "clear") == 0)
-		send_data("clear\n\r");
-
-	else{
-		send_data(data);
+	}
+	else if(strcmp(data, "clear") == 0){
+		send_data(CLEAR);
 		send_data("\n\r");
+	}
+	else if(strcmp(data, "clear slave") == 0){
+		send_data("clear\n\r");
+	}
+	else{
+		send_data("nu este o comanda!\n\r");
 	}
 }

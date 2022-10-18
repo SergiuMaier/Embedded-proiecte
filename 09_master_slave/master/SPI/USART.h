@@ -16,7 +16,7 @@
 
 volatile uint8_t flag_tx; //flag-uri folosite atunci cand are loc o intrerupere de USART
 volatile uint8_t flag_rx; //flag_rx devine 1 atunci cand este apasata tasta Enter
-char mesaj[10];
+char mesaj[50];
 
 void init_USART(uint16_t ubrr); //initializare
 void transmit_data(unsigned char data); //transmitere date

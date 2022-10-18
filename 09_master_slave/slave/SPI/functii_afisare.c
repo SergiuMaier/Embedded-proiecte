@@ -41,16 +41,15 @@ void switch_data(char data[])
 		schimbare_stare_led(&PORTB, PINB0, 0);
 		send_data("LED OFF\n\r");
 	}
-	else if(strcmp(data, "\rtimp") == 0)
+	else if(strcmp(data, "\rtimp") == 0){
 		afisare_timp();
-		
-	else if(strcmp(data, "\rclear") == 0)
+	}
+	else if(strcmp(data, "\rclear") == 0){
 		send_data(CLEAR);
-
+		send_data("------SLAVE------\n\r");
+	}
 	else{
-		send_data("'");
-		send_data(data);
-		send_data("' ");
+		//send_data(data);
 		send_data("nu este o comanda!\n\r");
 	}
 }
