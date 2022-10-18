@@ -18,7 +18,7 @@ void afisare_meniu()
 }
 
 void switch_data(char data[])
-{	
+{			
 	if(strcmp(data, "led on") == 0){
 		send_data("led on\n\r");
 	}

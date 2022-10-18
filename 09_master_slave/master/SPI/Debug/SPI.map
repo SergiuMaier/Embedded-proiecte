@@ -17,10 +17,8 @@ Common symbol       size              file
 mesaj               0x32              main.o
 flag_rx             0x1               main.o
 flag_timer          0x1               functii_afisare.o
-stare_led           0x1               functii_afisare.o
 minute              0x2               functii_afisare.o
 secunde             0x2               functii_afisare.o
-flag_tx             0x1               main.o
 contor              0x2               functii_afisare.o
 ch_min              0xa               functii_afisare.o
 ch_sec              0xa               functii_afisare.o
@@ -244,7 +242,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0x2c2
+.text           0x00000000      0x2ca
  *(.vectors)
  .vectors       0x00000000       0x68 D:/DRIVERE/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega328p/avr5/crtatmega328p.o
                 0x00000000                __vector_default
@@ -330,48 +328,48 @@ END GROUP
                 0x000000a6                . = ALIGN (0x2)
  *(.text.*)
  .text.switch_data
-                0x000000a6       0x8a functii_afisare.o
+                0x000000a6       0x92 functii_afisare.o
                 0x000000a6                switch_data
- .text.main     0x00000130       0x1a main.o
-                0x00000130                main
+ .text.main     0x00000138       0x1a main.o
+                0x00000138                main
  .text.init_timer
-                0x0000014a       0x1c timer.o
-                0x0000014a                init_timer
+                0x00000152       0x1c timer.o
+                0x00000152                init_timer
  .text.init_devices
-                0x00000166       0x10 timer.o
-                0x00000166                init_devices
+                0x0000016e       0x10 timer.o
+                0x0000016e                init_devices
  .text.__vector_14
-                0x00000176       0x64 timer.o
-                0x00000176                __vector_14
+                0x0000017e       0x64 timer.o
+                0x0000017e                __vector_14
  .text.init_USART
-                0x000001da       0x26 USART.o
-                0x000001da                init_USART
+                0x000001e2       0x26 USART.o
+                0x000001e2                init_USART
  .text.transmit_data
-                0x00000200        0xe USART.o
-                0x00000200                transmit_data
+                0x00000208        0xe USART.o
+                0x00000208                transmit_data
  .text.receive_data
-                0x0000020e        0xe USART.o
-                0x0000020e                receive_data
+                0x00000216        0xe USART.o
+                0x00000216                receive_data
  .text.__vector_18
-                0x0000021c       0x1e USART.o
-                0x0000021c                __vector_18
+                0x00000224       0x1e USART.o
+                0x00000224                __vector_18
  .text.send_data
-                0x0000023a       0x26 USART.o
-                0x0000023a                send_data
+                0x00000242       0x26 USART.o
+                0x00000242                send_data
  .text.read_data
-                0x00000260       0x32 USART.o
-                0x00000260                read_data
+                0x00000268       0x32 USART.o
+                0x00000268                read_data
  .text.start_program
-                0x00000292       0x1a USART.o
-                0x00000292                start_program
+                0x0000029a       0x1a USART.o
+                0x0000029a                start_program
  .text.avr-libc
-                0x000002ac       0x12 d:/drivere/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(strcmp.o)
-                0x000002ac                strcmp
-                0x000002be                . = ALIGN (0x2)
+                0x000002b4       0x12 d:/drivere/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(strcmp.o)
+                0x000002b4                strcmp
+                0x000002c6                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x000002be        0x0 d:/drivere/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
-                0x000002be                _exit
-                0x000002be                exit
+ .fini9         0x000002c6        0x0 d:/drivere/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+                0x000002c6                _exit
+                0x000002c6                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -390,11 +388,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x000002be        0x4 d:/drivere/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+ .fini0         0x000002c6        0x4 d:/drivere/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x000002c2                _etext = .
+                0x000002ca                _etext = .
 
-.data           0x00800100       0xa4 load address 0x000002c2
+.data           0x00800100       0xa4 load address 0x000002ca
                 0x00800100                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -403,7 +401,7 @@ END GROUP
  *(.rodata*)
  .rodata.str1.1
                 0x00800100       0xa3 functii_afisare.o
-                                 0xab (size before relaxing)
+                                 0xae (size before relaxing)
  .rodata.str1.1
                 0x008001a3        0x3 main.o
  *(.gnu.linkonce.r*)
@@ -412,32 +410,30 @@ END GROUP
                 0x008001a4                _edata = .
                 0x008001a4                PROVIDE (__data_end, .)
 
-.bss            0x008001a4       0x50
+.bss            0x008001a4       0x4e
                 0x008001a4                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
  *(COMMON)
- COMMON         0x008001a4       0x1c functii_afisare.o
+ COMMON         0x008001a4       0x1b functii_afisare.o
                 0x008001a4                flag_timer
-                0x008001a5                stare_led
-                0x008001a6                minute
-                0x008001a8                secunde
-                0x008001aa                contor
-                0x008001ac                ch_min
-                0x008001b6                ch_sec
- COMMON         0x008001c0       0x34 main.o
-                0x008001c0                mesaj
-                0x008001f2                flag_rx
-                0x008001f3                flag_tx
-                0x008001f4                PROVIDE (__bss_end, .)
-                0x000002c2                __data_load_start = LOADADDR (.data)
-                0x00000366                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x008001a5                minute
+                0x008001a7                secunde
+                0x008001a9                contor
+                0x008001ab                ch_min
+                0x008001b5                ch_sec
+ COMMON         0x008001bf       0x33 main.o
+                0x008001bf                mesaj
+                0x008001f1                flag_rx
+                0x008001f2                PROVIDE (__bss_end, .)
+                0x000002ca                __data_load_start = LOADADDR (.data)
+                0x0000036e                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x008001f4        0x0
+.noinit         0x008001f2        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
  *(.noinit*)
                 [!provide]                PROVIDE (__noinit_end, .)
-                0x008001f4                _end = .
+                0x008001f2                _end = .
                 [!provide]                PROVIDE (__heap_start, .)
 
 .eeprom         0x00810000        0x0
@@ -519,13 +515,13 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000      0xf46
+.debug_info     0x00000000      0xf08
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x5f4 D:/DRIVERE/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega328p/avr5/crtatmega328p.o
- .debug_info    0x000005f4      0x408 functii_afisare.o
- .debug_info    0x000009fc      0x186 main.o
- .debug_info    0x00000b82      0x16f timer.o
- .debug_info    0x00000cf1      0x255 USART.o
+ .debug_info    0x000005f4      0x412 functii_afisare.o
+ .debug_info    0x00000a06      0x162 main.o
+ .debug_info    0x00000b68      0x16f timer.o
+ .debug_info    0x00000cd7      0x231 USART.o
 
 .debug_abbrev   0x00000000      0x9a5
  *(.debug_abbrev)
@@ -535,13 +531,13 @@ END GROUP
  .debug_abbrev  0x0000078a       0xb4 timer.o
  .debug_abbrev  0x0000083e      0x167 USART.o
 
-.debug_line     0x00000000      0x61b
+.debug_line     0x00000000      0x5f7
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x134 D:/DRIVERE/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega328p/avr5/crtatmega328p.o
- .debug_line    0x00000134      0x12d functii_afisare.o
- .debug_line    0x00000261       0xbe main.o
- .debug_line    0x0000031f      0x136 timer.o
- .debug_line    0x00000455      0x1c6 USART.o
+ .debug_line    0x00000134      0x11e functii_afisare.o
+ .debug_line    0x00000252       0xa9 main.o
+ .debug_line    0x000002fb      0x136 timer.o
+ .debug_line    0x00000431      0x1c6 USART.o
 
 .debug_frame    0x00000000      0x198
  *(.debug_frame)
@@ -550,17 +546,17 @@ END GROUP
  .debug_frame   0x00000074       0x70 timer.o
  .debug_frame   0x000000e4       0xb4 USART.o
 
-.debug_str      0x00000000      0x50d
+.debug_str      0x00000000      0x4a0
  *(.debug_str)
  .debug_str     0x00000000      0x208 D:/DRIVERE/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega328p/avr5/crtatmega328p.o
- .debug_str     0x00000208      0x1d5 functii_afisare.o
-                                0x21a (size before relaxing)
- .debug_str     0x000003dd       0x4d main.o
-                                0x1e9 (size before relaxing)
- .debug_str     0x0000042a       0x93 timer.o
-                                0x200 (size before relaxing)
- .debug_str     0x000004bd       0x50 USART.o
-                                0x235 (size before relaxing)
+ .debug_str     0x00000208      0x1cb functii_afisare.o
+                                0x210 (size before relaxing)
+ .debug_str     0x000003d3       0x45 main.o
+                                0x1d7 (size before relaxing)
+ .debug_str     0x00000418       0x38 timer.o
+                                0x205 (size before relaxing)
+ .debug_str     0x00000450       0x50 USART.o
+                                0x223 (size before relaxing)
 
 .debug_loc      0x00000000      0x252
  *(.debug_loc)

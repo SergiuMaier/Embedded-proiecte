@@ -14,8 +14,6 @@
 #include <stdio.h>
 #include <string.h>
 
-uint8_t stare_led;    //flag pt a memora starea LED-ului
-
 void switch_data(char data[]); //verificare mesaje primite din putty si executarea lor
 void new_line();      //inceput de rand nou, unde se poate tasta o comanda
 void afisare_meniu(); //afisare lista comenzi

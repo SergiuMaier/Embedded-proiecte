@@ -14,7 +14,6 @@
 #include <util/delay.h>
 #include <string.h>
 
-volatile uint8_t flag_tx; //flag-uri folosite atunci cand are loc o intrerupere de USART
 volatile uint8_t flag_rx; //flag_rx devine 1 atunci cand este apasata tasta Enter
 char mesaj[50];
 

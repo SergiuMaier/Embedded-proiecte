@@ -15,6 +15,7 @@ volatile uint16_t contor, secunde, minute; //incrementare secunde si minute
 char ch_sec[10], ch_min[10]; //folosite pentru conversia in char a sec si min
 volatile uint8_t flag_timer; //activar atunci cand are loc intreruperea de timer
 
+void interrupt_init();
 void init_timer();  
 void init_devices();  
 void incrementare_minute(); 
