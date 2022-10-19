@@ -33,11 +33,6 @@ unsigned char receive_data(void)
 	return UDR0;
 }
 
-ISR(USART_RX_vect) 
-{
-	flag_rx = 1;
-}
-
 void send_data(char data[])
 {	
 	uint8_t i = 0;
@@ -69,6 +64,11 @@ void read_data(char data[])
 	}
 	
 	data[i] = '\0'; //caracter final
+}
+
+ISR(USART_RX_vect)
+{
+	flag_rx = 1;
 }
 
 void start_program()
