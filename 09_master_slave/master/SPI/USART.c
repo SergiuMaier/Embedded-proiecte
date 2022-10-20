@@ -77,6 +77,7 @@ void start_program()
 	{
 		read_data(mesaj);		
 		switch_data(mesaj);
+		
 	}
 }
 

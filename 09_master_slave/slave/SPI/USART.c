@@ -53,7 +53,7 @@ void read_data(char data[])
 	{	
 		mesaj_primit = receive_data();		
 		
-		if(mesaj_primit != '\n')
+		if(mesaj_primit != '\r')
 		{
 			data[i] = mesaj_primit;
 			i++;

@@ -18,7 +18,7 @@ int main(void)
 	
 	while(1) 
     {
-		start_program();   
+		start_program(); 
     }
 }
 

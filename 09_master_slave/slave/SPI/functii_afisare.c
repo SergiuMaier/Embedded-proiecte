@@ -33,24 +33,24 @@ void switch_data(char data[])
 	
 	//---------------------------------------------------------------------/
 	
-	if(strcmp(data, "\rled on") == 0){
+	if(strcmp(data, "LED ON\n") == 0){
 		schimbare_stare_led(&PORTB, PINB0, 1);
-		send_data("LED ON\n\r");
+		send_data("STARE LED: ON\n\r");
 	}
-	else if(strcmp(data, "\rled off") == 0){
+	else if(strcmp(data, "LED OFF\n") == 0){
 		schimbare_stare_led(&PORTB, PINB0, 0);
-		send_data("LED OFF\n\r");
+		send_data("STARE LED: OFF\n\r");
 	}
-	else if(strcmp(data, "\rtimp") == 0){
+	else if(strcmp(data, "timp\n") == 0){
 		afisare_timp();
 	}
-	else if(strcmp(data, "\rclear") == 0){
+	else if(strcmp(data, "clear\n") == 0){
 		send_data(CLEAR);
 		send_data("------SLAVE------\n\r");
 	}
 	else{
-		//send_data(data);
-		send_data("nu este o comanda!\n\r");
+		if (strcmp(data, CLEAR) == 1)
+			send_data("nu este o comanda!\n\r");
 	}
 }
 

@@ -33,11 +33,11 @@ ISR(TIMER0_COMPA_vect){
 	cli();
 	
 	contor++;
+	contor_led_on++;
 	
 	if(contor >= 1000){
 		secunde++;
 		contor = 0;
-		flag_timer = 1;
 	}
 	
 	sei();
@@ -48,8 +48,8 @@ void incrementare_minute(){
 	if(secunde >= 60){	//in ISR aveam 01:59 in loc de 01:00
 		secunde %= 60;
 		minute++;
+		
 	}
 }
-
 
 
