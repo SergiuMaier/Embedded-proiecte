@@ -15,6 +15,7 @@
    - implementarea timerului 0 a fost mutata in fisierele timer0_func.h si timer0_func.c;
    - realizare functii pt start si stop timer;
    - timer-ul functioneaza doar atunci cand este nevoie sa se contorizeze secuntele;
+
 ---
 📁 [03_software_timer](./03_software_timer/Project)
    
