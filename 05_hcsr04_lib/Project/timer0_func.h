@@ -16,7 +16,7 @@
 #define STOP_TIMER0 0b11111000
 
 #define GENERARE_INTRERUPERE 0.001 //generarea unei intreruperi la fiecare x secunde
-#define VALOARE_TOP_REGISTRU 256   //valoarea de top a registrului TCNT0 (pt ca folosesc timer pe 8 biti)
+#define VALOARE_TOP_REGISTRU 256   //valoarea de top a registrului TCNT0 (timer 8 biti)
 
 void start_timer0();
 

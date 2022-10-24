@@ -23,11 +23,11 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
   9 .debug_frame  000001b0  00000000  00000000  000022a4  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    0000047a  00000000  00000000  00002454  2**0
+ 10 .debug_str    00000480  00000000  00000000  00002454  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    00000162  00000000  00000000  000028ce  2**0
+ 11 .debug_loc    00000162  00000000  00000000  000028d4  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000090  00000000  00000000  00002a30  2**0
+ 12 .debug_ranges 00000090  00000000  00000000  00002a36  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -153,9 +153,9 @@ ISR(TIMER0_COMPA_vect){
   e4:	f8 94       	cli
 	
 	contor_secunde++;
-  e6:	60 91 00 01 	lds	r22, 0x0100	; 0x800100 <__DATA_REGION_ORIGIN__>
+  e6:	60 91 00 01 	lds	r22, 0x0100	; 0x800100 <_edata>
   ea:	6f 5f       	subi	r22, 0xFF	; 255
-  ec:	60 93 00 01 	sts	0x0100, r22	; 0x800100 <__DATA_REGION_ORIGIN__>
+  ec:	60 93 00 01 	sts	0x0100, r22	; 0x800100 <_edata>
 	timp++;
   f0:	80 91 09 01 	lds	r24, 0x0109	; 0x800109 <timp>
   f4:	8f 5f       	subi	r24, 0xFF	; 255
@@ -178,7 +178,7 @@ ISR(TIMER0_COMPA_vect){
  118:	8f 5f       	subi	r24, 0xFF	; 255
  11a:	80 93 01 01 	sts	0x0101, r24	; 0x800101 <secunde>
 		contor_secunde = 0;
- 11e:	10 92 00 01 	sts	0x0100, r1	; 0x800100 <__DATA_REGION_ORIGIN__>
+ 11e:	10 92 00 01 	sts	0x0100, r1	; 0x800100 <_edata>
 	}
 	
 	sei();
@@ -358,14 +358,12 @@ int main(void){
 		    
 		trigger();
  220:	0e 94 24 01 	call	0x248	; 0x248 <trigger>
-		//calcul_latime_impuls_echo(&PINB, PINB2);
-		
 	    valoare = calcul_distanta();
  224:	0e 94 3c 01 	call	0x278	; 0x278 <calcul_distanta>
  228:	80 93 0e 01 	sts	0x010E, r24	; 0x80010e <valoare>
 		
-		if(valoare <= 5)
- 22c:	86 30       	cpi	r24, 0x06	; 6
+		if(valoare <= TIMP_LED_ON) 
+ 22c:	87 30       	cpi	r24, 0x07	; 7
  22e:	30 f4       	brcc	.+12     	; 0x23c <main+0x24>
 		    pinSet(&PORTB, PINB0);
  230:	60 e0       	ldi	r22, 0x00	; 0
@@ -388,29 +386,27 @@ int main(void){
 void trigger(){
 	
 	if(contor_secunde >= 10){
- 248:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <__DATA_REGION_ORIGIN__>
+ 248:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <_edata>
  24c:	8a 30       	cpi	r24, 0x0A	; 10
  24e:	18 f0       	brcs	.+6      	; 0x256 <trigger+0xe>
 		PORTB &= ~(1 << PINB1);
  250:	85 b1       	in	r24, 0x05	; 5
  252:	8d 7f       	andi	r24, 0xFD	; 253
  254:	85 b9       	out	0x05, r24	; 5
-		//*port &= ~(1 << pin);
 	}
 	
 	if(contor_secunde >= 100){
- 256:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <__DATA_REGION_ORIGIN__>
+ 256:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <_edata>
  25a:	84 36       	cpi	r24, 0x64	; 100
  25c:	18 f0       	brcs	.+6      	; 0x264 <trigger+0x1c>
 		PORTB |= 1 << PINB1;
  25e:	85 b1       	in	r24, 0x05	; 5
  260:	82 60       	ori	r24, 0x02	; 2
  262:	85 b9       	out	0x05, r24	; 5
-		//*port |=  1 << pin;
 	}
 	
 	if(contor_secunde >= 200)
- 264:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <__DATA_REGION_ORIGIN__>
+ 264:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <_edata>
  268:	88 3c       	cpi	r24, 0xC8	; 200
  26a:	28 f0       	brcs	.+10     	; 0x276 <trigger+0x2e>
 	{
@@ -418,14 +414,13 @@ void trigger(){
  26c:	85 b1       	in	r24, 0x05	; 5
  26e:	8d 7f       	andi	r24, 0xFD	; 253
  270:	85 b9       	out	0x05, r24	; 5
-		//*port &= ~(1 << pin);
 		contor_secunde = 0;
- 272:	10 92 00 01 	sts	0x0100, r1	; 0x800100 <__DATA_REGION_ORIGIN__>
+ 272:	10 92 00 01 	sts	0x0100, r1	; 0x800100 <_edata>
  276:	08 95       	ret
 
 00000278 <calcul_distanta>:
-	//
-//}
+
+//calculul latimii impulsului se face in rutina de intrerupere INT0
 
 uint8_t calcul_distanta(){
 	

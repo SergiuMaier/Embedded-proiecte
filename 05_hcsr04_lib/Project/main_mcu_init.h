@@ -11,12 +11,8 @@
 #include "main_defines.h"	
 
 void port_init(void);
-
 void timer0_init(void);
-
 void interrupt_init(void);
-
 void init_devices(void);
-
 
 #endif /* MAIN_MCU_INIT_H_ */

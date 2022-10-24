@@ -22,12 +22,10 @@ uint8_t distanta;
 uint32_t timp_start;
 uint32_t timp_final;
 
-//functie trigger
+//trigger senzor
 void trigger();
 
-//functie masurare latime impuls pin Echo
-void calcul_latime_impuls_echo(volatile uint8_t *port, uint8_t pin);
-
+//calculul distantei
 uint8_t calcul_distanta();
 
 #endif /* SENZOR_HC-SR04_H_ */

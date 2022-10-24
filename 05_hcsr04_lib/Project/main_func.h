@@ -20,11 +20,8 @@ uint8_t timp;
 uint8_t flag1;
 
 void pinSet(volatile uint8_t *port, uint8_t pin);
-
 void pinReset(volatile uint8_t *port, uint8_t pin);
-
 ISR(TIMER0_COMPA_vect);
-
 ISR(INT0_vect);
 
 #endif /* MAIN_FUNC_H_ */

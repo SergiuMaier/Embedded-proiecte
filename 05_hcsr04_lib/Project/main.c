@@ -27,11 +27,9 @@ int main(void){
 		//pinSet(&PORTB, PINB0);
 		    
 		trigger();
-		//calcul_latime_impuls_echo(&PINB, PINB2);
-		
 	    valoare = calcul_distanta();
 		
-		if(valoare <= 5)
+		if(valoare <= TIMP_LED_ON) 
 		    pinSet(&PORTB, PINB0);
 		else
 			pinReset(&PORTB, PINB0);	
