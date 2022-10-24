@@ -23,11 +23,11 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
   9 .debug_frame  00000190  00000000  00000000  00001e24  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    00000487  00000000  00000000  00001fb4  2**0
+ 10 .debug_str    00000493  00000000  00000000  00001fb4  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    00000203  00000000  00000000  0000243b  2**0
+ 11 .debug_loc    00000203  00000000  00000000  00002447  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000090  00000000  00000000  0000263e  2**0
+ 12 .debug_ranges 00000090  00000000  00000000  0000264a  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -101,7 +101,7 @@ Disassembly of section .text:
   a2:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
 
 000000a6 <pinSet>:
-int contor_on = 0;			//contor pentru masurarea duratei de timp in care LED-urile sunt aprinse
+int contor_on = 0;		//contor pentru masurarea duratei de timp in care LED-urile sunt aprinse
 int secunde = 0;
 
 void pinSet(volatile uint8_t *port, uint8_t pin){
@@ -145,7 +145,7 @@ void pinReset(volatile uint8_t *port, uint8_t pin){
 
 void ledOn(){
 	
-	if(secunde % 2 == 0)				  //testare timer
+	if(secunde % 2 == 0)		//testare timer
   d8:	80 91 0a 01 	lds	r24, 0x010A	; 0x80010a <__data_end>
   dc:	80 fd       	sbrc	r24, 0
   de:	05 c0       	rjmp	.+10     	; 0xea <ledOn+0x12>
@@ -155,7 +155,7 @@ void ledOn(){
   e4:	90 e0       	ldi	r25, 0x00	; 0
   e6:	0e 94 53 00 	call	0xa6	; 0xa6 <pinSet>
 	
-	if(flag_on == 1){					  //aprindere LED-uri la apasarea butonului
+	if(flag_on == 1){		//aprindere LED-uri la apasarea butonului
   ea:	80 91 10 01 	lds	r24, 0x0110	; 0x800110 <flag_on>
   ee:	90 91 11 01 	lds	r25, 0x0111	; 0x800111 <flag_on+0x1>
   f2:	01 97       	sbiw	r24, 0x01	; 1
@@ -438,7 +438,7 @@ ISR(TIMER0_COMPA_vect){  //pt caz general
 
 000002b4 <__vector_1>:
 
-ISR(INT0_vect){			//intrerupere pt butonul de on
+ISR(INT0_vect){		     //intrerupere pt butonul de on
  2b4:	1f 92       	push	r1
  2b6:	0f 92       	push	r0
  2b8:	0f b6       	in	r0, 0x3f	; 63
@@ -450,7 +450,7 @@ ISR(INT0_vect){			//intrerupere pt butonul de on
 	cli();
  2c2:	f8 94       	cli
 	
-	flag_on = 1;		 //LED-uri on
+	flag_on = 1;	     //LED-uri on
  2c4:	81 e0       	ldi	r24, 0x01	; 1
  2c6:	90 e0       	ldi	r25, 0x00	; 0
  2c8:	90 93 11 01 	sts	0x0111, r25	; 0x800111 <flag_on+0x1>
@@ -490,6 +490,7 @@ ISR(INT1_vect){		//intrerupere pt butonul de off
 	
 	sei();
  304:	78 94       	sei
+}
  306:	0f 90       	pop	r0
  308:	0f be       	out	0x3f, r0	; 63
  30a:	0f 90       	pop	r0
@@ -527,10 +528,10 @@ void timer0_init(void){
  326:	82 60       	ori	r24, 0x02	; 2
  328:	84 bd       	out	0x24, r24	; 36
 	
-	calcul_valoare_registru_ocr0a();		//OCR0A
+	calcul_valoare_registru_ocr0a();	//OCR0A
  32a:	0e 94 b5 00 	call	0x16a	; 0x16a <calcul_valoare_registru_ocr0a>
 	
-	TCCR0B |= TIMER_PRESCALAR_256;			//prescalar ales pt valoarea 0.004s (vezi main_defines.h)
+	TCCR0B |= TIMER_PRESCALAR_256;		//prescalar ales pt valoarea 0.004s (vezi main_defines.h)
  32e:	85 b5       	in	r24, 0x25	; 37
  330:	84 60       	ori	r24, 0x04	; 4
  332:	85 bd       	out	0x25, r24	; 37
