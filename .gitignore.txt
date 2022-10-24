@@ -1,6 +1,0 @@
-#Prerequisites
-*.d
-*.mk
-
-
-Debug/
