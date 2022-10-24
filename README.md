@@ -37,6 +37,9 @@
   - recunoasterea unui singur caracter introdus in putty;
   - executarea unor comenzi pe baza caracterelor primite;
   - partial functional - rezolvat in 08;
+  
+  
+  
 ---
 📁 [08_send_read_text](./08_send_read_text/SPI) 
   - trimiterea si citirea mesajelor pe seriala;
