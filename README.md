@@ -39,4 +39,12 @@
 
 - [08_send_read_text](./08_send_read_text/SPI) 
   - trimiterea si citirea mesajelor pe seriala;
-  - recunoasterea si executarea comenzilor introduse in putty;
+  - recunoasterea si executarea comenzilor introduse in Putty;
+
+- [09_master_slave_simplex_mode](./09_master_slave_simplex_mode/SPI) 
+  - se utilizează două plăcuțe Arduino cu microcontroler ATmega328P;
+  - de la un microcontroler (master) se trimit mesaje/comenzi prin interfata seriala catre celalalt microcontroler (slave);
+  - comenzile primite sunt verificate si executate de catre slave (ex: schimbarea starii unul LED, afisare timp, clear Putty);
+  - conexiuni: TX (master) - RX (slave);
+
+- [10_master_slave_full_duplex](./10_master_slave_full_duplex/SPI)
