@@ -1,6 +1,6 @@
 ## Embedded Systems - playground
 
-### Descriere:
+### Descriere proiecte:
 
 - [01_timer0_general](./01_timer0_general/Project)
   
