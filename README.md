@@ -33,7 +33,7 @@
 - [06_cronometru_putty](./06_cronometru_putty/SPI)
   - afisare cronometru pe seriala;
   
-- [07_rx_tx_complete_interrupts](./07_rx_tx_complete_interrupts/SPI)  
+- [07_usart_rx_complete_interrupt](./07_usart_rx_complete_interrupt/SPI)  
   - recunoasterea unui singur caracter introdus in putty;
   - executarea unor comenzi pe baza caracterelor primite;
 
