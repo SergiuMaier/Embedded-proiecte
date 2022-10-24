@@ -36,7 +36,7 @@
 📁 [07_usart_rx_complete_interrupt](./07_usart_rx_complete_interrupt/SPI)  
   - recunoasterea unui singur caracter introdus in putty;
   - executarea unor comenzi pe baza caracterelor primite;
-  - partial functional - rezolvat in 08;
+  - partial functional (bug rezolvat complet in 08);
 ---
 📁 [08_send_read_text](./08_send_read_text/SPI) 
   - trimiterea si citirea mesajelor pe seriala;
