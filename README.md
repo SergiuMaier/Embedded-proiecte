@@ -30,7 +30,7 @@
 - [05_hcsr04_lib](./05_hcsr04_lib/Project)
   - creare librarie pentru senzorul cu ultrasunete care poate fi inclusa in viitoarele proiecte;
   
-- [06_spi_cronometru](./06_spi_cronometru/SPI)
+- [06_cronometru_putty](./06_cronometru_putty/SPI)
   - afisare cronometru pe seriala;
   
 - [07_spi_rx_tx_complete](./07_spi_rx_tx_complete/SPI)  
