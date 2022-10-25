@@ -32,8 +32,10 @@ void switch_data(char data[])
 	//}
 	
 	//---------------------------------------------------------------------/
-	
-	if(strcmp(data, "LED ON\n") == 0){
+	if (strcmp(data, "1") == 0){
+		send_data("LED ON\n\r");
+	}
+	else if(strcmp(data, "LED ON\n") == 0){
 		schimbare_stare_led(&PORTB, PINB0, 1);
 		send_data("STARE LED: ON\n\r");
 	}
@@ -46,7 +48,6 @@ void switch_data(char data[])
 	}
 	else if(strcmp(data, "clear\n") == 0){
 		send_data(CLEAR);
-		send_data("------SLAVE------\n\r");
 	}
 	else{
 		if (strcmp(data, CLEAR) == 1)
