@@ -13,7 +13,7 @@ void init_USART(uint16_t ubrr)
 	UBRR0H = (unsigned char)(ubrr >> 8);
 	UBRR0L = (unsigned char)ubrr;
 	UCSR0B |= (1 << RXEN0)|(1 << TXEN0);
-	UCSR0B |= (1 << RXCIE0);//|(1 << TXCIE0)|(1 << UDRIE0);
+	UCSR0B |= (1 << RXCIE0)|(1 << TXCIE0);//|(1 << UDRIE0);
 	UCSR0C |= (1 << USBS0)|(3 << UCSZ00);
 	
 	sei();
@@ -46,16 +46,16 @@ void send_data(char data[])
 
 void read_data(char data[])
 {	
-	char mesaj_primit;
+	char caracter_primit;
 	uint8_t i = 0;
 	
 	while (i < (MAX_LENGTH - 1))
 	{	
-		mesaj_primit = receive_data();		
+		caracter_primit = receive_data();		
 		
-		if(mesaj_primit != '\r')
+		if(caracter_primit != '\r')
 		{
-			data[i] = mesaj_primit;
+			data[i] = caracter_primit;
 			i++;
 		}
 		else{
@@ -66,6 +66,11 @@ void read_data(char data[])
 	data[i] = '\0'; //caracter final
 }
 
+ISR(USART_TX_vect)
+{
+	flag_tx = 1;
+}
+
 ISR(USART_RX_vect)
 {
 	flag_rx = 1;
@@ -73,6 +78,13 @@ ISR(USART_RX_vect)
 
 void start_program()
 {
+	if(flag_tx == 1)
+	{
+		//read_data(mesaj);
+		//switch_data(mesaj);
+		send_data(mesaj);
+	}
+	
 	if(flag_rx == 1)
 	{
 		read_data(mesaj);

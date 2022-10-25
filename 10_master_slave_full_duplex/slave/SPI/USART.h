@@ -24,7 +24,7 @@ unsigned char receive_data(void); //primire date
 void send_data(char data[]);  //trimiterea unui nou mesaj
 void read_data(char data[]);  //citirea unui mesaj primit
 void start_program(); //citirea si executarea comenzilor primite
-
+ISR(USART_TX_vect);
 ISR(USART_RX_vect);
 
 #endif /* MAIN_FUNC_H_ */
