@@ -25,17 +25,19 @@ void switch_data(char data[])
 	else if(strcmp(data, "2") == 0){
 		send_data("LED OFF\n\r");
 	}
-	else if(strcmp(data, "timp") == 0){
+	else if((strcmp(data, "timp") == 0)||(strcmp(data, "TIMP") == 0)){
 		send_data("timp\n\r");
 	}
-	else if(strcmp(data, "clear") == 0){
+	else if((strcmp(data, "clear") == 0)||(strcmp(data, "CLEAR") == 0)){
 		send_data(CLEAR);
 		send_data("\n\r");
 	}
-	else if(strcmp(data, "clear slave") == 0){
+	else if((strcmp(data, "clear slave") == 0)||(strcmp(data, "CLEAR SLAVE") == 0)){
 		send_data("clear\n\r");
 	}
 	else{
-		send_data("nu este o comanda!\n\r");
+		send_data("\n\rr: ");
+		send_data(data);
+		send_data("\n\r\n\r");
 	}
 }
