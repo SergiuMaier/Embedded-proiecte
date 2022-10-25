@@ -4,7 +4,7 @@
 ---
 📁 [01_timer0_general](./01_timer0_general/Project)
   
-   - rutină de întreruperi INT0 & INT1;
+   - întreruperi INT0 & INT1;
    - configurare timer0;
    - rutină de întrerupere pentru contorizarea secundelor;
    - realizare funcție care calculează automat valoarea pentru registrul OCR0A, dat fiind intervalul de timp la care timer-ul executa o întrerupere;
@@ -14,7 +14,7 @@
     
    - implementarea timerului 0 a fost mutata in fisierele timer0_func.h si timer0_func.c;
    - realizare functii pt start si stop timer;
-   - timer-ul functioneaza doar atunci cand este nevoie sa se contorizeze secuntele;
+   - timer-ul functioneaza doar atunci cand este nevoie sa se contorizeze secundele;
 
 ---
 📁 [03_software_timer](./03_software_timer/Project)
@@ -25,7 +25,7 @@
 ---   
 📁 [04_timer0_pwm](./04_timer0_pwm/Project)
 
-  - implementare Timer0 cu PWM (explicații în cod);
+  - implementare Timer0 cu mod PWM (explicații în cod);
   - modificarea intensitații unui LED;
 ---   
 📁 [05_hcsr04_lib](./05_hcsr04_lib/Project)
