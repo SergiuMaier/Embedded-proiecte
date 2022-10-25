@@ -4,7 +4,7 @@
 ---
 📁 [01_timer0_general](./01_timer0_general/Project)
   
-   - rutină de întreruperi INT0 & INT1;
+   - întreruperi INT0 & INT1;
    - configurare timer0;
    - rutină de întrerupere pentru contorizarea secundelor;
    - realizare funcție care calculează automat valoarea pentru registrul OCR0A, dat fiind intervalul de timp la care timer-ul executa o întrerupere;
