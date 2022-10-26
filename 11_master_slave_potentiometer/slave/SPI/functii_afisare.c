@@ -11,11 +11,11 @@ void switch_data(char data[])
 {	
 	if(strcmp(data, "LED ON\n") == 0){
 		schimbare_stare_led(&PORTB, PINB0, 1);
-		send_data("STARE LED: ON\n\r");
+		send_data("ON\n\r");
 	}
 	else if(strcmp(data, "LED OFF\n") == 0){
 		schimbare_stare_led(&PORTB, PINB0, 0);
-		send_data("STARE LED: OFF\n\r");
+		send_data("OFF\n\r");
 	}
 	else if(strcmp(data, "TIMP\n") == 0){
 		afisare_timp();

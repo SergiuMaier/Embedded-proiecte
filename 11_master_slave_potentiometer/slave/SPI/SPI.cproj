@@ -120,6 +120,12 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="ADC.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="ADC.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="functii_afisare.c">
       <SubType>compile</SubType>
     </Compile>
@@ -130,9 +136,6 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="main_defines.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="main_func.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="timer.c">
