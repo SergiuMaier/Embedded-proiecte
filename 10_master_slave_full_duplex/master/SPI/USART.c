@@ -13,7 +13,7 @@ void init_USART(uint16_t ubrr)
 	UBRR0H = (unsigned char)(ubrr >> 8);
 	UBRR0L = (unsigned char)ubrr;
 	UCSR0B |= (1 << RXEN0);
-	UCSR0B |= (1 << RXCIE0)|(1 << TXCIE0);//|(1 << UDRIE0);
+	UCSR0B |= (1 << RXCIE0);
 	UCSR0C |= (1 << USBS0)|(1 << UCSZ01)|(1 << UCSZ00);
 	
 	sei();
@@ -50,7 +50,6 @@ void send_data(char data[])
 
 void read_data(char data[])
 {	
-	UCSR0B &= ~(1 << TXEN0);
 	
 	char caracter_primit;
 	uint8_t i = 0;
@@ -58,7 +57,6 @@ void read_data(char data[])
 	while (i < (MAX_LENGTH - 1))
 	{	
 		caracter_primit = receive_data();		
-		PORTB |= (1 << PINB0);
 		
 		if(caracter_primit != '\r')
 		{
@@ -70,12 +68,7 @@ void read_data(char data[])
 		}
 	}
 	
-	data[i] = '\0'; //caracter final
-}
-
-ISR(USART_TX_vect)
-{
-	flag_tx = 1;
+	data[i] = '\0'; 
 }
 
 ISR(USART_RX_vect)
@@ -85,7 +78,7 @@ ISR(USART_RX_vect)
 
 void start_program()
 {	
-	if(flag_rx == 1) //primesc din putty
+	if(flag_rx == 1)
 	{
 		read_data(mesaj);	
 		switch_data(mesaj);
