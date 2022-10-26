@@ -1,7 +1,7 @@
-## Embedded Systems - playground
+# Embedded Systems - playground
 
-### 📑 Descriere proiecte:
----
+## 📑 Descriere proiecte:
+
 📁 [01_timer0_general](./01_timer0_general/Project)
   
    - întreruperi INT0 & INT1;
