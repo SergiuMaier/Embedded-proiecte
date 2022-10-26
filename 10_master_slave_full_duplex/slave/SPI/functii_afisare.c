@@ -7,22 +7,9 @@
 
 #include "functii_afisare.h"
 
-void new_line()
-{
-	send_data("\n\r>>");
-}
-
-void afisare_meniu()
-{
-	send_data("\n\rComenzi:\n\r 1. meniu\n\r 2. timp\n\r 3. led on\n\r 4. led off\n\r 5. clear\n\r");
-}
-
 void switch_data(char data[])
 {	
-	if (strcmp(data, "1") == 0){
-		send_data("LED ON\n\r");
-	}
-	else if(strcmp(data, "LED ON\n") == 0){
+	if(strcmp(data, "LED ON\n") == 0){
 		schimbare_stare_led(&PORTB, PINB0, 1);
 		send_data("STARE LED: ON\n\r");
 	}
@@ -34,7 +21,7 @@ void switch_data(char data[])
 		afisare_timp();
 	}
 	else if(strcmp(data, "CLEAR\n") == 0){
-		send_data(CLEAR);
+		send_data(CLEAR);send_data(CLEAR);
 		send_data("\n\r"); //rezolvare bug nerecunoastere comanda dupa clear
 	}
 }
