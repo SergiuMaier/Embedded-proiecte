@@ -14,7 +14,6 @@
 #include <util/delay.h>
 #include <string.h>
 
-volatile uint8_t flag_tx; //flag-uri folosite atunci cand are loc o intrerupere de USART
 volatile uint8_t flag_rx; //flag_rx devine 1 atunci cand este apasata tasta Enter
 char mesaj[50];
 
@@ -24,7 +23,6 @@ unsigned char receive_data(void); //primire date
 void send_data(char data[]);  //trimiterea unui nou mesaj
 void read_data(char data[]);  //citirea unui mesaj primit
 void start_program(); //citirea si executarea comenzilor primite
-ISR(USART_TX_vect);
 ISR(USART_RX_vect);
 
 #endif /* MAIN_FUNC_H_ */

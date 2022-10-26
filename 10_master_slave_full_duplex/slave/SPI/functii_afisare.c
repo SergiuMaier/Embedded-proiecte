@@ -19,19 +19,6 @@ void afisare_meniu()
 
 void switch_data(char data[])
 {	
-	//-----------verificare daca se primesc mesaje de la master---------------/
-	
-	//if(data){
-		//send_data(data);
-		//send_data("0");
-		//send_data("\n\r");
-		
-		//sau
-		
-	//	schimbare_stare_led(&PORTB, PINB0, 1);
-	//}
-	
-	//---------------------------------------------------------------------/
 	if (strcmp(data, "1") == 0){
 		send_data("LED ON\n\r");
 	}
@@ -43,15 +30,12 @@ void switch_data(char data[])
 		schimbare_stare_led(&PORTB, PINB0, 0);
 		send_data("STARE LED: OFF\n\r");
 	}
-	else if(strcmp(data, "timp\n") == 0){
+	else if(strcmp(data, "TIMP\n") == 0){
 		afisare_timp();
 	}
-	else if(strcmp(data, "clear\n") == 0){
+	else if(strcmp(data, "CLEAR\n") == 0){
 		send_data(CLEAR);
-	}
-	else{
-		if (strcmp(data, CLEAR) == 1)
-			send_data("nu este o comanda!\n\r");
+		send_data("\n\r"); //rezolvare bug nerecunoastere comanda dupa clear
 	}
 }
 

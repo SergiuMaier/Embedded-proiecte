@@ -14,7 +14,7 @@ int main(void)
 	init_devices();
 	init_USART(MYUBRR);
 	
-	send_data(CLEAR); //clear putty
+	send_data(CLEAR);
 	
 	while(1) 
     {
