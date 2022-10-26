@@ -7,16 +7,6 @@
 
 #include "functii_afisare.h"
 
-void new_line()
-{
-	send_data("\n\r>>");
-}
-
-void afisare_meniu()
-{
-	send_data("\n\rComenzi:\n\r 1. meniu\n\r 2. timp\n\r 3. led on\n\r 4. led off\n\r 5. clear\n\r");
-}
-
 void switch_data(char data[])
 {			
 	if (strcmp(data, "1") == 0){
