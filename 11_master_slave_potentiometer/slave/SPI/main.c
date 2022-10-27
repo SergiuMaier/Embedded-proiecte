@@ -20,8 +20,7 @@ int main(void)
 	
 	while(1) 
     {
-		//start_program();
-		start_conversie();   
+		start_program();
     }
 }
 

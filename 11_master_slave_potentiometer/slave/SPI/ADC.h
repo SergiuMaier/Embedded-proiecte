@@ -10,7 +10,6 @@
 
 #include "main_defines.h"
 
-//float step_ADC = 0.004882815; //(Vref/2^n);
 uint8_t val_adc;
 char buffer[5];
 

@@ -20,6 +20,10 @@ void switch_data(char data[])
 	else if(strcmp(data, "TIMP\n") == 0){
 		afisare_timp();
 	}
+	else if(strcmp(data, "VALOARE\n") == 0){
+		start_conversie();
+		send_data("\n\r");
+	}
 	else if(strcmp(data, "CLEAR\n") == 0){
 		send_data(CLEAR);send_data(CLEAR);
 		send_data("\n\r"); //rezolvare bug nerecunoastere comanda dupa clear

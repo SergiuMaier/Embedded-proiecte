@@ -8,6 +8,7 @@
 #ifndef FUNCTII_AFISARE_H_
 #define FUNCTII_AFISARE_H_
 
+#include "ADC.h"
 #include "timer.h"
 #include "USART.h"
 

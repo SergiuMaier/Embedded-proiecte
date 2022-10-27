@@ -29,12 +29,11 @@ uint16_t read_ADC(uint8_t input)
 
 void start_conversie()
 {
-	send_data("Valoare: ");
+	//val_adc = (5*read_ADC(0))/1024;
 	
-	val_adc = 0.004882815*read_ADC(0); //step_ADC*val
+	val_adc = read_ADC(0);
 	itoa(val_adc, buffer, 10);
 	send_data(buffer);
-	send_data("\r\n");
 	
 	_delay_ms(100);
 }
