@@ -8,9 +8,14 @@
 #ifndef ADC_H_
 #define ADC_H_
 
-float stepADC = 0.004882815; //(Vref/2^n);
+#include "main_defines.h"
+
+//float step_ADC = 0.004882815; //(Vref/2^n);
+uint8_t val_adc;
+char buffer[5];
 
 void init_ADC();
-
+uint16_t read_ADC(uint8_t input);
+void start_conversie();
 
 #endif /* ADC_H_ */

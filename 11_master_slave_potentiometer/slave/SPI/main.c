@@ -7,18 +7,21 @@
 
 //-----------SLAVE------------//
 
+#include "ADC.h"
 #include "USART.h"
 
 int main(void)
 {	
 	init_devices();
+	init_ADC();
 	init_USART(MYUBRR);
 	
 	send_data(CLEAR);
 	
 	while(1) 
     {
-		start_program();   
+		//start_program();
+		start_conversie();   
     }
 }
 
