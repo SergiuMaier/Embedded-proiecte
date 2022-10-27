@@ -21,8 +21,8 @@ void switch_data(char data[])
 	else if(strcmp(data, "4") == 0){
 		send_data("VALOARE\n\r");
 	}
-	else if(strcmp(data, "5") == 0){
-		send_data("CLEAR\n\r");
+	else if(strcmp(data, "5") == 0){	
+		send_data("CLEAR\n\r");	//clear putty
 	}
 	else{
 		
