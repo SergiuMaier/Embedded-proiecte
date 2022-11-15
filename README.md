@@ -56,6 +56,14 @@
  |─📂[master](./10_master_slave_full_duplex/master/SPI)    
  |─📂[slave](./10_master_slave_full_duplex/slave/SPI)
 
--
--
+- informatiile pot fi trimise acum in ambele sensuri;
+- au fost separate implementarile in cele doua proiecte;
+- mcu master se ocupa doar cu trimiterea si receptarea informatiilor;
+- mcu slave executa comenzile de la master si trimite ca raspuns rezultatele cerute; 
 ---
+📁 [11_master_slave_potentiometer](./11_master_slave_potentiometer)      
+ |─📂[master](./11_master_slave_potentiometer/master/SPI)    
+ |─📂[slave](./11_master_slave_potentiometer/slave/SPI)
+ 
+ - implementarea ADC-ului in proiectul slave;
+ - datele achizitionate de la potentiometru sunt afisate pe seriala doar atunci cand mcu master solicita asta;
