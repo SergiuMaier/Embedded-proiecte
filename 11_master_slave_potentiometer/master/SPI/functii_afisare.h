@@ -8,14 +8,16 @@
 #ifndef FUNCTII_AFISARE_H_
 #define FUNCTII_AFISARE_H_
 
-//#include "timer.h"
 #include "USART.h"
 
 #include <stdio.h>
 #include <string.h>
 
-void switch_data(char data[]); //verificare mesaje primite din putty si executarea lor
-void new_line();      //inceput de rand nou, unde se poate tasta o comanda
-void afisare_meniu(); //afisare lista comenzi
+/* VARIABILE */
+
+/* PROTOTIPURI */
+
+//verificarea mesajelor primite de la slave
+void switch_data(char data[]); 
 
 #endif /* FUNCTII_AFISARE_H_ */
