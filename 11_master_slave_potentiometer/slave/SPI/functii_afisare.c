@@ -13,6 +13,11 @@ void switch_data(char data[])
 		schimbare_stare_led(&PORTB, PINB0, 1);
 		send_data("ON\n\r");
 	}
+	else if(strcmp(data, "1") == 0){
+		//send_data("works\n\r");
+		start_conversie();
+		send_data("\n\r");
+	}
 	else if(strcmp(data, "LED OFF\n") == 0){
 		schimbare_stare_led(&PORTB, PINB0, 0);
 		send_data("OFF\n\r");

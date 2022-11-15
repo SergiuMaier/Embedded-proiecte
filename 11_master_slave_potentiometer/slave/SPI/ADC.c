@@ -10,30 +10,28 @@
 
 void init_ADC()
 {	
-	ADCSRA |= (1 << ADPS2)|(1 << ADPS1)|(1 << ADPS0); //prescalar 128
-	ADMUX |= (0 << REFS1)|(0 << REFS0); //AREF, Vref off
-	ADCSRA |= (1 << ADEN); //ADC ON
-	ADCSRA |= (1 << ADSC); //o conversie initiala pt test
+	DDRC = ~(1 << PINC0);
+	DIDR0 |= (1 << ADC0D);    //disable digital input buffer
+	
+	//ADMUX |= (0 << REFS1)|(0 << REFS0);                    //voltage ref. AREF
+	
+	ADMUX |= (1 << REFS0);                                   //AVCC
+	ADCSRA |= (1 << ADIE)|(1 << ADEN)|(1 << ADATE);          //enable interrupt,start adc, autotrigger
+	ADCSRB &= ~((1 << ADTS2) | (1 << ADTS1) | (1 << ADTS0)); //free running mode
+	ADCSRA |= (1 << ADPS2)|(1 << ADPS1)|(1 << ADPS0);        //prescaler 128
+	ADCSRA |= (1 << ADSC);                                   //start initial conversion (test)
+	
+	sei();
 }
 
-uint16_t read_ADC(uint8_t input)
-{
-	ADMUX &= 0xF0;
-	ADMUX |= input;
-	ADCSRA |= (1 << ADSC); //start conversie
-	
-	while(ADCSRA & (1 << ADSC));
-	
-	return ADCW;	//returneaza valoarea convertita, de pe pinul ales
+ISR(ADC_vect)
+{	
+	val_adc = ADCL;
+	val_adc |= (uint16_t)(ADCH << 8);
 }
 
 void start_conversie()
 {
-	//val_adc = (5*read_ADC(0))/1024;
-	
-	val_adc = read_ADC(0);
 	itoa(val_adc, buffer, 10);
 	send_data(buffer);
-	
-	_delay_ms(100);
 }

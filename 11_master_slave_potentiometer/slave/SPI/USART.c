@@ -21,14 +21,16 @@ void init_USART(uint16_t ubrr)
 
 void transmit_data(unsigned char data)
 {
-	while (!(UCSR0A & (1<<UDRE0)));
+	//while (!(UCSR0A & (1<<UDRE0)));
+	loop_until_bit_is_set(UCSR0A, UDRE0);
 	
 	UDR0 = data;
 }
 
 unsigned char receive_data(void)
 {
-	while (!(UCSR0A & (1<<RXC0)));
+	//while (!(UCSR0A & (1<<RXC0)));
+	loop_until_bit_is_set(UCSR0A, RXC0);
 	
 	return UDR0;
 }
