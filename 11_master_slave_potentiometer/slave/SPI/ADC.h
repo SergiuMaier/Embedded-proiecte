@@ -10,11 +10,22 @@
 
 #include "main_defines.h"
 
-uint16_t val_adc;
-char buffer[5]; //conversie var_adc in char 
+//--Variabile--//
 
+uint16_t val_adc;
+
+//pt conversia var_adc in char 
+char buffer[5]; 
+
+//--Prototipuri--//
+
+//initializare ADC
 void init_ADC();
+
+//conversia valorii achizitionate si trimiterea ei pe seriala
 void start_conversie();
+
+//rutina tratare intrerupere ADC
 ISR(ADC_vect);
 
 #endif /* ADC_H_ */

@@ -13,11 +13,16 @@ void switch_data(char data[])
 		schimbare_stare_led(&PORTB, PINB0, 1);
 		send_data("ON\n\r");
 	}
+	
+	//-----TEST ADC---------//
+	
 	else if(strcmp(data, "1") == 0){
-		//send_data("works\n\r");
 		start_conversie();
 		send_data("\n\r");
 	}
+	
+	//----------------------//
+	
 	else if(strcmp(data, "LED OFF\n") == 0){
 		schimbare_stare_led(&PORTB, PINB0, 0);
 		send_data("OFF\n\r");
@@ -51,7 +56,7 @@ void afisare_timp()
 	{			
 		send_data("Timp curent: ");
 		
-		itoa(secunde,  ch_sec, 10); //conversie sec si min din int in char
+		itoa(secunde,  ch_sec, 10); //conversie int -> char
 		itoa(minute, ch_min, 10);
 		
 		//format 00:00

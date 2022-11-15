@@ -15,12 +15,21 @@
 #include <stdio.h>
 #include <string.h>
 
-uint8_t stare_led;    //flag pt a memora starea LED-ului
+//--Variabile--//
 
-void switch_data(char data[]); //verificare mesaje primite din putty si executarea lor
-void new_line();      //inceput de rand nou, unde se poate tasta o comanda
-void afisare_meniu(); //afisare lista comenzi
-void schimbare_stare_led(volatile uint8_t *port, uint8_t pin, uint8_t stare); //schimbare stare led
-void afisare_timp();  //afisare timpul curent 
+//flag pt a memora starea LED-ului
+uint8_t stare_led;   
+
+//--Prototipuri--//
+
+//verificarea mesajelor receptionate de la alt mcu si executarea lor
+void switch_data(char data[]); 
+
+//schimbare stare led
+//@stare poate lua doar valorile 1 sau 0
+void schimbare_stare_led(volatile uint8_t *port, uint8_t pin, uint8_t stare); 
+
+//afisare timpul curent in formatul clasic
+void afisare_timp();   
 
 #endif /* FUNCTII_AFISARE_H_ */
