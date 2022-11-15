@@ -9,20 +9,22 @@
 #define MAIN_FUNC_H_
 
 #include "main_defines.h"
-#include "functii_afisare.h" //inlcusa doar pt switch_data()
+
+//inclusa doar pt switch_data(), warning posibil de aici
+#include "functii_afisare.h" 
 
 #include <util/delay.h>
 #include <string.h>
 #include <avr/sfr_defs.h>
 
-//--Variabile--//
+/* VARIABILE */
 
 //devine 1 atunci cand este apasata tasta Enter
 volatile uint8_t flag_rx; 
 
 char mesaj[50];
 
-//--Prototipuri--//
+/* PROTOTIPURI */
 
 //initializare USART
 void init_USART(uint16_t ubrr);         

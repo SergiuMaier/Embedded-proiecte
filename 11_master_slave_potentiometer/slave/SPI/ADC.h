@@ -10,14 +10,14 @@
 
 #include "main_defines.h"
 
-//--Variabile--//
+/* VARIABILE */
 
 uint16_t val_adc;
 
 //pt conversia var_adc in char 
 char buffer[5]; 
 
-//--Prototipuri--//
+/* PROTOTIPURI */
 
 //initializare ADC
 void init_ADC();

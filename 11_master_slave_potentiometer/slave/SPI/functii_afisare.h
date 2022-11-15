@@ -15,12 +15,12 @@
 #include <stdio.h>
 #include <string.h>
 
-//--Variabile--//
+/* VARIABILE */
 
 //flag pt a memora starea LED-ului
 uint8_t stare_led;   
 
-//--Prototipuri--//
+/* PROTOTIPURI*/
 
 //verificarea mesajelor receptionate de la alt mcu si executarea lor
 void switch_data(char data[]); 

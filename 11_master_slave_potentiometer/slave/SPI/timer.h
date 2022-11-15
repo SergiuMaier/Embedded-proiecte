@@ -11,9 +11,18 @@
 #include "main_defines.h" 
 #include <string.h>
 
-volatile uint16_t contor, secunde, minute; //incrementare secunde si minute
-char ch_sec[10], ch_min[10]; //folosite pentru conversia in char a sec si min
-volatile uint8_t flag_timer; //activar atunci cand are loc intreruperea de timer
+/* VARIABILE */
+
+//incrementare secunde si minute
+volatile uint16_t contor, secunde, minute; 
+
+//conversia int -> char a sec si min
+char ch_sec[10], ch_min[10]; 
+
+//activat atunci cand are loc intreruperea de timer
+volatile uint8_t flag_timer; 
+
+/* PROTOTIPURI*/
 
 void init_timer();  
 void init_devices();  
